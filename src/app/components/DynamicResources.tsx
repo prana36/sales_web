@@ -73,24 +73,33 @@ export default function DynamicResources() {
               <div className="space-y-4">
                 {content.courses.slice(0, 3).map((course) => (
                   <article
-                    className="rounded-[10px] border border-gray-200 bg-gray-50 p-5"
+                    className="overflow-hidden rounded-[10px] border border-gray-200 bg-gray-50 shadow-sm"
                     key={course.id}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
-                      {course.mode ?? "Training"}
-                    </p>
-                    <h4 className="mt-2 text-lg font-bold text-gray-900">{course.title}</h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-600">{course.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-gray-600">
-                      {course.duration ? <span>{course.duration}</span> : null}
-                      {course.level ? <span>{course.level}</span> : null}
+                    {publicAssetUrl(course.image_path) ? (
+                      <img
+                        alt={course.title}
+                        className="h-40 w-full object-cover"
+                        src={publicAssetUrl(course.image_path) ?? undefined}
+                      />
+                    ) : null}
+                    <div className="p-5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
+                        {course.mode ?? "Training"}
+                      </p>
+                      <h4 className="mt-2 text-lg font-bold text-gray-900">{course.title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-gray-600">{course.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-gray-600">
+                        {course.duration ? <span>{course.duration}</span> : null}
+                        {course.level ? <span>{course.level}</span> : null}
+                      </div>
+                      <a
+                        className="mt-5 inline-flex rounded-[10px] bg-yellow-500 px-4 py-2 text-sm font-semibold text-gray-900 transition hover:bg-yellow-400"
+                        href={course.cta_url}
+                      >
+                        {course.cta_label}
+                      </a>
                     </div>
-                    <a
-                      className="mt-5 inline-flex rounded-[10px] bg-yellow-500 px-4 py-2 text-sm font-semibold text-gray-900 transition hover:bg-yellow-400"
-                      href={course.cta_url}
-                    >
-                      {course.cta_label}
-                    </a>
                   </article>
                 ))}
               </div>
@@ -134,25 +143,34 @@ export default function DynamicResources() {
               <div className="space-y-4">
                 {content.downloads.slice(0, 4).map((download) => (
                   <article
-                    className="rounded-[10px] border border-gray-200 bg-gray-50 p-5"
+                    className="overflow-hidden rounded-[10px] border border-gray-200 bg-gray-50 shadow-sm"
                     key={download.id}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
-                      {download.category} / {download.file_type}
-                    </p>
-                    <h4 className="mt-2 text-lg font-bold text-gray-900">{download.title}</h4>
-                    <p className="mt-2 text-sm leading-6 text-gray-600">
-                      {download.description}
-                    </p>
-                    <a
-                      className="mt-5 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
-                      href={publicAssetUrl(download.file_path) ?? "#contact"}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <DownloadIcon className="size-4" />
-                      {download.button_label}
-                    </a>
+                    {publicAssetUrl(download.thumbnail_path) ? (
+                      <img
+                        alt={download.title}
+                        className="h-36 w-full object-cover"
+                        src={publicAssetUrl(download.thumbnail_path) ?? undefined}
+                      />
+                    ) : null}
+                    <div className="p-5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
+                        {download.category} / {download.file_type}
+                      </p>
+                      <h4 className="mt-2 text-lg font-bold text-gray-900">{download.title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-gray-600">
+                        {download.description}
+                      </p>
+                      <a
+                        className="mt-5 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-800"
+                        href={publicAssetUrl(download.file_path) ?? "#contact"}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <DownloadIcon className="size-4" />
+                        {download.button_label}
+                      </a>
+                    </div>
                   </article>
                 ))}
               </div>

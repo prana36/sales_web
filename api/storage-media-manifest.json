@@ -1,0 +1,94 @@
+[
+  {
+    "source": "src/app/assets/images/client_illustration.png",
+    "target": "courses/sales-baptism/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/client_illustration 2.png",
+    "target": "courses/sales-marathon/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/sanjay-singh.jpg",
+    "target": "courses/sales-manedge/cover.jpg"
+  },
+  {
+    "source": "src/app/assets/images/logo.png",
+    "target": "courses/sales-ki-pathshala/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-jaat.png",
+    "target": "courses/sales-ki-jaat/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-vidhi.png",
+    "target": "courses/sales-ki-vidhi/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-niti.png",
+    "target": "courses/sales-ki-niti/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-mein-molbhav.png",
+    "target": "courses/sales-mein-molbhav/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-katha.png",
+    "target": "courses/sales-katha/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ke-rishte.png",
+    "target": "courses/sales-ke-rishte/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-jaat.png",
+    "target": "blogs/why-sales-training-cannot-be-skipped/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/client_illustration.png",
+    "target": "blogs/growth-consulting-for-sme-and-msme-sales/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-jaat.png",
+    "target": "blogs/sales-dna-and-the-confidence-to-sell/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-vidhi.png",
+    "target": "blogs/how-a-defined-sales-process-improves-conversion/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-mein-molbhav.png",
+    "target": "blogs/sales-negotiation-is-more-than-discounting/cover.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-vidhi.png",
+    "target": "downloads/sales-management-audit-system-checklist/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-katha.png",
+    "target": "downloads/lead-assessment-direct-selling-checklist/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-niti.png",
+    "target": "downloads/annual-sales-planning-workbook/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/client_illustration 2.png",
+    "target": "downloads/sales-workbooks/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/services/sales-ki-vidhi.png",
+    "target": "downloads/sales-checklists/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/logo.png",
+    "target": "downloads/strategic-concepts-brochure/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/clients/hindustan.png",
+    "target": "downloads/client-testimonials/thumbnail.png"
+  },
+  {
+    "source": "src/app/assets/images/team/Sanjay-Singh.png",
+    "target": "downloads/linkedin-recommendations/thumbnail.png"
+  }
+]
