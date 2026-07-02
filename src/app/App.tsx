@@ -19,6 +19,7 @@ import MeasurableImpact from "./components/MeasurableImpact";
 import SalesHelpline from "./components/SalesHelpline";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import WhatsAppChatButton from "./components/WhatsAppChatButton";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
       <SalesHelpline />
       <Contact />
       <Footer />
+      <WhatsAppChatButton />
       <Toaster position="top-center" richColors />
     </div>
   );
