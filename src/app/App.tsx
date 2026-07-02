@@ -1,4 +1,6 @@
 /// <reference types="vite/client" />
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import SalesAudit from "./components/SalesAudit";
@@ -20,12 +22,19 @@ import SalesHelpline from "./components/SalesHelpline";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppChatButton from "./components/WhatsAppChatButton";
+import {
+  BlogDetailPage,
+  BlogsPage,
+  CourseDetailPage,
+  CoursesPage,
+  DownloadDetailPage,
+  DownloadsPage,
+} from "./pages/ResourcePages";
 import { Toaster } from "sonner";
 
-export default function App() {
+function HomePage() {
   return (
-    <div className="size-full bg-white text-gray-900 selection:bg-yellow-500/30 selection:text-blue-900">
-      <Header />
+    <>
       <Hero />
       <SalesAudit />
       <Clients />
@@ -44,9 +53,56 @@ export default function App() {
       <MeasurableImpact />
       <SalesHelpline />
       <Contact />
+    </>
+  );
+}
+
+function ScrollToLocation() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
+
+function SiteRoutes() {
+  return (
+    <>
+      <ScrollToLocation />
+      <Header />
+      <Routes>
+        <Route element={<HomePage />} path="/" />
+        <Route element={<CoursesPage />} path="/courses" />
+        <Route element={<CourseDetailPage />} path="/courses/:slug" />
+        <Route element={<BlogsPage />} path="/blogs" />
+        <Route element={<BlogDetailPage />} path="/blogs/:slug" />
+        <Route element={<DownloadsPage />} path="/downloads" />
+        <Route element={<DownloadDetailPage />} path="/downloads/:slug" />
+      </Routes>
       <Footer />
       <WhatsAppChatButton />
       <Toaster position="top-center" richColors />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="size-full bg-white text-gray-900 selection:bg-yellow-500/30 selection:text-blue-900">
+      <BrowserRouter>
+        <SiteRoutes />
+      </BrowserRouter>
     </div>
   );
 }

@@ -21,6 +21,7 @@ export type Blog = {
   slug: string;
   title: string;
   excerpt: string;
+  content: string;
   author: string;
   category: string;
   cover_image_path: string | null;

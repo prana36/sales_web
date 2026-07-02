@@ -19,11 +19,11 @@ export default function Footer() {
   ];
 
   const categories = [
-    { label: "Services", url: "#solutions_services" },
-    { label: "Case Studies", url: "#case_studies" },
-    { label: "Online Support", url: "#sales_mitra_helpline" },
-    { label: "Sales Audit", url: "#sales_audit" },
-    { label: "About Our Company", url: "#top_sales_trainer" },
+    { label: "Services", url: "/#solutions_services" },
+    { label: "Case Studies", url: "/#case_studies" },
+    { label: "Online Support", url: "/#sales_mitra_helpline" },
+    { label: "Sales Audit", url: "/#sales_audit" },
+    { label: "About Our Company", url: "/#top_sales_trainer" },
   ];
 
   return (
@@ -87,22 +87,22 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="#resources">
+                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="/downloads">
                     Sales Audit Downloads
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="#resources">
+                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="/courses">
                     Courses
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="#resources">
+                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="/blogs">
                     Blogs
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="#pricing">
+                  <a className="text-gray-500 transition-colors hover:text-blue-900" href="/#pricing">
                     Packages
                   </a>
                 </li>
@@ -140,10 +140,10 @@ export default function Footer() {
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-100 pt-8 text-xs text-gray-400 md:flex-row">
             <p>Copyright 2026 Strategic Concepts (India) Pvt. Ltd. All Rights Reserved.</p>
             <div className="flex gap-4">
-              <a className="transition-colors hover:text-blue-900" href="#">
+              <a className="transition-colors hover:text-blue-900" href="/">
                 Privacy Policy
               </a>
-              <a className="transition-colors hover:text-blue-900" href="#">
+              <a className="transition-colors hover:text-blue-900" href="/">
                 Terms of Service
               </a>
             </div>

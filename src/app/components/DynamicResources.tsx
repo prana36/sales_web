@@ -1,47 +1,12 @@
-import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { BookOpen, Download as DownloadIcon, FileText, Loader2 } from "lucide-react";
 import {
-  DynamicContent,
-  getDynamicContent,
   publicAssetUrl,
 } from "../api/dynamic-content";
-
-const emptyContent: DynamicContent = {
-  courses: [],
-  blogs: [],
-  downloads: [],
-};
+import { useDynamicContent } from "../hooks/useDynamicContent";
 
 export default function DynamicResources() {
-  const [content, setContent] = useState<DynamicContent>(emptyContent);
-  const [status, setStatus] = useState<"loading" | "ready" | "empty">("loading");
-
-  useEffect(() => {
-    let isMounted = true;
-
-    getDynamicContent()
-      .then((data) => {
-        if (!isMounted) {
-          return;
-        }
-
-        setContent(data);
-        setStatus(
-          data.courses.length || data.blogs.length || data.downloads.length
-            ? "ready"
-            : "empty",
-        );
-      })
-      .catch(() => {
-        if (isMounted) {
-          setStatus("empty");
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const { content, status } = useDynamicContent();
 
   if (status === "empty") {
     return null;
@@ -69,6 +34,9 @@ export default function DynamicResources() {
               <div className="mb-4 flex items-center gap-2 text-blue-900">
                 <BookOpen className="size-5" />
                 <h3 className="text-xl font-bold text-gray-900">Courses</h3>
+                <Link className="ml-auto text-sm font-semibold text-blue-900 hover:text-yellow-600" to="/courses">
+                  View all
+                </Link>
               </div>
               <div className="space-y-4">
                 {content.courses.slice(0, 3).map((course) => (
@@ -93,12 +61,12 @@ export default function DynamicResources() {
                         {course.duration ? <span>{course.duration}</span> : null}
                         {course.level ? <span>{course.level}</span> : null}
                       </div>
-                      <a
+                      <Link
                         className="mt-5 inline-flex rounded-[10px] bg-yellow-500 px-4 py-2 text-sm font-semibold text-gray-900 transition hover:bg-yellow-400"
-                        href={course.cta_url}
+                        to={`/courses/${course.slug}`}
                       >
-                        {course.cta_label}
-                      </a>
+                        View Course
+                      </Link>
                     </div>
                   </article>
                 ))}
@@ -109,6 +77,9 @@ export default function DynamicResources() {
               <div className="mb-4 flex items-center gap-2 text-blue-900">
                 <FileText className="size-5" />
                 <h3 className="text-xl font-bold text-gray-900">Blogs</h3>
+                <Link className="ml-auto text-sm font-semibold text-blue-900 hover:text-yellow-600" to="/blogs">
+                  View all
+                </Link>
               </div>
               <div className="space-y-4">
                 {content.blogs.slice(0, 3).map((blog) => (
@@ -129,6 +100,12 @@ export default function DynamicResources() {
                       </p>
                       <h4 className="mt-2 text-lg font-bold text-gray-900">{blog.title}</h4>
                       <p className="mt-2 text-sm leading-6 text-gray-600">{blog.excerpt}</p>
+                      <Link
+                        className="mt-4 inline-flex text-sm font-semibold text-blue-900 transition hover:text-yellow-600"
+                        to={`/blogs/${blog.slug}`}
+                      >
+                        Read blog
+                      </Link>
                     </div>
                   </article>
                 ))}
@@ -139,6 +116,9 @@ export default function DynamicResources() {
               <div className="mb-4 flex items-center gap-2 text-blue-900">
                 <DownloadIcon className="size-5" />
                 <h3 className="text-xl font-bold text-gray-900">Downloads</h3>
+                <Link className="ml-auto text-sm font-semibold text-blue-900 hover:text-yellow-600" to="/downloads">
+                  View all
+                </Link>
               </div>
               <div className="space-y-4">
                 {content.downloads.slice(0, 4).map((download) => (

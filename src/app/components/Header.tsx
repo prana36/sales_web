@@ -6,31 +6,32 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", url: "#", children: [] },
+    { label: "Home", url: "/", children: [] },
     {
       label: "About Us",
-      url: "#top_sales_trainer",
+      url: "/#top_sales_trainer",
       children: [
-        { label: "Top Sales Trainer", url: "#top_sales_trainer" },
-        { label: "Core Team", url: "#team" },
-        { label: "Clients Appreciate Us", url: "#testimonials" },
+        { label: "Top Sales Trainer", url: "/#top_sales_trainer" },
+        { label: "Core Team", url: "/#team" },
+        { label: "Clients Appreciate Us", url: "/#testimonials" },
       ],
     },
     {
       label: "Services",
-      url: "#solutions_services",
+      url: "/#solutions_services",
       children: [
-        { label: "Sales Training", url: "#welcome_temple_of_sales" },
-        { label: "Growth Consulting", url: "#growth_consulting_agency" },
-        { label: "Sales Mitra Helpline", url: "#sales_mitra_helpline" },
-        { label: "Sales Audit", url: "#sales_audit" },
+        { label: "Sales Training", url: "/#welcome_temple_of_sales" },
+        { label: "Growth Consulting", url: "/#growth_consulting_agency" },
+        { label: "Sales Mitra Helpline", url: "/#sales_mitra_helpline" },
+        { label: "Sales Audit", url: "/#sales_audit" },
       ],
     },
-    { label: "Case Studies", url: "#case_studies", children: [] },
-    { label: "How We Work", url: "#how_we_work", children: [] },
-    { label: "Courses", url: "#resources", children: [] },
-    { label: "Blogs", url: "#resources", children: [] },
-    { label: "Careers", url: "#careers", children: [] },
+    { label: "Case Studies", url: "/#case_studies", children: [] },
+    { label: "How We Work", url: "/#how_we_work", children: [] },
+    { label: "Courses", url: "/courses", children: [] },
+    { label: "Blogs", url: "/blogs", children: [] },
+    { label: "Downloads", url: "/downloads", children: [] },
+    { label: "Careers", url: "/#careers", children: [] },
   ];
 
   return (
@@ -79,7 +80,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <a
             className="hidden rounded-[10px] bg-yellow-500 px-5 py-2.5 text-sm font-medium text-gray-900 transition-all hover:bg-yellow-400 hover:shadow-md lg:block"
-            href="#contact"
+            href="/#contact"
           >
             Contact Us
           </a>
@@ -113,7 +114,7 @@ export default function Header() {
             ))}
             <a
               className="mt-3 block rounded-[10px] bg-yellow-500 px-3 py-2 text-center text-sm font-semibold text-gray-900"
-              href="#contact"
+              href="/#contact"
               onClick={() => setIsOpen(false)}
             >
               Contact Us
