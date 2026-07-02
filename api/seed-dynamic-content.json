@@ -1,0 +1,109 @@
+{
+  "courses": [
+    {
+      "slug": "sales-katha",
+      "title": "Sales Katha",
+      "subtitle": "Story-led practical sales training",
+      "description": "A field-oriented course that uses real sales situations to strengthen prospecting, conversation quality, objection handling, and closing discipline.",
+      "duration": "2 days",
+      "mode": "Classroom / Corporate",
+      "level": "Foundation to Intermediate",
+      "price_label": "Custom proposal",
+      "cta_label": "Enquire for Sales Katha",
+      "cta_url": "#contact",
+      "image_path": "courses/sales-katha/cover.png",
+      "brochure_path": "courses/sales-katha/brochure.pdf",
+      "highlights": ["Real field examples", "Objection handling", "Practical role plays", "Action plan for managers"],
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "slug": "sales-ki-niti",
+      "title": "Sales Ki Niti",
+      "subtitle": "Sales strategy and process rhythm",
+      "description": "A program for owners, managers, and sales leaders who need repeatable sales systems, stronger review discipline, and better team execution.",
+      "duration": "1 day",
+      "mode": "Workshop",
+      "level": "Managers",
+      "price_label": "Custom proposal",
+      "cta_label": "Plan This Workshop",
+      "cta_url": "#contact",
+      "image_path": "courses/sales-ki-niti/cover.png",
+      "brochure_path": "courses/sales-ki-niti/brochure.pdf",
+      "highlights": ["Sales process mapping", "Review metrics", "Pipeline discipline", "SME/MSME focus"],
+      "sort_order": 2,
+      "is_published": true
+    },
+    {
+      "slug": "sales-mein-molbhav",
+      "title": "Sales Mein Molbhav",
+      "subtitle": "Negotiation skills for sales teams",
+      "description": "A negotiation-focused course that helps salespeople protect value, respond to price pressure, and close with confidence.",
+      "duration": "1 day",
+      "mode": "Corporate Training",
+      "level": "Intermediate",
+      "price_label": "Custom proposal",
+      "cta_label": "Request Details",
+      "cta_url": "#contact",
+      "image_path": "courses/sales-mein-molbhav/cover.png",
+      "brochure_path": "courses/sales-mein-molbhav/brochure.pdf",
+      "highlights": ["Price objection scripts", "Value communication", "Deal protection", "Practice drills"],
+      "sort_order": 3,
+      "is_published": true
+    }
+  ],
+  "blogs": [
+    {
+      "slug": "sales-training-is-not-a-one-day-event",
+      "title": "Sales Training Is Not a One-Day Event",
+      "excerpt": "Training works best when it is connected to field behaviour, measurable outcomes, and manager-led follow-up.",
+      "content": "Sales capability improves when learning is translated into visible field actions. A workshop can create momentum, but the real change happens when managers review conversations, coach against specific gaps, and measure improvement week after week.",
+      "author": "Sanjay Singh",
+      "category": "Sales Training",
+      "cover_image_path": "blogs/sales-training-is-not-a-one-day-event/cover.jpg",
+      "read_time_minutes": 3,
+      "is_featured": true,
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "slug": "why-sme-sales-teams-need-a-review-rhythm",
+      "title": "Why SME Sales Teams Need a Review Rhythm",
+      "excerpt": "A simple review rhythm helps owners see pipeline quality, team gaps, and urgent conversion opportunities.",
+      "content": "Many SME sales problems are not caused by lack of demand. They come from unclear ownership, inconsistent follow-up, and weak visibility into pipeline health. A disciplined review rhythm gives leaders the evidence needed to coach and act.",
+      "author": "Strategic Concepts",
+      "category": "Growth Consulting",
+      "cover_image_path": "blogs/why-sme-sales-teams-need-a-review-rhythm/cover.jpg",
+      "read_time_minutes": 4,
+      "is_featured": false,
+      "sort_order": 2,
+      "is_published": true
+    }
+  ],
+  "downloads": [
+    {
+      "slug": "sales-audit-checklist",
+      "title": "Sales Audit Checklist",
+      "description": "A practical checklist to inspect process gaps, review discipline, conversion leaks, and sales team readiness.",
+      "category": "Checklist",
+      "file_path": "downloads/sales-audit-checklist/file.pdf",
+      "thumbnail_path": "downloads/sales-audit-checklist/thumbnail.jpg",
+      "file_type": "PDF",
+      "button_label": "Download Checklist",
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "slug": "corporate-training-deck",
+      "title": "Corporate Training Overview",
+      "description": "A short overview of the sales training themes, delivery modes, and measurable learning outcomes.",
+      "category": "Deck",
+      "file_path": "downloads/corporate-training-deck/file.pdf",
+      "thumbnail_path": "downloads/corporate-training-deck/thumbnail.jpg",
+      "file_type": "PDF",
+      "button_label": "Get Overview",
+      "sort_order": 2,
+      "is_published": true
+    }
+  ]
+}
