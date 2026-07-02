@@ -89,6 +89,7 @@ function SiteRoutes() {
         <Route element={<BlogDetailPage />} path="/blogs/:slug" />
         <Route element={<DownloadsPage />} path="/downloads" />
         <Route element={<DownloadDetailPage />} path="/downloads/:slug" />
+        <Route element={<HomePage />} path="*" />
       </Routes>
       <Footer />
       <WhatsAppChatButton />
