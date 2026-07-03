@@ -30,6 +30,7 @@ import {
   DownloadDetailPage,
   DownloadsPage,
 } from "./pages/ResourcePages";
+import SalesConsultantPage from "./pages/SalesConsultantPage";
 import { Toaster } from "sonner";
 
 function HomePage() {
@@ -83,6 +84,7 @@ function SiteRoutes() {
       <Header />
       <Routes>
         <Route element={<HomePage />} path="/" />
+        <Route element={<SalesConsultantPage />} path="/sales-consultant-india" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />
