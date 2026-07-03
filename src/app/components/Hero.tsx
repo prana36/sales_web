@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative mt-16 bg-gray-900">
       <div className="grid lg:min-h-[calc(100vh-4rem)] lg:grid-cols-2">
         {/* Left Side - Dark Background with Content */}
-        <div className="flex flex-col justify-center bg-gray-900 px-6 py-12 text-white sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-24">
+        <div className="flex flex-col justify-center bg-[#0A5B9F] px-6 py-12 text-white sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-24">
           <div className="max-w-xl">
             <p className="text-yellow-500 text-sm font-medium mb-4 tracking-wide">
               STANDARD OF SALES
