@@ -22,8 +22,9 @@ import TempleOfSales from "./components/TempleOfSales";
 import Testimonials from "./components/Testimonials";
 import Visionary from "./components/Visionary";
 import WhatsAppChatButton from "./components/WhatsAppChatButton";
-import GapAnalysisPage from "./pages/gap-analysis";
+import CaseStudyDetailPage from "./pages/CaseStudyDetailPage";
 import LearningOutcomePage from "./pages/learning-outcome";
+import OutcomeTrackingPage from "./pages/outcome-tracking";
 import {
   BlogDetailPage,
   BlogsPage,
@@ -33,7 +34,6 @@ import {
   DownloadsPage,
 } from "./pages/ResourcePages";
 import SalesConsultantPage from "./pages/SalesConsultantPage";
-import CaseStudyDetailPage from "./pages/CaseStudyDetailPage";
 
 function HomePage() {
   return (
@@ -86,9 +86,13 @@ function SiteRoutes() {
       <Header />
       <Routes>
         <Route element={<HomePage />} path="/" />
-        <Route element={<SalesConsultantPage />} path="/sales-consultant-india" />
+        <Route
+          element={<SalesConsultantPage />}
+          path="/sales-consultant-india"
+        />
         <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
         <Route element={<LearningOutcomePage />} path="/learning-outcome" />
+        <Route element={<OutcomeTrackingPage />} path="/outcome-tracking" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />

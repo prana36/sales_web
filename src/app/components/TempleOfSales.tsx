@@ -32,7 +32,7 @@ export default function TempleOfSales() {
     },
     {
       label: "Outcome Tracking",
-      url: "#",
+      url: "/outcome-tracking",
       icon: Activity,
       description: "Diligently monitor performance improvements on-ground.",
     },
