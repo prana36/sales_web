@@ -12,17 +12,15 @@ export default function Hero() {
               STANDARD OF SALES
             </p>
 
-            <h1 className="mb-6 text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              The <span className="text-yellow-500">Religion</span>
-              <br />
-              of Sales!
+            <h1 className="mt-5 max-w-5xl text-4xl font-bold leading-tight md:text-6xl">
+              Best Sales Consultant in India - Guaranteed to Grow Your Revenue
+              by 20%
             </h1>
-
-            <p className="text-gray-300 mb-8 leading-relaxed">
-              Strategic Concepts helps companies build sales capability,
-              diagnose performance gaps, and create practical growth systems
-              across direct sales, channel, retail, key accounts, exports, and
-              e-commerce.
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200 md:text-xl">
+              We do not just advise. We sign a guarantee: your top-line revenue
+              grows by at least 20% in Year 1, or you get every rupee back.
+              Strategic Concepts (India) has been engineering measurable sales
+              growth for SMEs and corporates since 1998.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
