@@ -37,9 +37,9 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <TempleOfSales />
       <SalesAudit />
       <Clients />
-      <TempleOfSales />
       <GrowthConsulting />
       <CompanyStats />
       <Solutions />
