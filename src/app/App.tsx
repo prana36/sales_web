@@ -32,6 +32,7 @@ import {
   DownloadsPage,
 } from "./pages/ResourcePages";
 import SalesConsultantPage from "./pages/SalesConsultantPage";
+import CaseStudyDetailPage from "./pages/CaseStudyDetailPage";
 
 function HomePage() {
   return (
@@ -84,11 +85,8 @@ function SiteRoutes() {
       <Header />
       <Routes>
         <Route element={<HomePage />} path="/" />
-        <Route
-          element={<SalesConsultantPage />}
-          path="/sales-consultant-india"
-        />
-        <Route element={<GapAnalysisPage />} path="/gap-analysis" />
+        <Route element={<SalesConsultantPage />} path="/sales-consultant-india" />
+        <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />
