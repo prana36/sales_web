@@ -139,14 +139,14 @@ export default function Footer() {
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-100 pt-8 text-xs text-gray-400 md:flex-row">
             <p>Copyright 2026 Strategic Concepts (India) Pvt. Ltd. All Rights Reserved.</p>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <a className="transition-colors hover:text-blue-900" href="/">
                 Privacy Policy
               </a>
               <a className="transition-colors hover:text-blue-900" href="/">
                 Terms of Service
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
