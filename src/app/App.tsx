@@ -23,6 +23,7 @@ import Testimonials from "./components/Testimonials";
 import Visionary from "./components/Visionary";
 import WhatsAppChatButton from "./components/WhatsAppChatButton";
 import GapAnalysisPage from "./pages/gap-analysis";
+import LearningOutcomePage from "./pages/learning-outcome";
 import {
   BlogDetailPage,
   BlogsPage,
@@ -87,6 +88,7 @@ function SiteRoutes() {
         <Route element={<HomePage />} path="/" />
         <Route element={<SalesConsultantPage />} path="/sales-consultant-india" />
         <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
+        <Route element={<LearningOutcomePage />} path="/learning-outcome" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />

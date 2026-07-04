@@ -12,7 +12,7 @@ export default function Hero() {
               STANDARD OF SALES
             </p>
 
-            <h1 className="mt-5 max-w-5xl text-4xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-5 max-w-5xl text-xl font-bold leading-tight md:text-4xl">
               Best Sales Consultant in India - Guaranteed to Grow Your Revenue
               by 20%
             </h1>

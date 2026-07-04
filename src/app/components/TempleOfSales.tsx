@@ -8,6 +8,7 @@ import {
   RefreshCw,
   TrendingUp,
 } from "lucide-react";
+import { Link } from "react-router";
 
 export default function TempleOfSales() {
   const features = [
@@ -19,7 +20,7 @@ export default function TempleOfSales() {
     },
     {
       label: "Learning Outcome",
-      url: "#",
+      url: "/learning-outcome",
       icon: Award,
       description: "Define clear benchmarks for skill enhancement.",
     },
@@ -88,6 +89,8 @@ export default function TempleOfSales() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               const hasLink = feature.url !== null;
+              const isInternalLink =
+                typeof feature.url === "string" && feature.url.startsWith("/");
 
               const CardContent = (
                 <>
@@ -111,15 +114,25 @@ export default function TempleOfSales() {
               );
 
               return hasLink ? (
-                <a
-                  key={index}
-                  href={feature.url!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-50 border border-gray-200/80 p-6 rounded-[10px] hover:bg-white hover:border-blue-900/30 hover:shadow-xl transition-all duration-300 group block"
-                >
-                  {CardContent}
-                </a>
+                isInternalLink ? (
+                  <Link
+                    key={index}
+                    to={feature.url!}
+                    className="bg-gray-50 border border-gray-200/80 p-6 rounded-[10px] hover:bg-white hover:border-blue-900/30 hover:shadow-xl transition-all duration-300 group block"
+                  >
+                    {CardContent}
+                  </Link>
+                ) : (
+                  <a
+                    key={index}
+                    href={feature.url!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-50 border border-gray-200/80 p-6 rounded-[10px] hover:bg-white hover:border-blue-900/30 hover:shadow-xl transition-all duration-300 group block"
+                  >
+                    {CardContent}
+                  </a>
+                )
               ) : (
                 <div
                   key={index}
