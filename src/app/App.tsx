@@ -50,7 +50,7 @@ function HomePage() {
       <Pricing />
       <Careers />
       <Testimonials />
-      <DynamicResources />
+      {/* <DynamicResources /> */}
       <MeasurableImpact />
       <SalesHelpline />
       <Contact />
