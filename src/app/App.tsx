@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import ExpertiseMarquee from "./components/ExpertiseMarquee";
 import SalesAudit from "./components/SalesAudit";
 import Clients from "./components/Clients";
 import TempleOfSales from "./components/TempleOfSales";
@@ -37,6 +38,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <ExpertiseMarquee />
       <TempleOfSales />
       <SalesAudit />
       <Clients />

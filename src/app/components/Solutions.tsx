@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import kathaImg from "../assets/images/services/sales-katha.png";
 import rishteImg from "../assets/images/services/sales-ke-rishte.png";
@@ -75,17 +75,6 @@ export default function Solutions() {
     return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi, onSelect]);
 
-  const expertise = [
-    "Direct Sales",
-    "Channel of Distribution",
-    "Retail Trade",
-    "Modern Retail Trade",
-    "Key Account Management",
-    "Industrial Selling",
-    "Exports",
-    "E-Commerce",
-  ];
-
   return (
     <section id="solutions_services" className="bg-gray-50 px-4 py-16 sm:px-6 md:py-24">
       <div className="max-w-7xl mx-auto">
@@ -150,25 +139,6 @@ export default function Solutions() {
           </div>
         </div>
 
-        {/* Expertise Areas */}
-        <div>
-          <h3 className="text-xl font-bold text-gray-900 mb-8 text-center">
-            Areas of Core Expertise
-          </h3>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-            {expertise.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 bg-white p-4 rounded-[10px] border border-gray-200 hover:shadow-md transition-all group"
-              >
-                <CheckCircle2 className="size-5 text-yellow-500 group-hover:text-blue-900 transition-colors flex-shrink-0" />
-                <span className="font-medium text-gray-800 text-sm md:text-base">
-                  {item}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
