@@ -10,7 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import type React from "react";
-import { Link, useParams } from "react-router";
+import { Link, useParams, useSearchParams } from "react-router";
 import { publicAssetUrl } from "../api/dynamic-content";
 import { useDynamicContent } from "../hooks/useDynamicContent";
 
@@ -283,6 +283,14 @@ export function BlogDetailPage() {
 
 export function DownloadsPage() {
   const { content, status } = useDynamicContent();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get("category");
+
+  const categories = ["Checklist", "Workbook", "Brochure", "Testimonials", "Recommendations"];
+
+  const filtered = activeCategory
+    ? content.downloads.filter((d) => d.category === activeCategory)
+    : content.downloads;
 
   return (
     <PageShell
@@ -290,11 +298,40 @@ export function DownloadsPage() {
       title="Sales checklists, workbooks, brochures, and proof resources"
       description="Access database-managed downloads and resource links like sales audit checklists, workbooks, brochures, testimonials, and recommendations."
     >
-      {status === "loading" ? <LoadingState /> : null}
-      {status === "empty" ? <EmptyState label="downloads" /> : null}
       {status === "ready" ? (
+        <div className="mb-8 flex flex-wrap gap-2">
+          <button
+            onClick={() => setSearchParams({})}
+            className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+              !activeCategory
+                ? "bg-blue-900 text-white"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            All
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSearchParams({ category: cat })}
+              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
+                activeCategory === cat
+                  ? "bg-blue-900 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      ) : null}
+      {status === "loading" ? <LoadingState /> : null}
+      {status === "empty" || (status === "ready" && filtered.length === 0) ? (
+        <EmptyState label="downloads" />
+      ) : null}
+      {status === "ready" && filtered.length > 0 ? (
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {content.downloads.map((download) => (
+          {filtered.map((download) => (
             <article
               className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
               key={download.id}

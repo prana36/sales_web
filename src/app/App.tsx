@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import GrowthConsulting from "./components/GrowthConsulting";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import ExpertiseMarquee from "./components/ExpertiseMarquee";
 import HowWeWork from "./components/HowWeWork";
 import MeasurableImpact from "./components/MeasurableImpact";
 import Pricing from "./components/Pricing";
@@ -40,6 +41,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <ExpertiseMarquee />
       <TempleOfSales />
       <SalesAudit />
       <Clients />
@@ -92,9 +94,9 @@ function SiteRoutes() {
           path="/sales-consultant-india"
         />
         <Route element={<GapAnalysisPage />} path="/gap-analysis" />
-        <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
         <Route element={<LearningOutcomePage />} path="/learning-outcome" />
         <Route element={<OutcomeTrackingPage />} path="/outcome-tracking" />
+        <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />

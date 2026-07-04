@@ -31,7 +31,17 @@ export default function Header() {
     { label: "How We Work", url: "/#how_we_work", children: [] },
     { label: "Courses", url: "/courses", children: [] },
     { label: "Blogs", url: "/blogs", children: [] },
-    { label: "Downloads", url: "/downloads", children: [] },
+    {
+      label: "Downloads",
+      url: "/downloads",
+      children: [
+        { label: "Sales Checklists", url: "/downloads?category=Checklist" },
+        { label: "Sales Workbooks", url: "/downloads?category=Workbook" },
+        { label: "Brochure", url: "/downloads?category=Brochure" },
+        { label: "Testimonials", url: "/downloads?category=Testimonials" },
+        { label: "Recommendations", url: "/downloads?category=Recommendations" },
+      ],
+    },
     { label: "Careers", url: "/#careers", children: [] },
   ];
 
