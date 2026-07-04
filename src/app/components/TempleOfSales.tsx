@@ -13,7 +13,7 @@ export default function TempleOfSales() {
   const features = [
     {
       label: "Gap Analysis",
-      url: "#",
+      url: "/gap-analysis",
       icon: BarChart2,
       description: "Identify performance gaps in your sales architecture."
     },
