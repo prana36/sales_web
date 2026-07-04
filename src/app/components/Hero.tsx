@@ -16,7 +16,7 @@ export default function Hero() {
               Best Sales Consultant in India - Guaranteed to Grow Your Revenue
               by 20%
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200 md:text-xl">
+            <p className="mt-6 max-w-3xl leading-8 text-slate-200">
               We do not just advise. We sign a guarantee: your top-line revenue
               grows by at least 20% in Year 1, or you get every rupee back.
               Strategic Concepts (India) has been engineering measurable sales
