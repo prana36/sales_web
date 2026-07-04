@@ -20,7 +20,7 @@ export default function Header() {
       label: "Services",
       url: "/#solutions_services",
       children: [
-        { label: "SME Sales Consulting", url: "/sales-consultant-india" },
+        // { label: "SME Sales Consulting", url: "/sales-consultant-india" },
         { label: "Sales Training", url: "/#welcome_temple_of_sales" },
         { label: "Growth Consulting", url: "/#growth_consulting_agency" },
         { label: "Sales Mitra Helpline", url: "/#sales_mitra_helpline" },
