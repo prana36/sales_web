@@ -1,12 +1,12 @@
 /// <reference types="vite/client" />
-import { 
-  BarChart2, 
-  Award, 
-  LineChart, 
-  Activity, 
-  RefreshCw, 
+import {
+  Activity,
+  ArrowUpRight,
+  Award,
+  BarChart2,
+  LineChart,
+  RefreshCw,
   TrendingUp,
-  ArrowUpRight
 } from "lucide-react";
 
 export default function TempleOfSales() {
@@ -15,52 +15,57 @@ export default function TempleOfSales() {
       label: "Gap Analysis",
       url: "/gap-analysis",
       icon: BarChart2,
-      description: "Identify performance gaps in your sales architecture."
+      description: "Identify performance gaps in your sales architecture.",
     },
     {
       label: "Learning Outcome",
       url: "#",
       icon: Award,
-      description: "Define clear benchmarks for skill enhancement."
+      description: "Define clear benchmarks for skill enhancement.",
     },
     {
       label: "Learning Metrics",
       url: "https://www.youtube.com/watch?v=YzQml28nbbQ",
       icon: LineChart,
-      description: "Quantified evaluation of sales training effectiveness."
+      description: "Quantified evaluation of sales training effectiveness.",
     },
     {
       label: "Outcome Tracking",
       url: "#",
       icon: Activity,
-      description: "Diligently monitor performance improvements on-ground."
+      description: "Diligently monitor performance improvements on-ground.",
     },
     {
       label: "Remedial Programs",
       url: null,
       icon: RefreshCw,
-      description: "Custom courses to fix individual skill deficiencies."
+      description: "Custom courses to fix individual skill deficiencies.",
     },
     {
       label: "Guaranteed Growth",
       url: "https://www.youtube.com/watch?v=YzQml28nbbQ",
       icon: TrendingUp,
-      description: "Experience guaranteed long-term business escalation."
-    }
+      description: "Experience guaranteed long-term business escalation.",
+    },
   ];
 
   return (
-    <section id="welcome_temple_of_sales" className="bg-white px-4 py-16 sm:px-6 md:py-24">
+    <section
+      id="welcome_temple_of_sales"
+      className="bg-white px-4 py-16 sm:px-6 md:py-24"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
           {/* Text Content (Left) */}
           <div className="lg:col-span-5 space-y-6">
             <p className="text-sm font-semibold text-blue-900 uppercase tracking-widest">
               Top Sales Training Provider
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Welcome to the <span className="bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">Temple of Sales</span>
+              Welcome to the{" "}
+              <span className="bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
+                Temple of Sales
+              </span>
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
               Sales training becomes costly when it is skipped. Our trainers
@@ -69,8 +74,8 @@ export default function TempleOfSales() {
               on-ground performance improvement.
             </p>
             <div className="pt-4">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-6 py-3 rounded-[10px] font-semibold shadow transition-all hover:shadow-lg"
               >
                 Schedule Gap Analysis
@@ -83,7 +88,7 @@ export default function TempleOfSales() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               const hasLink = feature.url !== null;
-              
+
               const CardContent = (
                 <>
                   <div className="flex items-start justify-between">
@@ -106,7 +111,7 @@ export default function TempleOfSales() {
               );
 
               return hasLink ? (
-                <a 
+                <a
                   key={index}
                   href={feature.url!}
                   target="_blank"
@@ -116,7 +121,7 @@ export default function TempleOfSales() {
                   {CardContent}
                 </a>
               ) : (
-                <div 
+                <div
                   key={index}
                   className="bg-gray-50/50 border border-gray-200/40 p-6 rounded-[10px] cursor-not-allowed group opacity-85"
                 >
@@ -125,7 +130,6 @@ export default function TempleOfSales() {
               );
             })}
           </div>
-
         </div>
       </div>
     </section>

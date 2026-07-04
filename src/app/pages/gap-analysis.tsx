@@ -1,11 +1,4 @@
-import { Metadata } from "next";
-import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Gap Analysis | Consult4Sales",
-  description:
-    "Small and Medium Enterprises Self Assessment Sales Audit Sheet with a 50-point checklist.",
-};
+import { Link } from "react-router";
 
 interface GapAnalysisItem {
   id: number;
@@ -92,9 +85,9 @@ export default function GapAnalysisPage() {
           <h1 className="mb-3 text-4xl font-bold">Gap Analysis</h1>
 
           <div className="flex justify-center gap-2 text-sm">
-            <a href="/" className="hover:underline">
+            <Link to="/" className="hover:underline">
               Home
-            </a>
+            </Link>
             <span>/</span>
             <span>Gap Analysis</span>
           </div>
@@ -128,29 +121,20 @@ export default function GapAnalysisPage() {
               <thead className="bg-[#0A5B9F] text-white">
                 <tr>
                   <th className="border px-4 py-3 text-left">S.No.</th>
-                  <th className="border px-4 py-3 text-left">
-                    Act of Sales
-                  </th>
+                  <th className="border px-4 py-3 text-left">Act of Sales</th>
                   <th className="border px-4 py-3 text-left">Remarks</th>
-                  <th className="border px-4 py-3 text-left">
-                    Recommendation
-                  </th>
+                  <th className="border px-4 py-3 text-left">Recommendation</th>
                 </tr>
               </thead>
 
               <tbody>
                 {gapAnalysisData.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="transition hover:bg-gray-100"
-                  >
+                  <tr key={item.id} className="transition hover:bg-gray-100">
                     <td className="border px-4 py-3 font-semibold">
                       {item.id}
                     </td>
 
-                    <td className="border px-4 py-3">
-                      {item.act}
-                    </td>
+                    <td className="border px-4 py-3">{item.act}</td>
 
                     <td className="border px-4 py-3"></td>
 

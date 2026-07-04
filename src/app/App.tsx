@@ -1,28 +1,28 @@
 /// <reference types="vite/client" />
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import ExpertiseMarquee from "./components/ExpertiseMarquee";
-import SalesAudit from "./components/SalesAudit";
-import Clients from "./components/Clients";
-import TempleOfSales from "./components/TempleOfSales";
-import GrowthConsulting from "./components/GrowthConsulting";
-import CompanyStats from "./components/CompanyStats";
-import Solutions from "./components/Solutions";
-import HowWeWork from "./components/HowWeWork";
-import CaseStudies from "./components/CaseStudies";
-import Visionary from "./components/Visionary";
-import Team from "./components/Team";
-import Pricing from "./components/Pricing";
+import { Toaster } from "sonner";
 import Careers from "./components/Careers";
-import Testimonials from "./components/Testimonials";
-import DynamicResources from "./components/DynamicResources";
-import MeasurableImpact from "./components/MeasurableImpact";
-import SalesHelpline from "./components/SalesHelpline";
+import CaseStudies from "./components/CaseStudies";
+import Clients from "./components/Clients";
+import CompanyStats from "./components/CompanyStats";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import GrowthConsulting from "./components/GrowthConsulting";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import HowWeWork from "./components/HowWeWork";
+import MeasurableImpact from "./components/MeasurableImpact";
+import Pricing from "./components/Pricing";
+import SalesAudit from "./components/SalesAudit";
+import SalesHelpline from "./components/SalesHelpline";
+import Solutions from "./components/Solutions";
+import Team from "./components/Team";
+import TempleOfSales from "./components/TempleOfSales";
+import Testimonials from "./components/Testimonials";
+import Visionary from "./components/Visionary";
 import WhatsAppChatButton from "./components/WhatsAppChatButton";
+import GapAnalysisPage from "./pages/gap-analysis";
 import {
   BlogDetailPage,
   BlogsPage,
@@ -32,13 +32,11 @@ import {
   DownloadsPage,
 } from "./pages/ResourcePages";
 import SalesConsultantPage from "./pages/SalesConsultantPage";
-import { Toaster } from "sonner";
 
 function HomePage() {
   return (
     <>
       <Hero />
-      <ExpertiseMarquee />
       <TempleOfSales />
       <SalesAudit />
       <Clients />
@@ -86,7 +84,11 @@ function SiteRoutes() {
       <Header />
       <Routes>
         <Route element={<HomePage />} path="/" />
-        <Route element={<SalesConsultantPage />} path="/sales-consultant-india" />
+        <Route
+          element={<SalesConsultantPage />}
+          path="/sales-consultant-india"
+        />
+        <Route element={<GapAnalysisPage />} path="/gap-analysis" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />
