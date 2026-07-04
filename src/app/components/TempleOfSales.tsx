@@ -44,7 +44,7 @@ export default function TempleOfSales() {
     },
     {
       label: "Guaranteed Growth",
-      url: "https://www.youtube.com/watch?v=YzQml28nbbQ",
+      url: null,
       icon: TrendingUp,
       description: "Experience guaranteed long-term business escalation.",
     },
