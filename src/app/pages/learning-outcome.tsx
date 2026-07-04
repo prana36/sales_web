@@ -103,7 +103,7 @@ const learningOutcomeRows: LearningOutcomeRow[] = [
 export default function LearningOutcomePage() {
   return (
     <>
-      <section className="relative bg-[#0A5B9F] py-16 text-white">
+    <section className="relative bg-[#0A5B9F] pt-30 pb-12 text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-3 text-4xl font-bold">Learning Outcomes</h1>
 
