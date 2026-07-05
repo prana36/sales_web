@@ -61,6 +61,14 @@ export default function Footer() {
                   );
                 })}
               </div>
+              <a
+                className="inline-block rounded-[10px] bg-yellow-500 px-5 py-2.5 text-sm font-medium text-gray-900 transition-all hover:bg-yellow-400 hover:shadow-md"
+                href="https://theschoolofsales.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The School Of Sales
+              </a>
             </div>
 
             <div className="md:col-span-2 md:col-start-6">
