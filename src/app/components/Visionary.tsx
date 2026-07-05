@@ -72,7 +72,7 @@ export default function Visionary() {
                 <p className="text-xs text-gray-400">Founder, Strategic Concepts</p>
               </div>
               <div className="shrink-0 rounded-[10px] bg-yellow-500 p-2 text-sm font-bold text-gray-900">
-                22+ Yrs Exp
+                44+ Yrs Exp
               </div>
             </div>
           </div>

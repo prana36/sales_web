@@ -51,7 +51,7 @@ export default function Hero() {
               <div className="mt-10 flex items-center gap-8 border-t border-white/10 pt-8">
                 <div className="flex items-center gap-2">
                   <Users className="size-4 text-yellow-400" />
-                  <span className="text-xs text-blue-200">22+ Years Experience</span>
+                  <span className="text-xs text-blue-200">44+ Years Experience</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="size-4 text-yellow-400" />

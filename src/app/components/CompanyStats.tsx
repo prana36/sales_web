@@ -3,7 +3,7 @@
 export default function CompanyStats() {
   const stats = [
     { 
-      value: "22", 
+      value: "30", 
       unit: "+", 
       label: "Years of sales training, coaching, and consulting practice.",
       lineProgress: "w-1/4"
@@ -15,13 +15,13 @@ export default function CompanyStats() {
       lineProgress: "w-1/3"
     },
     { 
-      value: "8.7L", 
+      value: "10.4L", 
       unit: "+", 
       label: "Salespeople handled through training and capability programs.",
       lineProgress: "w-1/2"
     },
     { 
-      value: "23K", 
+      value: "34K", 
       unit: "+", 
       label: "Training hours delivered across multiple forms of selling.",
       lineProgress: "w-3/4"

@@ -10,13 +10,13 @@ export default function MeasurableImpact() {
     },
     {
       icon: Users,
-      value: "8.7L+",
+      value: "10.4L+",
       title: "Salespeople Handled",
       description: "Professionals trained and transformed across industries"
     },
     {
       icon: Clock,
-      value: "23K+",
+      value: "34K+",
       title: "Training Hours",
       description: "Hours of dedicated training and development delivered"
     }
