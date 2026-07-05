@@ -281,6 +281,62 @@ export function BlogDetailPage() {
   );
 }
 
+import saregamaImg from "../assets/images/case-study/icici.png";
+import salesWorkbookImg from "../assets/images/case-study/lg-case.png";
+
+const dlStyles = `
+.single-pdf-1 { margin: 2px 0 15px; }
+.single-pdf-1 ul { list-style: none; padding: 0; margin: 0; }
+.single-pdf-1 ul li { list-style: none; display: flex; align-items: flex-start; gap: 6px; padding: 2px 0; }
+.single-pdf-1 ul li a { text-decoration: none; }
+.single-pdf-1 ul li a h6.name { display: inline; font-size: 14px; font-weight: 600; color: #333; margin: 0; line-height: 1.4; cursor: pointer; }
+.single-pdf-1 ul li a h6.name:hover { color: #274584; }
+.img-wb { box-shadow: rgba(0,0,0,0.2) 0 60px 40px -7px; border-radius: 10px; }
+#style-7::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); background-color: #f5f5f5; border-radius: 10px; }
+#style-7::-webkit-scrollbar { width: 5px; background-color: #f5f5f5; }
+#style-7::-webkit-scrollbar-thumb { border-radius: 10px; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #7a99d9), color-stop(0.72, #497dbd), color-stop(0.86, #1c3a94)); }
+.testimonial-box-2 .content::after { border-color: #274584 transparent transparent; border-style: solid; border-width: 19px 13px; content: ""; position: absolute; right: 26px; }
+`;
+
+const categoryMeta: Record<string, { subtitle: string; desc: string }> = {
+  Checklist: { subtitle: "Downloads for", desc: "Free sales checklists to improve your sales process and manage your sales function effectively." },
+  Workbook: { subtitle: "Downloads for", desc: "Free sales workbooks covering sales planning, negotiation, closing, and more." },
+  Testimonials: { subtitle: "With Respect To Each Client", desc: "What our clients say about us." },
+  Brochure: { subtitle: "Downloads for", desc: "Download the complete Strategic Concepts brochure." },
+  Recommendations: { subtitle: "", desc: "Professional recommendations and endorsements from our network." },
+};
+
+function DownloadList({ items }: { items: Download[] }) {
+  const downloadUrl = (item: Download) => {
+    if (item.file_type === "Link") return item.file_path;
+    return publicAssetUrl(item.file_path) ?? "#";
+  };
+  return (
+    <div className="max-h-[460px] overflow-y-auto pr-2" id="style-7">
+      <div className="grid gap-0 sm:grid-cols-2">
+        {items.map((item) => (
+          <div key={item.id} className="single-pdf-1">
+            <ul className="service-list">
+              <li>
+                <span><Download className="inline size-3.5 text-blue-900" /></span>
+                <a
+                  href={downloadUrl(item)}
+                  download={item.file_type === "PDF"}
+                  target={item.file_type === "Link" ? "_blank" : undefined}
+                  rel={item.file_type === "Link" ? "noopener noreferrer" : undefined}
+                  className="ml-onclick-form"
+                >
+                  <h6 className="name">{item.title}</h6>
+                </a>
+              </li>
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function DownloadsPage() {
   const { content, status } = useDynamicContent();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -292,76 +348,241 @@ export function DownloadsPage() {
     ? content.downloads.filter((d) => d.category === activeCategory)
     : content.downloads;
 
+  const meta = activeCategory ? categoryMeta[activeCategory] : null;
+
   return (
+    <>
+    <style>{dlStyles}</style>
     <PageShell
       eyebrow="Consult4Sales Downloads"
-      title="Sales checklists, workbooks, brochures, and proof resources"
-      description="Access database-managed downloads and resource links like sales audit checklists, workbooks, brochures, testimonials, and recommendations."
+      title={
+        activeCategory === "Checklist" ? "Sales-Checklist"
+        : activeCategory === "Workbook" ? "Sales-Workbooks"
+        : activeCategory === "Testimonials" ? "Clients Appreciate Us"
+        : activeCategory === "Brochure" ? "Strategic Concepts Brochure"
+        : activeCategory === "Recommendations" ? "Recommendations"
+        : "Sales checklists, workbooks, brochures, and proof resources"
+      }
+      description={
+        activeCategory === "Checklist" ? "Download our Sales Checklist for free which helps you to improve sales process."
+        : activeCategory === "Workbook" ? "Download our Sales Workbooks to learn the science of selling, sales closing, sales planning etc."
+        : activeCategory === "Testimonials" ? "Read what client says about us."
+        : activeCategory === "Brochure" ? "Download the complete Strategic Concepts Brochure here."
+        : activeCategory === "Recommendations" ? "The recommendation by our clients encourage us to work more efficiently."
+        : "Access database-managed downloads and resource links like sales audit checklists, workbooks, brochures, testimonials, and recommendations."
+      }
     >
-      {status === "ready" ? (
-        <div className="mb-8 flex flex-wrap gap-2">
-          <button
-            onClick={() => setSearchParams({})}
-            className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-              !activeCategory
-                ? "bg-blue-900 text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            All
-          </button>
-          {categories.map((cat) => (
+      {status === "ready" && !activeCategory ? (
+        <>
+          <div className="mb-8 flex flex-wrap gap-2">
             <button
-              key={cat}
-              onClick={() => setSearchParams({ category: cat })}
-              className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-                activeCategory === cat
-                  ? "bg-blue-900 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
+              onClick={() => setSearchParams({})}
+              className="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white"
             >
-              {cat}
+              All
             </button>
-          ))}
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSearchParams({ category: cat })}
+                className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-600 transition-all hover:bg-gray-200"
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {filtered.map((download) => (
+              <article
+                className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
+                key={download.id}
+              >
+                {publicAssetUrl(download.thumbnail_path) ? (
+                  <img
+                    alt={download.title}
+                    className="h-44 w-full object-cover"
+                    src={publicAssetUrl(download.thumbnail_path) ?? undefined}
+                  />
+                ) : null}
+                <div className="p-6">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
+                    {download.category} / {download.file_type}
+                  </p>
+                  <h2 className="mt-2 text-xl font-bold text-gray-900">{download.title}</h2>
+                  <p className="mt-3 text-sm leading-6 text-gray-600">{download.description}</p>
+                  <Link
+                    className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
+                    to={`/downloads/${download.slug}`}
+                  >
+                    View Resource
+                    <Download className="size-4" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      {status === "ready" && activeCategory === "Checklist" ? (
+        <div>
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">{meta?.subtitle}</p>
+              <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Sales-Checklist</h2>
+              <DownloadList items={filtered} />
+            </div>
+            <div className="lg:col-span-5">
+              <div className="img-wb">
+                <img src={saregamaImg} alt="Sales Checklists" className="w-full rounded-[10px] shadow-lg" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={() => setSearchParams({})}
+              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+            >
+              &larr; Back to all downloads
+            </button>
+          </div>
         </div>
       ) : null}
+
+      {status === "ready" && activeCategory === "Workbook" ? (
+        <div>
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">{meta?.subtitle}</p>
+              <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Sales-Workbooks</h2>
+              <DownloadList items={filtered} />
+            </div>
+            <div className="lg:col-span-5">
+              <div className="img-wb">
+                <img src={salesWorkbookImg} alt="Sales Workbooks" className="w-full rounded-[10px] shadow-lg" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={() => setSearchParams({})}
+              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+            >
+              &larr; Back to all downloads
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {status === "ready" && activeCategory === "Testimonials" ? (
+        <div>
+          <div className="mb-8">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">With Respect To Each Client</p>
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">Clients Appreciate Us</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {filtered.map((item) => (
+              <div key={item.id} className="testimonial-box-2 flex flex-col rounded-[10px] bg-blue-900 p-6 text-white">
+                <div className="flex-1">
+                  <p className="mb-4 text-sm leading-relaxed italic text-white/90">
+                    &ldquo;{item.description.replace(/^.{120}.*?(\s|$)/, "$&").slice(0, 200)}&rdquo;
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-between border-t border-white/20 pt-4">
+                  <div>
+                    <h4 className="text-sm font-bold text-white">{item.title.replace(/ - .*$/, "")}</h4>
+                    <p className="text-xs text-white/70">{item.title.includes(" - ") ? item.title.replace(/^[^-]+ - /, "") : ""}</p>
+                  </div>
+                  <a
+                    href={publicAssetUrl(item.file_path) ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg bg-white/20 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/30"
+                  >
+                    Read More
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={() => setSearchParams({})}
+              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+            >
+              &larr; Back to all downloads
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {status === "ready" && activeCategory === "Brochure" ? (
+        <div className="text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">Downloads for</p>
+          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Strategic Concepts Brochure</h2>
+          <div className="mx-auto max-w-md rounded-[10px] border border-gray-200 bg-white p-8 shadow-sm">
+            <Download className="mx-auto mb-4 size-12 text-blue-900" />
+            <p className="mb-6 text-gray-600">Download the complete Strategic Concepts Brochure 2019</p>
+            <a
+              href={filtered.length > 0 ? (publicAssetUrl(filtered[0].file_path) ?? "#") : "#"}
+              download
+              className="inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-800"
+            >
+              <Download className="size-4" />
+              Download Brochure
+            </a>
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={() => setSearchParams({})}
+              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+            >
+              &larr; Back to all downloads
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {status === "ready" && activeCategory === "Recommendations" ? (
+        <div>
+          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Recommendations</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {filtered.map((item) => (
+              <div key={item.id} className="flex flex-col rounded-[10px] border border-gray-200 bg-gray-50 p-6">
+                <div className="flex-1">
+                  <p className="mb-4 text-sm leading-relaxed text-gray-700">
+                    &ldquo;{item.description.replace(/^.{120}.*?(\s|$)/, "$&").slice(0, 200)}&rdquo;
+                  </p>
+                </div>
+                <a
+                  href={item.file_path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 self-start rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+                >
+                  View on LinkedIn
+                  <ExternalLink className="size-4" />
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={() => setSearchParams({})}
+              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+            >
+              &larr; Back to all downloads
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       {status === "loading" ? <LoadingState /> : null}
-      {status === "empty" || (status === "ready" && filtered.length === 0) ? (
+      {status === "empty" || (status === "ready" && filtered.length === 0 && activeCategory) ? (
         <EmptyState label="downloads" />
       ) : null}
-      {status === "ready" && filtered.length > 0 ? (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {filtered.map((download) => (
-            <article
-              className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
-              key={download.id}
-            >
-              {publicAssetUrl(download.thumbnail_path) ? (
-                <img
-                  alt={download.title}
-                  className="h-44 w-full object-cover"
-                  src={publicAssetUrl(download.thumbnail_path) ?? undefined}
-                />
-              ) : null}
-              <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
-                  {download.category} / {download.file_type}
-                </p>
-                <h2 className="mt-2 text-xl font-bold text-gray-900">{download.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-gray-600">{download.description}</p>
-                <Link
-                  className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
-                  to={`/downloads/${download.slug}`}
-                >
-                  View Resource
-                  <Download className="size-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : null}
     </PageShell>
+    </>
   );
 }
 
