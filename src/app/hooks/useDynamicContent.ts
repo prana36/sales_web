@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  DynamicContent,
-  getDynamicContent,
-} from "../api/dynamic-content";
+import { DynamicContent, getDynamicContent } from "../api/dynamic-content";
 
 export const emptyDynamicContent: DynamicContent = {
   courses: [],
@@ -24,6 +21,8 @@ export function useDynamicContent() {
         if (!isMounted) {
           return;
         }
+
+        console.log("Dynamic content fetched:", data);
 
         setContent(data);
         setStatus(

@@ -47,10 +47,7 @@ export type DynamicContent = {
   downloads: Download[];
 };
 
-import {
-  hasSupabasePublicConfig,
-  supabaseConfig,
-} from "./supabase-config";
+import { hasSupabasePublicConfig, supabaseConfig } from "./supabase-config";
 
 async function fetchTable<T>(table: string): Promise<T[]> {
   if (!hasSupabasePublicConfig()) {
@@ -67,7 +64,14 @@ async function fetchTable<T>(table: string): Promise<T[]> {
     },
   );
 
+  console.log(`Fetched ${table}:`, response);
+
   if (!response.ok) {
+    console.error(
+      `Failed to fetch ${table}:`,
+      response.status,
+      response.statusText,
+    );
     throw new Error(`Unable to load ${table}`);
   }
 
@@ -96,6 +100,8 @@ export async function getDynamicContent(): Promise<DynamicContent> {
     fetchTable<Blog>("blogs"),
     fetchTable<Download>("downloads"),
   ]);
+
+  console.log("Fetched dynamic content:", { courses, blogs, downloads });
 
   return { courses, blogs, downloads };
 }
