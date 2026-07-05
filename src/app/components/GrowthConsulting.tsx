@@ -1,5 +1,16 @@
 /// <reference types="vite/client" />
 import { CheckCircle2, PhoneCall } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getSetting } from "../api/dynamic-content";
+
+function youtubeEmbedUrl(url: string): string {
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/,
+  );
+  return match
+    ? `https://www.youtube.com/embed/${match[1]}`
+    : url;
+}
 
 export default function GrowthConsulting() {
   const bullets = [
@@ -11,8 +22,15 @@ export default function GrowthConsulting() {
     "Customer Acquisition and Retention Planning",
   ];
 
-  // Convert watch URL to embed URL
-  const videoEmbedUrl = "https://www.youtube.com/embed/Uh0XxtYwf9k";
+  const [videoEmbedUrl, setVideoEmbedUrl] = useState(
+    "https://www.youtube.com/embed/Uh0XxtYwf9k",
+  );
+
+  useEffect(() => {
+    getSetting("growth_consulting_video_url").then((url) => {
+      if (url) setVideoEmbedUrl(youtubeEmbedUrl(url));
+    });
+  }, []);
 
   return (
     <section

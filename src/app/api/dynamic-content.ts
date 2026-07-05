@@ -41,6 +41,12 @@ export type Download = {
   button_label: string;
 };
 
+export type Setting = {
+  id: string;
+  key: string;
+  value: string;
+};
+
 export type DynamicContent = {
   courses: Course[];
   blogs: Blog[];
@@ -104,4 +110,18 @@ export async function getDynamicContent(): Promise<DynamicContent> {
   console.log("Fetched dynamic content:", { courses, blogs, downloads });
 
   return { courses, blogs, downloads };
+}
+
+export async function getSetting(key: string): Promise<string | null> {
+  if (!hasSupabasePublicConfig()) {
+    return null;
+  }
+
+  try {
+    const settings = await fetchTable<Setting>("settings");
+    const setting = settings.find((s) => s.key === key);
+    return setting?.value ?? null;
+  } catch {
+    return null;
+  }
 }
