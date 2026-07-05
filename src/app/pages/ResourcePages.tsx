@@ -373,55 +373,21 @@ export function DownloadsPage() {
       }
     >
       {status === "ready" && !activeCategory ? (
-        <>
-          <div className="mb-8 flex flex-wrap gap-2">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {categories.map((cat) => (
             <button
-              onClick={() => setSearchParams({})}
-              className="rounded-lg bg-blue-900 px-4 py-2 text-sm font-semibold text-white"
+              key={cat}
+              onClick={() => setSearchParams({ category: cat })}
+              className="group flex flex-col items-center justify-center rounded-[10px] border border-gray-200 bg-white p-10 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-blue-900/30 hover:shadow-lg"
             >
-              All
+              <Download className="mb-4 size-10 text-blue-900 transition-transform group-hover:scale-110" />
+              <h3 className="text-xl font-bold text-gray-900">{cat}</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                {content.downloads.filter((d) => d.category === cat).length} resources
+              </p>
             </button>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSearchParams({ category: cat })}
-                className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-600 transition-all hover:bg-gray-200"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {filtered.map((download) => (
-              <article
-                className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
-                key={download.id}
-              >
-                {publicAssetUrl(download.thumbnail_path) ? (
-                  <img
-                    alt={download.title}
-                    className="h-44 w-full object-cover"
-                    src={publicAssetUrl(download.thumbnail_path) ?? undefined}
-                  />
-                ) : null}
-                <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
-                    {download.category} / {download.file_type}
-                  </p>
-                  <h2 className="mt-2 text-xl font-bold text-gray-900">{download.title}</h2>
-                  <p className="mt-3 text-sm leading-6 text-gray-600">{download.description}</p>
-                  <Link
-                    className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
-                    to={`/downloads/${download.slug}`}
-                  >
-                    View Resource
-                    <Download className="size-4" />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </>
+          ))}
+        </div>
       ) : null}
 
       {status === "ready" && activeCategory === "Checklist" ? (
