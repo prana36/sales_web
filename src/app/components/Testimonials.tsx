@@ -48,9 +48,23 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="border-y border-gray-150 bg-gray-50 px-4 py-16 sm:px-6 md:py-24">
-      <div className="max-w-7xl mx-auto">
-        
+    <section id="testimonials" className="border-y border-gray-150 bg-gray-50 py-16 md:py-24 overflow-hidden">
+      <style>{`
+        @keyframes testimonials-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .testimonials-track {
+          display: flex;
+          gap: 2rem;
+          width: fit-content;
+          animation: testimonials-scroll 60s linear infinite;
+        }
+        .testimonials-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-blue-900 tracking-wider uppercase mb-2">With Respect To Each Client</p>
@@ -59,21 +73,23 @@ export default function Testimonials() {
           </h2>
           <div className="w-16 h-1 bg-yellow-500 mx-auto rounded"></div>
         </div>
+      </div>
 
-        {/* Testimonials Grid (Masonry style look) */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 [column-fill:_balance] max-w-6xl mx-auto">
-          {list.map((item, index) => (
-            <div 
-              key={index} 
-              className="group relative flex break-inside-avoid flex-col rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl sm:p-8"
+      {/* Testimonials horizontal marquee */}
+      <div className="overflow-hidden">
+        <div className="testimonials-track">
+          {[...list, ...list].map((item, index) => (
+            <div
+              key={index}
+              className="group relative flex w-[320px] sm:w-[380px] shrink-0 flex-col rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl sm:p-8"
             >
               <Quote className="size-8 text-yellow-500/20 absolute top-6 right-6 group-hover:text-yellow-500/40 transition-colors" />
-              
+
               <h3 className="font-bold text-gray-900 text-lg mb-3">
                 "{item.title}"
               </h3>
-              
-              <p className="text-gray-655 text-sm leading-relaxed mb-6 italic">
+
+              <p className="text-gray-655 text-sm leading-relaxed mb-6 italic line-clamp-6">
                 "{item.quote}"
               </p>
 
@@ -88,7 +104,6 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

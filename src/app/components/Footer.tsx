@@ -23,7 +23,7 @@ export default function Footer() {
     { label: "Case Studies", url: "/#case_studies" },
     { label: "Online Support", url: "/#sales_mitra_helpline" },
     { label: "Sales Audit", url: "/#sales_audit" },
-    { label: "About Our Company", url: "/#top_sales_trainer" },
+    { label: "About Our Company", url: "/top-sales-trainer" },
   ];
 
   return (

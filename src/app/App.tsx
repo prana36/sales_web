@@ -2,31 +2,29 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { Toaster } from "sonner";
-import Careers from "./components/Careers";
+import Capabilities from "./components/Capabilities";
 import CaseStudies from "./components/CaseStudies";
 import Clients from "./components/Clients";
 import CompanyStats from "./components/CompanyStats";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import GrowthConsulting from "./components/GrowthConsulting";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ExpertiseMarquee from "./components/ExpertiseMarquee";
 import HowWeWork from "./components/HowWeWork";
-import MeasurableImpact from "./components/MeasurableImpact";
-import Pricing from "./components/Pricing";
-import SalesAudit from "./components/SalesAudit";
 import SalesHelpline from "./components/SalesHelpline";
 import Solutions from "./components/Solutions";
-import Team from "./components/Team";
-import TempleOfSales from "./components/TempleOfSales";
 import Testimonials from "./components/Testimonials";
-import Visionary from "./components/Visionary";
+import WhatWeDo from "./components/WhatWeDo";
 import WhatsAppChatButton from "./components/WhatsAppChatButton";
+import CareerPage from "./pages/CareerPage";
+import CoreTeamPage from "./pages/CoreTeamPage";
+import TopSalesTrainerPage from "./pages/TopSalesTrainerPage";
 import CaseStudyDetailPage from "./pages/CaseStudyDetailPage";
 import GapAnalysisPage from "./pages/gap-analysis";
 import LearningOutcomePage from "./pages/learning-outcome";
 import OutcomeTrackingPage from "./pages/outcome-tracking";
+import PricingPage from "./pages/PricingPage";
 import {
   BlogDetailPage,
   BlogsPage,
@@ -42,21 +40,15 @@ function HomePage() {
     <>
       <Hero />
       <ExpertiseMarquee />
-      <TempleOfSales />
-      <SalesAudit />
+      <WhatWeDo />
       <Clients />
-      <GrowthConsulting />
       <CompanyStats />
       <Solutions />
       <HowWeWork />
       <CaseStudies />
-      <Visionary />
-      <Team />
-      <Pricing />
-      <Careers />
+      <Capabilities />
       <Testimonials />
       {/* <DynamicResources /> */}
-      <MeasurableImpact />
       <SalesHelpline />
       <Contact />
     </>
@@ -93,6 +85,10 @@ function SiteRoutes() {
           element={<SalesConsultantPage />}
           path="/sales-consultant-india"
         />
+        <Route element={<TopSalesTrainerPage />} path="/top-sales-trainer" />
+        <Route element={<CoreTeamPage />} path="/core-team" />
+        <Route element={<CareerPage />} path="/career" />
+        <Route element={<PricingPage />} path="/pricing" />
         <Route element={<GapAnalysisPage />} path="/gap-analysis" />
         <Route element={<LearningOutcomePage />} path="/learning-outcome" />
         <Route element={<OutcomeTrackingPage />} path="/outcome-tracking" />
