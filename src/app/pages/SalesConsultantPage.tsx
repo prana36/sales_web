@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import type React from "react";
 import sanjayConsultantImg from "../assets/images/sanjay-singh.jpg";
+import Reveal from "../components/shared/Reveal";
 import {
   ArrowRight,
   Award,
@@ -174,35 +175,35 @@ export default function SalesConsultantPage() {
   }, []);
 
   return (
-    <main className="bg-white pt-20 text-gray-900">
-      <section className="bg-[#0A2540] px-4 py-16 text-white sm:px-6 md:py-24">
+    <main className="bg-white pt-24 text-gray-900">
+      <section className="bg-brand-navy-950 px-4 py-16 text-white sm:px-6 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B7912B]">
+          <Reveal>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-gold">
               Sales Consulting - Training - Guaranteed Growth
             </p>
             <h1 className="mt-5 max-w-5xl text-4xl font-bold leading-tight md:text-6xl">
               Best Sales Consultant in India - Guaranteed to Grow Your Revenue by 20%
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200 md:text-xl">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70 md:text-xl">
               We do not just advise. We sign a guarantee: your top-line revenue grows by at least 20% in Year 1, or you get every rupee back. Strategic Concepts (India) has been engineering measurable sales growth for SMEs and corporates since 1998.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <a
-                className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#C8102E] px-6 py-3 font-bold text-white transition hover:bg-[#a90d27]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-6 py-3 font-bold text-brand-navy-950 transition hover:-translate-y-0.5 hover:bg-brand-gold-light"
                 href="/#contact"
               >
                 Book a Free Discovery Call
                 <ArrowRight className="size-4" />
               </a>
               <a
-                className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-white/70 px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-[#0A2540]"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-brand-navy-950"
                 href="/courses"
               >
                 Explore Online Sales Courses
               </a>
               <a
-                className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-[#B7912B] px-6 py-3 font-semibold text-[#f7d976] transition hover:bg-[#B7912B] hover:text-[#0A2540]"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/60 px-6 py-3 font-semibold text-brand-gold transition hover:bg-brand-gold hover:text-brand-navy-950"
                 href="https://consult4sales.com/"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -210,9 +211,9 @@ export default function SalesConsultantPage() {
                 Join the Sales Community
               </a>
             </div>
-          </div>
-          <div className="rounded-[10px] border border-white/15 bg-white/8 p-6 shadow-2xl">
-            <div className="aspect-[4/5] overflow-hidden rounded-[10px] bg-slate-800">
+          </Reveal>
+          <Reveal className="rounded-3xl border border-white/15 bg-white/5 p-6 shadow-2xl" delay={0.1}>
+            <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white/10">
               <img
                 alt="Sanjay Singh sales consultant in India"
                 className="h-full w-full object-cover"
@@ -224,19 +225,19 @@ export default function SalesConsultantPage() {
               <Metric value="20+" label="Major Brands" />
               <Metric value="20%" label="Growth Promise" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="border-b border-gray-200 bg-white px-4 py-8 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-5 text-center text-xs font-bold uppercase tracking-[0.16em] text-blue-900">
+          <p className="mb-5 text-center text-xs font-bold uppercase tracking-[0.16em] text-brand-navy">
             Trusted by India's leading brands
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {trustBrands.map((brand) => (
               <span
-                className="rounded-[10px] border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-700"
+                className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-700"
                 key={brand}
               >
                 {brand}
@@ -253,11 +254,13 @@ export default function SalesConsultantPage() {
           text="Most businesses do not have a product problem. They have a sales problem - and it usually looks like this."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {painPoints.map((point) => (
-            <div className="rounded-[10px] border border-gray-200 bg-white p-5 shadow-sm" key={point}>
-              <CheckCircle2 className="mb-4 size-6 text-[#C8102E]" />
-              <p className="text-sm leading-6 text-gray-700">{point}</p>
-            </div>
+          {painPoints.map((point, index) => (
+            <Reveal delay={index * 0.06} key={point}>
+              <div className="h-full rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                <CheckCircle2 className="mb-4 size-6 text-brand-navy" />
+                <p className="text-sm leading-6 text-gray-700">{point}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <p className="mt-8 max-w-4xl text-lg leading-8 text-gray-700">
@@ -265,17 +268,17 @@ export default function SalesConsultantPage() {
         </p>
       </ContentBand>
 
-      <section className="bg-[#C8102E] px-4 py-16 text-white sm:px-6 md:py-24">
+      <section className="bg-brand-gold px-4 py-16 text-brand-navy-950 sm:px-6 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/80">
+          <Reveal>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-navy-950/70">
               Signature Guarantee
             </p>
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-5xl">
               The Only Sales Consultancy in India That Guarantees Your Growth
             </h2>
-          </div>
-          <div className="space-y-6 text-lg leading-8 text-white/95">
+          </Reveal>
+          <div className="space-y-6 text-lg leading-8 text-brand-navy-950/90">
             <p>
               Most sales consultants hand you a deck and walk away. We put our fee on the line instead.
             </p>
@@ -286,7 +289,7 @@ export default function SalesConsultantPage() {
               We have delivered this for JJ Plast Alloys, Parekh Jewelers, Ajmera Tyres, Calderys Refractories, Lemken Agri Implements, Cahors Transformers, Grindmaster Abrasives, Palav Sarees, Shree Shivam Modern Retail and Neoteric Properties.
             </p>
             <a
-              className="inline-flex items-center gap-2 rounded-[10px] bg-white px-6 py-3 text-base font-bold text-[#C8102E] transition hover:bg-slate-100"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-navy-950 px-6 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand-navy-dark"
               href="/#contact"
             >
               See If You Qualify
@@ -303,17 +306,19 @@ export default function SalesConsultantPage() {
           text="From your first call to 20% growth - a three-stage process refined over four decades in the field."
         />
         <div className="grid gap-6 lg:grid-cols-3">
-          {processSteps.map((step) => {
+          {processSteps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <article className="rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm" key={step.title}>
-                <div className="mb-6 flex items-center justify-between">
-                  <span className="text-4xl font-black text-blue-950">{step.number}</span>
-                  <Icon className="size-8 text-[#B7912B]" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-gray-600">{step.text}</p>
-              </article>
+              <Reveal delay={index * 0.08} key={step.title}>
+                <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="text-4xl font-black text-brand-navy">{step.number}</span>
+                    <Icon className="size-8 text-brand-gold" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-gray-600">{step.text}</p>
+                </article>
+              </Reveal>
             );
           })}
         </div>
@@ -321,7 +326,7 @@ export default function SalesConsultantPage() {
 
       <ContentBand>
         <div className="grid gap-12 lg:grid-cols-[420px_minmax(0,1fr)] lg:items-start">
-          <div className="overflow-hidden rounded-[10px] border border-gray-200 bg-gray-50 shadow-xl">
+          <div className="overflow-hidden rounded-3xl border border-gray-200 bg-gray-50 shadow-xl">
             <img
               alt="Sanjay Singh founder of Strategic Concepts"
               className="h-[520px] w-full object-cover"
@@ -358,11 +363,13 @@ export default function SalesConsultantPage() {
           text="Our consulting and training run on proprietary methods, not recycled theory."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {frameworks.map((framework) => (
-            <div className="rounded-[10px] border border-gray-200 bg-white p-5" key={framework}>
-              <BookOpen className="mb-4 size-6 text-blue-900" />
-              <p className="font-semibold leading-7 text-gray-800">{framework}</p>
-            </div>
+          {frameworks.map((framework, index) => (
+            <Reveal delay={index * 0.06} key={framework}>
+              <div className="h-full rounded-2xl border border-gray-200 bg-white p-5">
+                <BookOpen className="mb-4 size-6 text-brand-navy" />
+                <p className="font-semibold leading-7 text-gray-800">{framework}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </ContentBand>
@@ -374,24 +381,26 @@ export default function SalesConsultantPage() {
           text="Practical, field-tested sales coaching has been appreciated by leadership teams, institutions and corporate learning teams."
         />
         <div className="grid gap-6 lg:grid-cols-3">
-          {testimonials.map((item) => (
-            <article className="rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm" key={item.name}>
-              <p className="text-sm italic leading-7 text-gray-700">"{item.quote}"</p>
-              <div className="mt-6 border-t border-gray-100 pt-4">
-                <h3 className="font-bold text-gray-900">{item.name}</h3>
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                  {item.role}
-                </p>
-              </div>
-            </article>
+          {testimonials.map((item, index) => (
+            <Reveal delay={index * 0.08} key={item.name}>
+              <article className="h-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <p className="text-sm italic leading-7 text-gray-700">"{item.quote}"</p>
+                <div className="mt-6 border-t border-gray-100 pt-4">
+                  <h3 className="font-bold text-gray-900">{item.name}</h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    {item.role}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </ContentBand>
 
       <ContentBand muted>
-        <div className="grid gap-8 rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm md:p-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
+        <div className="grid gap-8 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:p-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B7912B]">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-gold">
               Courses and Community
             </p>
             <h2 className="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">
@@ -402,11 +411,11 @@ export default function SalesConsultantPage() {
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <a className="rounded-[10px] bg-blue-900 px-5 py-3 text-center font-semibold text-white hover:bg-blue-800" href="/courses">
+            <a className="rounded-full bg-brand-navy px-5 py-3 text-center font-semibold text-white hover:bg-brand-navy-dark" href="/courses">
               Explore Online Sales Courses
             </a>
             <a
-              className="rounded-[10px] border border-blue-900 px-5 py-3 text-center font-semibold text-blue-900 hover:bg-blue-50"
+              className="rounded-full border border-brand-navy px-5 py-3 text-center font-semibold text-brand-navy hover:bg-brand-navy/5"
               href="https://consult4sales.com/"
               rel="noopener noreferrer"
               target="_blank"
@@ -429,26 +438,26 @@ export default function SalesConsultantPage() {
         </div>
       </ContentBand>
 
-      <section className="bg-[#0A2540] px-4 py-16 text-white sm:px-6 md:py-24">
+      <section className="bg-brand-navy-950 px-4 py-16 text-white sm:px-6 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B7912B]">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-gold">
             Final Call
           </p>
           <h2 className="mt-4 text-3xl font-bold leading-tight md:text-5xl">
             Ready to Grow Your Revenue by 20% - Guaranteed?
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-200">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/70">
             Start with a free discovery call. No sales pitch - just an honest conversation about where your business is today and where it could be in twelve months.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              className="inline-flex items-center gap-2 rounded-[10px] bg-[#C8102E] px-6 py-3 font-bold text-white hover:bg-[#a90d27]"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-gold px-6 py-3 font-bold text-brand-navy-950 transition hover:-translate-y-0.5 hover:bg-brand-gold-light"
               href="/#contact"
             >
               Book Your Free Discovery Call
               <PhoneCall className="size-4" />
             </a>
-            <a className="font-semibold text-[#f7d976] hover:text-white" href="mailto:sanjay@consult4sales.com">
+            <a className="font-semibold text-brand-gold hover:text-white" href="mailto:sanjay@consult4sales.com">
               sanjay@consult4sales.com
             </a>
           </div>
@@ -466,7 +475,7 @@ function ContentBand({
   muted?: boolean;
 }) {
   return (
-    <section className={`${muted ? "bg-[#EEF2F7]" : "bg-white"} px-4 py-16 sm:px-6 md:py-24`}>
+    <section className={`${muted ? "bg-gray-50" : "bg-white"} px-4 py-16 sm:px-6 md:py-24`}>
       <div className="mx-auto max-w-7xl">{children}</div>
     </section>
   );
@@ -482,19 +491,19 @@ function SectionIntro({
   text: string;
 }) {
   return (
-    <div className="mb-10 max-w-3xl">
-      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#B7912B]">{eyebrow}</p>
+    <Reveal className="mb-10 max-w-3xl">
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-gold">{eyebrow}</p>
       <h2 className="mt-3 text-3xl font-bold leading-tight text-gray-900 md:text-5xl">{title}</h2>
       <p className="mt-5 text-base leading-8 text-gray-600 md:text-lg">{text}</p>
-    </div>
+    </Reveal>
   );
 }
 
 function Metric({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-[10px] border border-white/10 bg-white/10 p-3">
-      <p className="text-2xl font-black text-[#f7d976]">{value}</p>
-      <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-300">{label}</p>
+    <div className="rounded-2xl border border-white/10 bg-white/10 p-3">
+      <p className="text-2xl font-black text-brand-gold">{value}</p>
+      <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/60">{label}</p>
     </div>
   );
 }
@@ -507,8 +516,8 @@ function InfoPill({
   text: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-[10px] border border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-700">
-      <Icon className="size-5 flex-shrink-0 text-[#B7912B]" />
+    <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-700">
+      <Icon className="size-5 flex-shrink-0 text-brand-gold" />
       {text}
     </div>
   );
@@ -523,13 +532,13 @@ function FaqGroup({
 }) {
   return (
     <div>
-      <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-blue-950">
-        <HelpCircle className="size-5 text-[#B7912B]" />
+      <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-brand-navy">
+        <HelpCircle className="size-5 text-brand-gold" />
         {title}
       </h3>
       <div className="space-y-4">
         {faqs.map((faq) => (
-          <details className="group rounded-[10px] border border-gray-200 bg-white p-5 shadow-sm" key={faq.question}>
+          <details className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm" key={faq.question}>
             <summary className="cursor-pointer list-none font-bold text-gray-900">
               {faq.question}
             </summary>

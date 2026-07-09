@@ -28,6 +28,14 @@ export default defineConfig({
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      'react-router': path.resolve(
+        __dirname,
+        './node_modules/react-router/dist/development/index.js',
+      ),
+      'motion-dom': path.resolve(
+        __dirname,
+        './node_modules/motion-dom/dist/cjs/index.js',
+      ),
     },
   },
 

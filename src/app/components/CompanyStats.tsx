@@ -1,69 +1,90 @@
 /// <reference types="vite/client" />
+import { Calendar, Clock, MapPin, TrendingUp, Users } from "lucide-react";
+import Reveal from "./shared/Reveal";
 
 export default function CompanyStats() {
   const stats = [
-    { 
-      value: "30", 
-      unit: "+", 
-      label: "Years of sales training, coaching, and consulting practice.",
-      lineProgress: "w-1/4"
+    {
+      icon: Calendar,
+      value: "30",
+      unit: "+",
+      label: "Years of Experience",
+      desc: "Sales training, coaching, and consulting practice since 1998.",
+      card: "bg-blue-50/70",
+      icon_theme: "bg-white text-blue-600",
     },
-    { 
-      value: "38", 
-      unit: "+", 
-      label: "Cities covered through business consulting and training rollouts.",
-      lineProgress: "w-1/3"
+    {
+      icon: MapPin,
+      value: "38",
+      unit: "+",
+      label: "Cities Covered",
+      desc: "Business consulting and training rollouts across India.",
+      card: "bg-emerald-50/70",
+      icon_theme: "bg-white text-emerald-600",
     },
-    { 
-      value: "10.4L", 
-      unit: "+", 
-      label: "Salespeople handled through training and capability programs.",
-      lineProgress: "w-1/2"
+    {
+      icon: Users,
+      value: "10.4L",
+      unit: "+",
+      label: "Salespeople Trained",
+      desc: "Handled through training and capability programs.",
+      card: "bg-violet-50/70",
+      icon_theme: "bg-white text-violet-600",
     },
-    { 
-      value: "34K", 
-      unit: "+", 
-      label: "Training hours delivered across multiple forms of selling.",
-      lineProgress: "w-3/4"
+    {
+      icon: Clock,
+      value: "34K",
+      unit: "+",
+      label: "Training Hours",
+      desc: "Delivered across multiple forms of selling.",
+      card: "bg-amber-50/70",
+      icon_theme: "bg-white text-amber-600",
     },
-    { 
-      value: "73", 
-      unit: "%", 
-      label: "Growth registered in measurable client interventions.",
-      lineProgress: "w-full"
+    {
+      icon: TrendingUp,
+      value: "73",
+      unit: "%",
+      label: "Growth Registered",
+      desc: "In measurable client interventions.",
+      card: "bg-orange-50/70",
+      icon_theme: "bg-white text-orange-600",
     },
   ];
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white py-14 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-start text-left">
-              
-              {/* Progress Line on Top */}
-              <div className="w-full h-[3px] bg-gray-100 relative mb-6 rounded-full overflow-hidden">
-                <div className={`h-full bg-blue-900 absolute left-0 top-0 rounded-full ${stat.lineProgress}`} />
-              </div>
-              
-              {/* Value and Unit */}
-              <h3 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight flex items-baseline gap-1">
-                {stat.value}
-                <span className="text-blue-900 font-extrabold text-3xl md:text-4xl ml-0.5 select-none">
-                  {stat.unit}
-                </span>
-              </h3>
-              
-              {/* Description */}
-              <p className="text-sm text-gray-500 leading-relaxed mt-3 font-medium">
-                {stat.label}
-              </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <Reveal delay={index * 0.06} key={stat.label}>
+                <div className={`h-full rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 ${stat.card}`}>
+                  <div
+                    className={`mb-6 flex size-11 items-center justify-center rounded-full shadow-sm ${stat.icon_theme}`}
+                  >
+                    <Icon className="size-5" />
+                  </div>
 
-            </div>
-          ))}
+                  <h3 className="flex items-baseline gap-1 text-4xl font-black tracking-tight text-brand-navy-950 md:text-5xl">
+                    {stat.value}
+                    <span className="ml-0.5 select-none text-2xl font-extrabold md:text-3xl">
+                      {stat.unit}
+                    </span>
+                  </h3>
+
+                  <p className="mt-3 text-sm font-bold text-gray-800">
+                    {stat.label}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-500">
+                    {stat.desc}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
-

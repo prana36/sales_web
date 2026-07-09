@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
+import Reveal from "./shared/Reveal";
+import SectionKicker from "./shared/SectionKicker";
 
 export default function Testimonials() {
   const list = [
@@ -48,7 +50,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="border-y border-gray-150 bg-gray-50 py-16 md:py-24 overflow-hidden">
+    <section id="testimonials" className="border-y border-gray-150 bg-gray-50 py-14 md:py-20 lg:py-28 overflow-hidden">
       <style>{`
         @keyframes testimonials-scroll {
           0% { transform: translateX(0); }
@@ -66,13 +68,13 @@ export default function Testimonials() {
       `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-blue-900 tracking-wider uppercase mb-2">With Respect To Each Client</p>
+        <Reveal className="text-center mb-16">
+          <SectionKicker className="mb-3">With Respect To Each Client</SectionKicker>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Clients Appreciate Us
           </h2>
-          <div className="w-16 h-1 bg-yellow-500 mx-auto rounded"></div>
-        </div>
+          <div className="w-16 h-1 bg-brand-gold mx-auto rounded"></div>
+        </Reveal>
       </div>
 
       {/* Testimonials horizontal marquee */}
@@ -81,9 +83,18 @@ export default function Testimonials() {
           {[...list, ...list].map((item, index) => (
             <div
               key={index}
-              className="group relative flex w-[320px] sm:w-[380px] shrink-0 flex-col rounded-[10px] border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl sm:p-8"
+              className="group relative flex w-[320px] sm:w-[380px] shrink-0 flex-col rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8"
             >
-              <Quote className="size-8 text-yellow-500/20 absolute top-6 right-6 group-hover:text-yellow-500/40 transition-colors" />
+              <Quote className="size-8 text-brand-gold/20 absolute top-6 right-6 group-hover:text-brand-gold/40 transition-colors" />
+
+              <div className="mb-3 flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, starIdx) => (
+                  <Star
+                    className="size-3.5 fill-brand-gold text-brand-gold"
+                    key={starIdx}
+                  />
+                ))}
+              </div>
 
               <h3 className="font-bold text-gray-900 text-lg mb-3">
                 "{item.title}"

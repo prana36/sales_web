@@ -122,12 +122,12 @@ const outcomeTrackingRows: OutcomeTrackingRow[] = [
 export default function OutcomeTrackingPage() {
   return (
     <>
-      <section className="relative bg-[#0A5B9F] pt-30 pb-12 text-white">
+      <section className="relative bg-brand-navy-950 pt-32 pb-14 text-white md:pt-36">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-3 text-4xl font-bold">Outcome Tracking</h1>
 
-          <div className="flex justify-center gap-2 text-sm">
-            <Link to="/" className="hover:underline">
+          <div className="flex justify-center gap-2 text-sm text-white/70">
+            <Link to="/" className="hover:text-brand-gold hover:underline">
               Home
             </Link>
             <span>/</span>
@@ -139,7 +139,7 @@ export default function OutcomeTrackingPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto mb-12 max-w-4xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-[#0A5B9F]">
+            <h2 className="mb-4 text-3xl font-bold text-brand-navy">
               Outcome Tracking
             </h2>
 
@@ -149,9 +149,9 @@ export default function OutcomeTrackingPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-lg border shadow">
+          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="min-w-full border-collapse">
-              <thead className="bg-[#0A5B9F] text-white">
+              <thead className="bg-brand-navy text-white">
                 <tr>
                   <th className="border px-4 py-3 text-left">S.No.</th>
                   <th className="border px-4 py-3 text-left">
@@ -165,8 +165,8 @@ export default function OutcomeTrackingPage() {
                 {outcomeTrackingRows.map((row, index) => {
                   const isSectionRow = row.id !== "";
                   const rowClassName = isSectionRow
-                    ? "bg-gray-50 font-semibold"
-                    : "transition hover:bg-gray-100";
+                    ? "bg-brand-gold/5 font-semibold"
+                    : "transition hover:bg-brand-navy/5";
 
                   return (
                     <tr key={`${row.id}-${index}`} className={rowClassName}>

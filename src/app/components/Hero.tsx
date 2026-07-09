@@ -5,8 +5,8 @@ import imgImage234 from "../assets/images/sanjay-singh.jpg";
 
 export default function Hero() {
   return (
-    <section className="bg-brand-cream px-4 pb-6 pt-24 sm:px-6 lg:px-8 lg:pt-28">
-      <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[1.1fr_1fr]">
+    <section className="bg-brand-cream px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32 lg:px-8 lg:pt-36">
+      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_1fr]">
         <motion.div
           className="flex flex-col justify-center rounded-[2rem] bg-white p-8 sm:p-12 lg:p-14"
           initial={{ opacity: 0, y: 20 }}

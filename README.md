@@ -1,11 +1,9 @@
+# Design Landing Page UI
 
-  # Design Landing Page UI
+This is a code bundle for Design Landing Page UI. The original project is available at <https://www.figma.com/design/L7HPNTK57O6fbxWvltoQUG/Design-Landing-Page-UI>.
 
-  This is a code bundle for Design Landing Page UI. The original project is available at https://www.figma.com/design/L7HPNTK57O6fbxWvltoQUG/Design-Landing-Page-UI.
+## Running the code
 
-  ## Running the code
+Run `npm i` to install the dependencies.
 
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server...
-  
+Run `npm run dev` to start the development server...

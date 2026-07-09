@@ -13,6 +13,7 @@ import type React from "react";
 import { Link, useParams, useSearchParams } from "react-router";
 import { publicAssetUrl } from "../api/dynamic-content";
 import { useDynamicContent } from "../hooks/useDynamicContent";
+import Reveal from "../components/shared/Reveal";
 
 function PageShell({
   eyebrow,
@@ -26,18 +27,20 @@ function PageShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-white pt-24 text-gray-900">
-      <section className="border-b border-gray-200 bg-slate-50 px-4 py-14 sm:px-6 md:py-20">
+    <main className="min-h-screen bg-white pt-32 text-gray-900 md:pt-36">
+      <section className="border-b border-gray-200 bg-gray-50 px-4 py-14 sm:px-6 md:py-20">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-yellow-600">
-            {eyebrow}
-          </p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-blue-950 md:text-6xl">
-            {title}
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-gray-600 md:text-lg">
-            {description}
-          </p>
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-widest text-brand-gold">
+              {eyebrow}
+            </p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-brand-navy md:text-6xl">
+              {title}
+            </h1>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-gray-600 md:text-lg">
+              {description}
+            </p>
+          </Reveal>
         </div>
       </section>
       <section className="px-4 py-14 sm:px-6 md:py-20">
@@ -49,15 +52,15 @@ function PageShell({
 
 function LoadingState() {
   return (
-    <div className="flex min-h-72 items-center justify-center rounded-[10px] border border-gray-200 bg-gray-50">
-      <Loader2 className="size-7 animate-spin text-blue-900" />
+    <div className="flex min-h-72 items-center justify-center rounded-3xl border border-gray-200 bg-gray-50">
+      <Loader2 className="size-7 animate-spin text-brand-navy" />
     </div>
   );
 }
 
 function EmptyState({ label }: { label: string }) {
   return (
-    <div className="rounded-[10px] border border-gray-200 bg-gray-50 p-8 text-center">
+    <div className="rounded-3xl border border-gray-200 bg-gray-50 p-8 text-center">
       <p className="font-semibold text-gray-900">No {label} found.</p>
       <p className="mt-2 text-sm text-gray-500">
         Please check that the Supabase table has published records.
@@ -68,10 +71,10 @@ function EmptyState({ label }: { label: string }) {
 
 function NotFoundState({ label, backTo }: { label: string; backTo: string }) {
   return (
-    <div className="rounded-[10px] border border-gray-200 bg-gray-50 p-8">
+    <div className="rounded-3xl border border-gray-200 bg-gray-50 p-8">
       <p className="text-xl font-bold text-gray-900">{label} not found</p>
       <Link
-        className="mt-5 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
+        className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-2 text-sm font-semibold text-white hover:bg-brand-navy-dark"
         to={backTo}
       >
         <ArrowLeft className="size-4" />
@@ -96,7 +99,7 @@ export function CoursesPage() {
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {content.courses.map((course) => (
             <article
-              className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
+              className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               key={course.id}
             >
               {publicAssetUrl(course.image_path) ? (
@@ -107,7 +110,7 @@ export function CoursesPage() {
                 />
               ) : null}
               <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-gold">
                   {course.mode ?? "Training"}
                 </p>
                 <h2 className="mt-2 text-2xl font-bold text-gray-900">{course.title}</h2>
@@ -120,7 +123,7 @@ export function CoursesPage() {
                   {course.price_label ? <span>{course.price_label}</span> : null}
                 </div>
                 <Link
-                  className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-yellow-500 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-gold px-4 py-2 text-sm font-semibold text-brand-navy-950 hover:bg-brand-gold-light"
                   to={`/courses/${course.slug}`}
                 >
                   View Course
@@ -154,7 +157,7 @@ export function CourseDetailPage() {
             {publicAssetUrl(course.image_path) ? (
               <img
                 alt={course.title}
-                className="mb-8 h-72 w-full rounded-[10px] object-cover md:h-[420px]"
+                className="mb-8 h-72 w-full rounded-2xl object-cover md:h-[420px]"
                 src={publicAssetUrl(course.image_path) ?? undefined}
               />
             ) : null}
@@ -163,17 +166,17 @@ export function CourseDetailPage() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {course.highlights.map((highlight) => (
                   <div
-                    className="flex items-start gap-3 rounded-[10px] border border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-700"
+                    className="flex items-start gap-3 rounded-2xl border border-gray-200 bg-gray-50 p-4 text-sm font-semibold text-gray-700"
                     key={highlight}
                   >
-                    <GraduationCap className="mt-0.5 size-5 flex-shrink-0 text-yellow-600" />
+                    <GraduationCap className="mt-0.5 size-5 flex-shrink-0 text-brand-gold" />
                     {highlight}
                   </div>
                 ))}
               </div>
             ) : null}
           </article>
-          <aside className="h-fit rounded-[10px] border border-gray-200 bg-slate-50 p-6">
+          <aside className="h-fit rounded-2xl border border-gray-200 bg-gray-50 p-6">
             <h2 className="text-xl font-bold text-gray-900">Program Info</h2>
             <div className="mt-5 space-y-4 text-sm text-gray-600">
               {course.duration ? <DetailRow icon={Clock} label="Duration" value={course.duration} /> : null}
@@ -182,7 +185,7 @@ export function CourseDetailPage() {
               {course.price_label ? <DetailRow icon={CalendarCheck} label="Price" value={course.price_label} /> : null}
             </div>
             <a
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[10px] bg-yellow-500 px-4 py-3 text-sm font-bold text-gray-900 hover:bg-yellow-400"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gold px-4 py-3 text-sm font-bold text-brand-navy-950 hover:bg-brand-gold-light"
               href={course.cta_url}
               rel="noopener noreferrer"
               target={course.cta_url.startsWith("http") ? "_blank" : undefined}
@@ -212,7 +215,7 @@ export function BlogsPage() {
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {content.blogs.map((blog) => (
             <article
-              className="overflow-hidden rounded-[10px] border border-gray-200 bg-white shadow-sm"
+              className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               key={blog.id}
             >
               {publicAssetUrl(blog.cover_image_path) ? (
@@ -223,13 +226,13 @@ export function BlogsPage() {
                 />
               ) : null}
               <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-wider text-yellow-600">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-gold">
                   {blog.category} / {blog.read_time_minutes} min read
                 </p>
                 <h2 className="mt-2 text-2xl font-bold text-gray-900">{blog.title}</h2>
                 <p className="mt-3 text-sm leading-6 text-gray-600">{blog.excerpt}</p>
                 <Link
-                  className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-2 text-sm font-semibold text-white hover:bg-brand-navy-dark"
                   to={`/blogs/${blog.slug}`}
                 >
                   Read Blog
@@ -262,7 +265,7 @@ export function BlogDetailPage() {
           {publicAssetUrl(blog.cover_image_path) ? (
             <img
               alt={blog.title}
-              className="mb-8 h-72 w-full rounded-[10px] object-cover md:h-[430px]"
+              className="mb-8 h-72 w-full rounded-2xl object-cover md:h-[430px]"
               src={publicAssetUrl(blog.cover_image_path) ?? undefined}
             />
           ) : null}
@@ -290,12 +293,12 @@ const dlStyles = `
 .single-pdf-1 ul li { list-style: none; display: flex; align-items: flex-start; gap: 6px; padding: 2px 0; }
 .single-pdf-1 ul li a { text-decoration: none; }
 .single-pdf-1 ul li a h6.name { display: inline; font-size: 14px; font-weight: 600; color: #333; margin: 0; line-height: 1.4; cursor: pointer; }
-.single-pdf-1 ul li a h6.name:hover { color: #274584; }
-.img-wb { box-shadow: rgba(0,0,0,0.2) 0 60px 40px -7px; border-radius: 10px; }
-#style-7::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); background-color: #f5f5f5; border-radius: 10px; }
+.single-pdf-1 ul li a h6.name:hover { color: #1B619C; }
+.img-wb { box-shadow: rgba(27,97,156,0.15) 0 60px 40px -7px; border-radius: 20px; }
+#style-7::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15); background-color: #f5f5f5; border-radius: 10px; }
 #style-7::-webkit-scrollbar { width: 5px; background-color: #f5f5f5; }
-#style-7::-webkit-scrollbar-thumb { border-radius: 10px; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #7a99d9), color-stop(0.72, #497dbd), color-stop(0.86, #1c3a94)); }
-.testimonial-box-2 .content::after { border-color: #274584 transparent transparent; border-style: solid; border-width: 19px 13px; content: ""; position: absolute; right: 26px; }
+#style-7::-webkit-scrollbar-thumb { border-radius: 10px; background-image: linear-gradient(to top, #1B619C 44%, #1A60A8 72%, #0E2A44 86%); }
+.testimonial-box-2 .content::after { border-color: #0E2A44 transparent transparent; border-style: solid; border-width: 19px 13px; content: ""; position: absolute; right: 26px; }
 `;
 
 const categoryMeta: Record<string, { subtitle: string; desc: string }> = {
@@ -318,7 +321,7 @@ function DownloadList({ items }: { items: Download[] }) {
           <div key={item.id} className="single-pdf-1">
             <ul className="service-list">
               <li>
-                <span><Download className="inline size-3.5 text-blue-900" /></span>
+                <span><Download className="inline size-3.5 text-brand-navy" /></span>
                 <a
                   href={downloadUrl(item)}
                   download={item.file_type === "PDF"}
@@ -378,9 +381,9 @@ export function DownloadsPage() {
             <button
               key={cat}
               onClick={() => setSearchParams({ category: cat })}
-              className="group flex flex-col items-center justify-center rounded-[10px] border border-gray-200 bg-white p-10 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-blue-900/30 hover:shadow-lg"
+              className="group flex flex-col items-center justify-center rounded-3xl border border-gray-200 bg-white p-10 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-navy/30 hover:shadow-lg"
             >
-              <Download className="mb-4 size-10 text-blue-900 transition-transform group-hover:scale-110" />
+              <Download className="mb-4 size-10 text-brand-navy transition-transform group-hover:scale-110" />
               <h3 className="text-xl font-bold text-gray-900">{cat}</h3>
               <p className="mt-2 text-sm text-gray-500">
                 {content.downloads.filter((d) => d.category === cat).length} resources
@@ -394,20 +397,20 @@ export function DownloadsPage() {
         <div>
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">{meta?.subtitle}</p>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">{meta?.subtitle}</p>
               <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Sales-Checklist</h2>
               <DownloadList items={filtered} />
             </div>
             <div className="lg:col-span-5">
               <div className="img-wb">
-                <img src={saregamaImg} alt="Sales Checklists" className="w-full rounded-[10px] shadow-lg" loading="lazy" />
+                <img src={saregamaImg} alt="Sales Checklists" className="w-full rounded-2xl shadow-lg" loading="lazy" />
               </div>
             </div>
           </div>
           <div className="mt-6">
             <button
               onClick={() => setSearchParams({})}
-              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+              className="text-sm font-semibold text-brand-navy hover:text-brand-navy-light"
             >
               &larr; Back to all downloads
             </button>
@@ -419,20 +422,20 @@ export function DownloadsPage() {
         <div>
           <div className="grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">{meta?.subtitle}</p>
+              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">{meta?.subtitle}</p>
               <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">Sales-Workbooks</h2>
               <DownloadList items={filtered} />
             </div>
             <div className="lg:col-span-5">
               <div className="img-wb">
-                <img src={salesWorkbookImg} alt="Sales Workbooks" className="w-full rounded-[10px] shadow-lg" loading="lazy" />
+                <img src={salesWorkbookImg} alt="Sales Workbooks" className="w-full rounded-2xl shadow-lg" loading="lazy" />
               </div>
             </div>
           </div>
           <div className="mt-6">
             <button
               onClick={() => setSearchParams({})}
-              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+              className="text-sm font-semibold text-brand-navy hover:text-brand-navy-light"
             >
               &larr; Back to all downloads
             </button>
@@ -443,12 +446,12 @@ export function DownloadsPage() {
       {status === "ready" && activeCategory === "Testimonials" ? (
         <div>
           <div className="mb-8">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">With Respect To Each Client</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">With Respect To Each Client</p>
             <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">Clients Appreciate Us</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((item) => (
-              <div key={item.id} className="testimonial-box-2 flex flex-col rounded-[10px] bg-blue-900 p-6 text-white">
+              <div key={item.id} className="testimonial-box-2 flex flex-col rounded-3xl bg-brand-navy-950 p-6 text-white">
                 <div className="flex-1">
                   <p className="mb-4 text-sm leading-relaxed italic text-white/90">
                     &ldquo;{item.description.replace(/^.{120}.*?(\s|$)/, "$&").slice(0, 200)}&rdquo;
@@ -474,7 +477,7 @@ export function DownloadsPage() {
           <div className="mt-6">
             <button
               onClick={() => setSearchParams({})}
-              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+              className="text-sm font-semibold text-brand-navy hover:text-brand-navy-light"
             >
               &larr; Back to all downloads
             </button>
@@ -484,15 +487,15 @@ export function DownloadsPage() {
 
       {status === "ready" && activeCategory === "Brochure" ? (
         <div className="text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-800">Downloads for</p>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">Downloads for</p>
           <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Strategic Concepts Brochure</h2>
-          <div className="mx-auto max-w-md rounded-[10px] border border-gray-200 bg-white p-8 shadow-sm">
-            <Download className="mx-auto mb-4 size-12 text-blue-900" />
+          <div className="mx-auto max-w-md rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+            <Download className="mx-auto mb-4 size-12 text-brand-navy" />
             <p className="mb-6 text-gray-600">Download the complete Strategic Concepts Brochure 2019</p>
             <a
               href={filtered.length > 0 ? (publicAssetUrl(filtered[0].file_path) ?? "#") : "#"}
               download
-              className="inline-flex items-center gap-2 rounded-[10px] bg-blue-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-800"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-navy-dark"
             >
               <Download className="size-4" />
               Download Brochure
@@ -501,7 +504,7 @@ export function DownloadsPage() {
           <div className="mt-6">
             <button
               onClick={() => setSearchParams({})}
-              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+              className="text-sm font-semibold text-brand-navy hover:text-brand-navy-light"
             >
               &larr; Back to all downloads
             </button>
@@ -514,7 +517,7 @@ export function DownloadsPage() {
           <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Recommendations</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((item) => (
-              <div key={item.id} className="flex flex-col rounded-[10px] border border-gray-200 bg-gray-50 p-6">
+              <div key={item.id} className="flex flex-col rounded-3xl border border-gray-200 bg-gray-50 p-6">
                 <div className="flex-1">
                   <p className="mb-4 text-sm leading-relaxed text-gray-700">
                     &ldquo;{item.description.replace(/^.{120}.*?(\s|$)/, "$&").slice(0, 200)}&rdquo;
@@ -524,7 +527,7 @@ export function DownloadsPage() {
                   href={item.file_path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 self-start rounded-[10px] bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+                  className="inline-flex items-center gap-2 self-start rounded-full bg-brand-navy px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-navy-dark"
                 >
                   View on LinkedIn
                   <ExternalLink className="size-4" />
@@ -535,7 +538,7 @@ export function DownloadsPage() {
           <div className="mt-6">
             <button
               onClick={() => setSearchParams({})}
-              className="text-sm font-semibold text-blue-900 hover:text-blue-700"
+              className="text-sm font-semibold text-brand-navy hover:text-brand-navy-light"
             >
               &larr; Back to all downloads
             </button>
@@ -573,20 +576,20 @@ export function DownloadDetailPage() {
             {publicAssetUrl(download.thumbnail_path) ? (
               <img
                 alt={download.title}
-                className="mb-8 h-72 w-full rounded-[10px] object-cover md:h-[420px]"
+                className="mb-8 h-72 w-full rounded-2xl object-cover md:h-[420px]"
                 src={publicAssetUrl(download.thumbnail_path) ?? undefined}
               />
             ) : null}
             <p className="text-lg leading-8 text-gray-700">{download.description}</p>
           </article>
-          <aside className="h-fit rounded-[10px] border border-gray-200 bg-slate-50 p-6">
+          <aside className="h-fit rounded-2xl border border-gray-200 bg-gray-50 p-6">
             <h2 className="text-xl font-bold text-gray-900">Resource Info</h2>
             <div className="mt-5 space-y-4 text-sm text-gray-600">
               <DetailRow icon={FileText} label="Category" value={download.category} />
               <DetailRow icon={Download} label="Type" value={download.file_type} />
             </div>
             <a
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[10px] bg-blue-900 px-4 py-3 text-sm font-bold text-white hover:bg-blue-800"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-navy px-4 py-3 text-sm font-bold text-white hover:bg-brand-navy-dark"
               href={publicAssetUrl(download.file_path) ?? "#"}
               rel="noopener noreferrer"
               target="_blank"
@@ -612,7 +615,7 @@ function DetailRow({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <Icon className="mt-0.5 size-5 flex-shrink-0 text-yellow-600" />
+      <Icon className="mt-0.5 size-5 flex-shrink-0 text-brand-gold" />
       <div>
         <p className="font-semibold text-gray-900">{label}</p>
         <p>{value}</p>

@@ -80,12 +80,12 @@ export default function GapAnalysisPage() {
   return (
     <>
       {/* Breadcrumb */}
-      <section className="relative bg-[#0A5B9F] pt-30 pb-12 text-white">
+      <section className="relative bg-brand-navy-950 pt-32 pb-14 text-white md:pt-36">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-3 text-4xl font-bold">Gap Analysis</h1>
 
-          <div className="flex justify-center gap-2 text-sm">
-            <Link to="/" className="hover:underline">
+          <div className="flex justify-center gap-2 text-sm text-white/70">
+            <Link to="/" className="hover:text-brand-gold hover:underline">
               Home
             </Link>
             <span>/</span>
@@ -98,7 +98,7 @@ export default function GapAnalysisPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mx-auto mb-12 max-w-4xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-[#0A5B9F]">
+            <h2 className="mb-4 text-3xl font-bold text-brand-navy">
               Gap Analysis
             </h2>
 
@@ -116,9 +116,9 @@ export default function GapAnalysisPage() {
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto rounded-lg border shadow">
+          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="min-w-full border-collapse">
-              <thead className="bg-[#0A5B9F] text-white">
+              <thead className="bg-brand-navy text-white">
                 <tr>
                   <th className="border px-4 py-3 text-left">S.No.</th>
                   <th className="border px-4 py-3 text-left">Act of Sales</th>
@@ -129,7 +129,7 @@ export default function GapAnalysisPage() {
 
               <tbody>
                 {gapAnalysisData.map((item) => (
-                  <tr key={item.id} className="transition hover:bg-gray-100">
+                  <tr key={item.id} className="transition hover:bg-brand-navy/5">
                     <td className="border px-4 py-3 font-semibold">
                       {item.id}
                     </td>

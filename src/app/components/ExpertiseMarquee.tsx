@@ -13,7 +13,7 @@ const expertise = [
 
 export default function ExpertiseMarquee() {
   return (
-    <section className="border-y border-blue-100 bg-blue-50/60 py-4 overflow-hidden">
+    <section className="border-y border-brand-navy/10 bg-brand-navy/[0.03] py-4 overflow-hidden">
       <style>{`
         @keyframes expertise-scroll {
           0% { transform: translateX(0); }
@@ -30,7 +30,7 @@ export default function ExpertiseMarquee() {
         }
       `}</style>
       <div className="flex items-center gap-6 ml-6 md:ml-12">
-        <span className="shrink-0 text-sm font-bold text-blue-900 uppercase tracking-wider whitespace-nowrap">
+        <span className="shrink-0 text-sm font-bold text-brand-navy uppercase tracking-wider whitespace-nowrap">
           Areas of Core Expertise
         </span>
         <div className="overflow-hidden flex-1">
@@ -40,8 +40,10 @@ export default function ExpertiseMarquee() {
                 key={i}
                 className="flex shrink-0 items-center gap-2 whitespace-nowrap"
               >
-                <CheckCircle2 className="size-4 text-yellow-500" />
-                <span className="font-medium text-gray-800 text-sm">{item}</span>
+                <CheckCircle2 className="size-4 text-brand-gold" />
+                <span className="font-medium text-gray-800 text-sm">
+                  {item}
+                </span>
               </div>
             ))}
           </div>

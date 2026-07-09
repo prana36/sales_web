@@ -78,7 +78,7 @@ export default function CaseStudyDetailPage() {
       <main className="min-h-screen bg-white pt-24 text-gray-900">
         <section className="px-4 py-20 text-center">
           <h1 className="text-2xl font-bold">Case Study Not Found</h1>
-          <Link to="/" className="mt-4 inline-flex items-center gap-2 text-blue-900 font-semibold">
+          <Link to="/" className="mt-4 inline-flex items-center gap-2 text-brand-navy font-semibold">
             <ArrowLeft className="size-4" /> Back to Home
           </Link>
         </section>
@@ -88,15 +88,15 @@ export default function CaseStudyDetailPage() {
 
   return (
     <main className="min-h-screen bg-white pt-24 text-gray-900">
-      <section className="border-b border-gray-200 bg-slate-50 px-4 py-10 sm:px-6 md:py-14">
+      <section className="border-b border-gray-200 bg-gray-50 px-4 py-10 sm:px-6 md:py-14">
         <div className="mx-auto max-w-7xl">
-          <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-900 mb-4 hover:text-blue-700 transition-colors">
+          <Link to="/" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy mb-4 hover:text-brand-navy-light transition-colors">
             <ArrowLeft className="size-4" /> Back to Home
           </Link>
-          <p className="text-xs font-semibold uppercase tracking-widest text-yellow-600 mb-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold mb-1">
             {study.industry}
           </p>
-          <h1 className="max-w-4xl text-3xl font-bold leading-tight text-blue-950 md:text-5xl">
+          <h1 className="max-w-4xl text-3xl font-bold leading-tight text-brand-navy md:text-5xl">
             {study.client}
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-600 md:text-base">
@@ -111,7 +111,7 @@ export default function CaseStudyDetailPage() {
             <div className="lg:col-span-2">
               <div className="grid grid-cols-2 gap-4">
                 {detail.bannerImages.map((img, i) => (
-                  <div key={i} className="overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+                  <div key={i} className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
                     <img src={img} alt={`${study.client} - Image ${i + 1}`} className="w-full object-cover" />
                   </div>
                 ))}
@@ -126,7 +126,7 @@ export default function CaseStudyDetailPage() {
             </div>
 
             <div className="lg:col-span-1">
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 sticky top-28">
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sticky top-28">
                 <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Brief Case Detail</h3>
                 <div className="space-y-4">
                   <div>
@@ -147,7 +147,7 @@ export default function CaseStudyDetailPage() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 mb-0.5">Category</p>
-                    <p className="text-sm font-semibold text-blue-900">{detail.category}</p>
+                    <p className="text-sm font-semibold text-brand-navy">{detail.category}</p>
                   </div>
                 </div>
               </div>

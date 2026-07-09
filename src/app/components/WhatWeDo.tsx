@@ -12,8 +12,11 @@ import {
   RefreshCw,
   SearchCheck,
   TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
 import { Link } from "react-router";
+import Reveal from "./shared/Reveal";
+import SectionKicker from "./shared/SectionKicker";
 
 function youtubeEmbedUrl(url: string): string {
   const match = url.match(
@@ -24,8 +27,86 @@ function youtubeEmbedUrl(url: string): string {
     : url;
 }
 
+interface JourneyStep {
+  tag: string;
+  title: string;
+  text: string;
+  cta: { label: string; href: string };
+  points: { icon: LucideIcon; label: string; url?: string }[];
+}
+
+function StepCard({
+  step,
+  index,
+  wide,
+}: {
+  step: JourneyStep;
+  index: number;
+  wide?: boolean;
+}) {
+  return (
+    <div
+      className={`flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/[0.08] sm:p-7 ${
+        wide ? "lg:flex-row lg:items-center lg:gap-10" : ""
+      }`}
+    >
+      <div className={wide ? "lg:flex-1" : ""}>
+        <div className="mb-3 flex items-center gap-2">
+          <span className="flex size-6 items-center justify-center rounded-full bg-brand-gold text-xs font-bold text-brand-navy">
+            {index + 1}
+          </span>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
+            {step.tag}
+          </p>
+        </div>
+        <h3 className="mb-2 text-xl font-bold leading-tight text-white">
+          {step.title}
+        </h3>
+        <p className="mb-5 text-sm leading-relaxed text-white/60">
+          {step.text}
+        </p>
+      </div>
+
+      <div className={wide ? "lg:flex-1" : ""}>
+        <div className="mb-6 space-y-3">
+          {step.points.map((point) => {
+            const Icon = point.icon;
+            const content = (
+              <>
+                <Icon className="size-4 flex-shrink-0 text-brand-gold" />
+                <span className="text-sm font-medium text-white/80">
+                  {point.label}
+                </span>
+              </>
+            );
+            return point.url ? (
+              <Link
+                key={point.label}
+                to={point.url}
+                className="flex items-center gap-3 transition-colors hover:text-white"
+              >
+                {content}
+              </Link>
+            ) : (
+              <div key={point.label} className="flex items-center gap-3">
+                {content}
+              </div>
+            );
+          })}
+        </div>
+        <a
+          className="inline-flex rounded-full bg-brand-gold px-5 py-2.5 text-sm font-bold text-brand-navy transition-all hover:-translate-y-0.5 hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20"
+          href={step.cta.href}
+        >
+          {step.cta.label}
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function WhatWeDo() {
-  const journeySteps = [
+  const journeySteps: JourneyStep[] = [
     {
       tag: "Diagnose",
       title: "Sales Audit",
@@ -76,115 +157,68 @@ export default function WhatWeDo() {
   }, []);
 
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 md:py-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-10 items-center mb-14">
-          <div className="lg:col-span-7">
-            <p className="text-sm font-semibold text-blue-900 uppercase tracking-widest mb-2">
-              What We Do
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-5">
-              Diagnose the gap.{" "}
-              <span className="bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
-                Redesign the system.
-              </span>{" "}
-              Develop the team.
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              One connected engagement for SME & MSME businesses — we find
-              where sales is leaking, rebuild the strategy and process around
-              it, and train the team that has to run it every day.
-            </p>
-            <div className="flex flex-wrap gap-4 items-center">
-              <a
-                href="#contact"
-                className="bg-blue-900 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-[10px] shadow hover:shadow-lg transition-all"
-              >
-                Contact Us
-              </a>
-              <a
-                href="/sales-consultant-india"
-                className="border border-blue-900 px-6 py-3 rounded-[10px] text-blue-900 font-semibold hover:bg-blue-50 transition-all"
-              >
-                SME Consulting
-              </a>
-              <a
-                href="tel:9970506000"
-                className="inline-flex items-center gap-2 text-blue-900 font-semibold hover:text-blue-700 transition-colors"
-              >
-                <PhoneCall className="size-5 text-yellow-500" />
-                <span>+91 9970506000</span>
-              </a>
-            </div>
-          </div>
-          <div className="lg:col-span-5">
-            <div className="relative aspect-video w-full rounded-[10px] overflow-hidden shadow-xl border border-gray-200 bg-black">
-              <iframe
-                src={videoEmbedUrl}
-                title="Growth Consulting Agency"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-0"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {journeySteps.map((step, stepIndex) => (
-            <div
-              key={step.tag}
-              className="rounded-[10px] border border-gray-200 bg-gray-50 p-6"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="flex size-6 items-center justify-center rounded-full bg-blue-900 text-xs font-bold text-white">
-                  {stepIndex + 1}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-widest text-blue-900">
-                  {step.tag}
-                </p>
-              </div>
-              <h3 className="text-xl font-bold leading-tight text-gray-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-600 mb-5">
-                {step.text}
+    <section className="bg-white px-4 py-14 sm:px-6 md:py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <Reveal>
+          <div className="rounded-[2.5rem] bg-brand-navy-950 p-6 sm:p-10 lg:p-14">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionKicker variant="dark">What We Do</SectionKicker>
+              <h2 className="mt-4 text-3xl font-bold leading-tight text-white md:text-5xl">
+                Diagnose the gap.{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-brand-gold-light bg-clip-text text-transparent">
+                  Redesign the system.
+                </span>{" "}
+                Develop the team.
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-white/60">
+                One connected engagement for SME & MSME businesses — we find
+                where sales is leaking, rebuild the strategy and process
+                around it, and train the team that has to run it every day.
               </p>
-              <div className="space-y-3 mb-6">
-                {step.points.map((point) => {
-                  const Icon = point.icon;
-                  const content = (
-                    <>
-                      <Icon className="size-4 text-blue-900 flex-shrink-0" />
-                      <span className="text-sm font-medium text-gray-800">
-                        {point.label}
-                      </span>
-                    </>
-                  );
-                  return "url" in point && point.url ? (
-                    <Link
-                      key={point.label}
-                      to={point.url}
-                      className="flex items-center gap-3 hover:text-blue-900 transition-colors"
-                    >
-                      {content}
-                    </Link>
-                  ) : (
-                    <div key={point.label} className="flex items-center gap-3">
-                      {content}
-                    </div>
-                  );
-                })}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="#contact"
+                  className="rounded-full bg-brand-gold px-6 py-3.5 font-semibold text-brand-navy shadow-lg shadow-brand-gold/20 transition-all hover:-translate-y-0.5 hover:bg-brand-gold-light"
+                >
+                  Contact Us
+                </a>
+                <a
+                  href="/sales-consultant-india"
+                  className="rounded-full border border-white/20 px-6 py-3.5 font-semibold text-white transition-all hover:bg-white/10"
+                >
+                  SME Consulting
+                </a>
+                <a
+                  href="tel:9970506000"
+                  className="inline-flex items-center gap-2 font-semibold text-white transition-colors hover:text-brand-gold"
+                >
+                  <PhoneCall className="size-5 text-brand-gold" />
+                  <span>+91 9970506000</span>
+                </a>
               </div>
-              <a
-                className="inline-flex rounded-[10px] bg-yellow-500 px-5 py-2.5 text-sm font-bold text-gray-900 transition-all hover:bg-yellow-400 hover:shadow-lg"
-                href={step.cta.href}
-              >
-                {step.cta.label}
-              </a>
             </div>
-          ))}
-        </div>
+
+            <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3 lg:items-stretch">
+              <StepCard index={0} step={journeySteps[0]} />
+
+              <div className="relative min-h-[240px] overflow-hidden rounded-3xl border border-white/10 bg-black lg:min-h-0">
+                <iframe
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full border-0"
+                  src={videoEmbedUrl}
+                  title="Growth Consulting Agency"
+                />
+              </div>
+
+              <StepCard index={1} step={journeySteps[1]} />
+            </div>
+
+            <div className="mt-6">
+              <StepCard index={2} step={journeySteps[2]} wide />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

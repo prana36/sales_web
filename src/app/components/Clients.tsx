@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import Reveal from "./shared/Reveal";
+import SectionKicker from "./shared/SectionKicker";
 import cadenceLogo from "../assets/images/clients/7.jpg";
 import airtelLogo from "../assets/images/clients/2.jpg";
 import bajajSuperpackLogo from "../assets/images/clients/3.jpg";
@@ -66,17 +68,17 @@ export default function Clients() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-20 bg-white border-b border-gray-100 overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-24 bg-white border-b border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold text-blue-900 uppercase tracking-widest mb-2">Our Clients</p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4">
+        <Reveal className="text-center mb-12">
+          <SectionKicker className="mb-3">Our Clients</SectionKicker>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy mb-4">
             World-class capability building
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
             We have transformed sales organizations and built capability across various industries in India.
           </p>
-        </div>
+        </Reveal>
 
         <div className="flex items-center justify-center gap-8 xl:gap-16">
           <div className="hidden flex-shrink-0 lg:block">
@@ -92,7 +94,7 @@ export default function Clients() {
                       {group.map((logo, i) => (
                         <div
                           key={i}
-                          className="group flex h-24 items-center justify-center rounded-xl border-2 border-blue-100 bg-gradient-to-br from-white to-blue-50 p-4 shadow-md transition-all duration-500 hover:scale-110 hover:border-blue-300 hover:shadow-xl sm:h-28 my-3"
+                          className="group flex h-24 items-center justify-center rounded-2xl border border-brand-navy/10 bg-gradient-to-br from-white to-brand-navy/[0.03] p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-navy/25 hover:shadow-lg sm:h-28 my-3"
                         >
                           <img
                             src={logo.src}
@@ -113,7 +115,7 @@ export default function Clients() {
                   key={i}
                   onClick={() => emblaApi?.scrollTo(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === selectedIndex ? "w-6 bg-blue-900" : "w-2 bg-gray-300"
+                    i === selectedIndex ? "w-6 bg-brand-navy" : "w-2 bg-gray-300"
                   }`}
                   aria-label={`Go to slide ${i + 1}`}
                 />

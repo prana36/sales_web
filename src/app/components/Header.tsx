@@ -28,7 +28,7 @@ export default function Header() {
       label: "Services",
       url: "/#solutions_services",
       children: [
-       
+
         { label: "Sales Training", url: "/#welcome_temple_of_sales" },
         { label: "Growth Consulting", url: "/#growth_consulting_agency" },
         { label: "Sales Mitra Helpline", url: "/#sales_mitra_helpline" },
@@ -55,19 +55,19 @@ export default function Header() {
   ];
 
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-brand-navy/10 bg-brand-cream/90 shadow-sm backdrop-blur-md"
-          : "border-b border-transparent bg-brand-cream/60 backdrop-blur-sm"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <div className="flex min-w-0 items-center gap-8 xl:gap-12">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+      <div
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 sm:px-5 ${
+          scrolled
+            ? "border-brand-navy/10 bg-white/85 shadow-lg shadow-brand-navy/[0.08] backdrop-blur-xl"
+            : "border-brand-navy/[0.06] bg-white/70 shadow-md shadow-brand-navy/[0.04] backdrop-blur-lg"
+        }`}
+      >
+        <div className="flex min-w-0 items-center gap-6 xl:gap-10">
           <a className="flex items-center gap-3" href="/">
             <img
               alt="Strategic Concepts Logo"
-              className="h-12 w-auto object-contain sm:h-14"
+              className="h-10 w-auto object-contain sm:h-11"
               src={logoImg}
             />
           </a>
@@ -86,10 +86,10 @@ export default function Header() {
                 </a>
 
                 {item.children.length > 0 ? (
-                  <div className="invisible absolute left-0 top-full w-56 translate-y-3 rounded-xl border border-brand-navy/10 bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                  <div className="invisible absolute left-1/2 top-full w-60 -translate-x-1/2 translate-y-3 rounded-2xl border border-brand-navy/10 bg-white p-2 opacity-0 shadow-xl shadow-brand-navy/10 transition-all duration-200 group-hover:visible group-hover:translate-y-3 group-hover:opacity-100">
                     {item.children.map((child) => (
                       <a
-                        className="block rounded-lg px-3 py-2 text-sm font-medium text-brand-navy/70 transition-colors hover:bg-brand-gold/10 hover:text-brand-navy"
+                        className="block rounded-xl px-3 py-2 text-sm font-medium text-brand-navy/70 transition-colors hover:bg-brand-gold/10 hover:text-brand-navy"
                         href={child.url}
                         key={child.label}
                       >
@@ -103,9 +103,9 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
-            className="hidden rounded-full bg-brand-navy px-6 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/20 lg:block"
+            className="hidden rounded-full bg-brand-navy px-5 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-navy-dark hover:shadow-lg hover:shadow-brand-navy/25 lg:block"
             href="/#contact"
           >
             Contact Us
@@ -122,11 +122,11 @@ export default function Header() {
       </div>
 
       {isOpen ? (
-        <nav className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-brand-navy/10 bg-brand-cream px-4 py-4 sm:px-6 lg:hidden">
+        <nav className="mx-auto mt-2 max-h-[calc(100vh-6rem)] max-w-7xl overflow-y-auto rounded-3xl border border-brand-navy/10 bg-white/95 px-4 py-4 shadow-xl shadow-brand-navy/10 backdrop-blur-xl sm:px-6 lg:hidden">
           <div className="space-y-1">
             {navItems.map((item) => (
               <a
-                className="block rounded-lg px-3 py-2 text-sm font-semibold text-brand-navy/80 hover:bg-brand-gold/10 hover:text-brand-navy"
+                className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-navy/80 hover:bg-brand-gold/10 hover:text-brand-navy"
                 href={item.url}
                 key={item.label}
                 onClick={() => setIsOpen(false)}

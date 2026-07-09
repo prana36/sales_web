@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
+import Reveal from "./shared/Reveal";
+import SectionKicker from "./shared/SectionKicker";
 
 import kathaImg from "../assets/images/services/sales-katha.png";
 import rishteImg from "../assets/images/services/sales-ke-rishte.png";
@@ -76,12 +78,10 @@ export default function Solutions() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="solutions_services" className="bg-gray-50 px-4 py-16 sm:px-6 md:py-24">
+    <section id="solutions_services" className="bg-gray-50 px-4 py-14 sm:px-6 md:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-blue-800 tracking-wider uppercase mb-2">
-            What We Offer
-          </p>
+        <Reveal className="text-center mb-16">
+          <SectionKicker className="mb-3">What We Offer</SectionKicker>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Explore Our Solutions / Services
           </h2>
@@ -89,14 +89,14 @@ export default function Solutions() {
             We provide 360 degrees solutions on Sales Management for all forms
             of selling across industry verticals and geographies.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mb-24">
           <div className="overflow-hidden py-4" ref={emblaRef}>
             <div className="flex">
               {programs.map((program, index) => (
                 <div key={index} className="relative min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_45%] lg:flex-[0_0_30%]">
-                  <div className="group flex h-full cursor-pointer flex-col justify-between rounded-[10px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:scale-[1.03] hover:border-blue-900/30 hover:shadow-xl sm:p-8">
+                  <div className="group flex h-full cursor-pointer flex-col justify-between rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-navy/25 hover:shadow-xl sm:p-8">
                     <div>
                       <div className="w-full">
                         <img
@@ -105,7 +105,7 @@ export default function Solutions() {
                           className="size-20 object-contain"
                         />
                       </div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-900 transition-colors">
+                      <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-navy transition-colors">
                         {program.name}
                       </h4>
                       <p className="text-gray-600 text-sm leading-relaxed mb-6">
@@ -114,7 +114,7 @@ export default function Solutions() {
                     </div>
                     <a
                       href={program.url}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-blue-900 hover:text-blue-700 transition-all mt-auto group/link"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-navy-light transition-all mt-auto group/link"
                     >
                       <span>Learn More</span>
                       <ArrowRight className="size-4 group-hover/link:translate-x-1 transition-transform" />
@@ -131,7 +131,7 @@ export default function Solutions() {
                 key={i}
                 onClick={() => emblaApi?.scrollTo(i)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  i === selectedIndex ? "w-6 bg-blue-900" : "w-2 bg-gray-300"
+                  i === selectedIndex ? "w-6 bg-brand-navy" : "w-2 bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
               />

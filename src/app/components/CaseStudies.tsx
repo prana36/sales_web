@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
+import Reveal from "./shared/Reveal";
+import SectionKicker from "./shared/SectionKicker";
 
 import iciciImg from "../assets/images/case-study/icici.png";
 import lgImg from "../assets/images/case-study/lg-case.png";
@@ -117,12 +119,10 @@ export default function CaseStudies() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="case_studies" className="bg-gray-50 px-4 py-16 sm:px-6 md:py-24">
+    <section id="case_studies" className="bg-gray-50 px-4 py-14 sm:px-6 md:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-800">
-            Case Studies
-          </p>
+        <Reveal className="mb-16 text-center">
+          <SectionKicker className="mb-3">Case Studies</SectionKicker>
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
             Business Consulting
           </h2>
@@ -130,13 +130,13 @@ export default function CaseStudies() {
             The proof of the pudding lies in its eating. Showcasing some case
             studies from the annals of our success stories in the past.
           </p>
-        </div>
+        </Reveal>
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {caseStudies.map((item, index) => (
               <div key={index} className="relative min-w-0 flex-[0_0_100%]">
-                <div className="grid min-h-[520px] overflow-hidden rounded-[10px] border border-gray-200 bg-white md:min-h-[480px] md:grid-cols-2">
+                <div className="grid min-h-[520px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:min-h-[480px] md:grid-cols-2">
                   <div className="flex flex-col">
                     <div className="flex-1 overflow-hidden">
                       <img
@@ -152,13 +152,13 @@ export default function CaseStudies() {
                     </p>
                   </div>
                   <div className="overflow-y-auto p-6 sm:p-8">
-                    <h4 className="relative mb-7 inline-block pr-16 text-lg font-semibold text-gray-800 after:absolute after:right-0 after:top-2.5 after:h-0.5 after:w-10 after:bg-blue-900">
+                    <h4 className="relative mb-7 inline-block pr-16 text-lg font-semibold text-gray-800 after:absolute after:right-0 after:top-2.5 after:h-0.5 after:w-10 after:bg-brand-navy">
                       {item.case_id}
                     </h4>
 
                     {item.tasks.map((t, i) => (
                       <div key={i} className="group mb-5">
-                        <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-blue-900 before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
+                        <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
                           {t.label}
                         </span>
                         <p className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
@@ -168,7 +168,7 @@ export default function CaseStudies() {
                     ))}
 
                     <div className="group mb-5">
-                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-blue-900 before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
+                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
                         {item.action.label}
                       </span>
                       <div className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
@@ -177,7 +177,7 @@ export default function CaseStudies() {
                     </div>
 
                     <div className="group mb-5">
-                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-blue-900 before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
+                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
                         {item.result.label}
                       </span>
                       <div className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
@@ -190,7 +190,7 @@ export default function CaseStudies() {
                     <div className="mt-6 border-t border-gray-100 pt-4">
                       <Link
                         to={`/case-studies/${item.slug}`}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-900 transition-colors hover:text-blue-700"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy transition-colors hover:text-brand-navy-light"
                       >
                         <span>Read Full Case Study</span>
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -209,7 +209,7 @@ export default function CaseStudies() {
               key={i}
               onClick={() => emblaApi?.scrollTo(i)}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === selectedIndex ? "w-6 bg-blue-900" : "w-2 bg-gray-300"
+                i === selectedIndex ? "w-6 bg-brand-navy" : "w-2 bg-gray-300"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

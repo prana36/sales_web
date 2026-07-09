@@ -1,4 +1,6 @@
 /// <reference types="vite/client" />
+import Reveal from "../components/shared/Reveal";
+import SectionKicker from "../components/shared/SectionKicker";
 
 const roles = [
   {
@@ -25,12 +27,10 @@ const roles = [
 
 export default function CareerPage() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 md:py-24 pt-28">
+    <section className="bg-white px-4 py-16 pt-32 sm:px-6 md:py-24 md:pt-36">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold text-blue-900 tracking-wider uppercase mb-2">
-            Want To Be A Part Of Our Team?
-          </p>
+        <Reveal className="text-center mb-16">
+          <SectionKicker className="mb-3">Want To Be A Part Of Our Team?</SectionKicker>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Join Our Team
           </h2>
@@ -40,29 +40,28 @@ export default function CareerPage() {
             have a consulting mindset. The Sales DNA is a prerequisite in you to
             get associated with us.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {roles.map((role, index) => (
-            <div
-              key={index}
-              className="group flex flex-col justify-between rounded-[10px] border border-gray-200/80 bg-gray-50 p-6 transition-all duration-300 hover:border-blue-900/20 hover:bg-white hover:shadow-xl sm:p-8"
-            >
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-900 transition-colors">
-                  {role.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  {role.description}
-                </p>
-              </div>
+            <Reveal delay={index * 0.08} key={role.title}>
+              <div className="group flex h-full flex-col justify-between rounded-3xl border border-gray-200/80 bg-gray-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-navy/20 hover:bg-white hover:shadow-xl sm:p-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-brand-navy transition-colors">
+                    {role.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                    {role.description}
+                  </p>
+                </div>
 
-              <div className="mt-auto flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Remote / Freelance
-                </span>
+                <div className="mt-auto flex flex-col gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                    Remote / Freelance
+                  </span>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
