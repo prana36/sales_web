@@ -1,6 +1,4 @@
 /// <reference types="vite/client" />
-import { useEffect, useState } from "react";
-import { getSetting } from "../api/dynamic-content";
 import {
   Activity,
   Award,
@@ -22,9 +20,7 @@ function youtubeEmbedUrl(url: string): string {
   const match = url.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/,
   );
-  return match
-    ? `https://www.youtube.com/embed/${match[1]}`
-    : url;
+  return match ? `https://www.youtube.com/embed/${match[1]}` : url;
 }
 
 interface JourneyStep {
@@ -35,72 +31,55 @@ interface JourneyStep {
   points: { icon: LucideIcon; label: string; url?: string }[];
 }
 
-function StepCard({
-  step,
-  index,
-  wide,
-}: {
-  step: JourneyStep;
-  index: number;
-  wide?: boolean;
-}) {
+function StepCard({ step, index }: { step: JourneyStep; index: number }) {
   return (
-    <div
-      className={`flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/[0.08] sm:p-7 ${
-        wide ? "lg:flex-row lg:items-center lg:gap-10" : ""
-      }`}
-    >
-      <div className={wide ? "lg:flex-1" : ""}>
-        <div className="mb-3 flex items-center gap-2">
-          <span className="flex size-6 items-center justify-center rounded-full bg-brand-gold text-xs font-bold text-brand-navy">
-            {index + 1}
-          </span>
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
-            {step.tag}
-          </p>
-        </div>
-        <h3 className="mb-2 text-xl font-bold leading-tight text-white">
-          {step.title}
-        </h3>
-        <p className="mb-5 text-sm leading-relaxed text-white/60">
-          {step.text}
+    <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/[0.08] sm:p-7">
+      <div className="mb-3 flex items-center gap-2">
+        <span className="flex size-6 items-center justify-center rounded-full bg-brand-gold text-xs font-bold text-brand-navy">
+          {index + 1}
+        </span>
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
+          {step.tag}
         </p>
       </div>
+      <h3 className="mb-2 text-xl font-bold leading-tight text-white">
+        {step.title}
+      </h3>
+      <p className="mb-5 text-sm leading-relaxed text-white/60">{step.text}</p>
 
-      <div className={wide ? "lg:flex-1" : ""}>
-        <div className="mb-6 space-y-3">
-          {step.points.map((point) => {
-            const Icon = point.icon;
-            const content = (
-              <>
-                <Icon className="size-4 flex-shrink-0 text-brand-gold" />
-                <span className="text-sm font-medium text-white/80">
-                  {point.label}
-                </span>
-              </>
-            );
-            return point.url ? (
-              <Link
-                key={point.label}
-                to={point.url}
-                className="flex items-center gap-3 transition-colors hover:text-white"
-              >
-                {content}
-              </Link>
-            ) : (
-              <div key={point.label} className="flex items-center gap-3">
-                {content}
-              </div>
-            );
-          })}
-        </div>
-        <a
-          className="inline-flex rounded-full bg-brand-gold px-5 py-2.5 text-sm font-bold text-brand-navy transition-all hover:-translate-y-0.5 hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20"
-          href={step.cta.href}
-        >
-          {step.cta.label}
-        </a>
+      <div className="mt-auto space-y-3 border-t border-white/10 pt-5">
+        {step.points.map((point) => {
+          const Icon = point.icon;
+          const content = (
+            <>
+              <Icon className="size-4 flex-shrink-0 text-brand-gold" />
+              <span className="text-sm font-medium text-white/80">
+                {point.label}
+              </span>
+            </>
+          );
+          return point.url ? (
+            <Link
+              key={point.label}
+              to={point.url}
+              className="flex items-center gap-3 transition-colors hover:text-white"
+            >
+              {content}
+            </Link>
+          ) : (
+            <div key={point.label} className="flex items-center gap-3">
+              {content}
+            </div>
+          );
+        })}
       </div>
+
+      <a
+        className="mt-6 inline-flex justify-center rounded-full bg-brand-gold px-5 py-2.5 text-sm font-bold text-brand-navy transition-all hover:-translate-y-0.5 hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20"
+        href={step.cta.href}
+      >
+        {step.cta.label}
+      </a>
     </div>
   );
 }
@@ -146,21 +125,11 @@ export default function WhatWeDo() {
     },
   ];
 
-  const [videoEmbedUrl, setVideoEmbedUrl] = useState(
-    "https://www.youtube.com/embed/Uh0XxtYwf9k",
-  );
-
-  useEffect(() => {
-    getSetting("growth_consulting_video_url").then((url) => {
-      if (url) setVideoEmbedUrl(youtubeEmbedUrl(url));
-    });
-  }, []);
-
   return (
     <section className="bg-white px-4 py-14 sm:px-6 md:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <div className="rounded-[2.5rem] bg-brand-navy-950 p-6 sm:p-10 lg:p-14">
+          <div className="rounded-[2.5rem] bg-brand-navy p-6 sm:p-10 lg:p-14">
             <div className="mx-auto max-w-3xl text-center">
               <SectionKicker variant="dark">What We Do</SectionKicker>
               <h2 className="mt-4 text-3xl font-bold leading-tight text-white md:text-5xl">
@@ -172,8 +141,8 @@ export default function WhatWeDo() {
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/60">
                 One connected engagement for SME & MSME businesses — we find
-                where sales is leaking, rebuild the strategy and process
-                around it, and train the team that has to run it every day.
+                where sales is leaking, rebuild the strategy and process around
+                it, and train the team that has to run it every day.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
@@ -198,24 +167,10 @@ export default function WhatWeDo() {
               </div>
             </div>
 
-            <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3 lg:items-stretch">
-              <StepCard index={0} step={journeySteps[0]} />
-
-              <div className="relative min-h-[240px] overflow-hidden rounded-3xl border border-white/10 bg-black lg:min-h-0">
-                <iframe
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full border-0"
-                  src={videoEmbedUrl}
-                  title="Growth Consulting Agency"
-                />
-              </div>
-
-              <StepCard index={1} step={journeySteps[1]} />
-            </div>
-
-            <div className="mt-6">
-              <StepCard index={2} step={journeySteps[2]} wide />
+            <div className="mt-6 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+              {journeySteps.map((step, index) => (
+                <StepCard index={index} key={step.tag} step={step} />
+              ))}
             </div>
           </div>
         </Reveal>

@@ -14,12 +14,15 @@ export default function SectionKicker({
   const variantClass =
     variant === "dark"
       ? "bg-brand-gold text-brand-navy-950 shadow-sm shadow-brand-gold/30"
-      : "bg-brand-navy text-white shadow-sm shadow-brand-navy/20";
+      : "border border-sky-100 bg-sky-50 text-sky-700";
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider ${variantClass} ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider ${variantClass} ${className}`}
     >
+      {variant !== "dark" ? (
+        <span className="size-1.5 rounded-full bg-brand-gold" />
+      ) : null}
       {children}
     </span>
   );

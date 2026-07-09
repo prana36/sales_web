@@ -45,7 +45,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-brand-navy-950 px-4 py-16 text-white/70 sm:px-6 lg:py-20">
+    <footer className="relative overflow-hidden bg-brand-navy px-4 py-16 text-white/80 sm:px-6 lg:py-20">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="space-y-4 md:col-span-4">
@@ -56,7 +56,7 @@ export default function Footer() {
                 src={logoImg}
               />
             </div>
-            <p className="text-sm leading-relaxed text-white/50">
+            <p className="text-sm leading-relaxed text-white/70">
               Strategic Concepts (India) Pvt. Ltd. provides 360-degree
               solutions for sales, customer service, training, consulting,
               sales audit, and performance enablement.
@@ -66,7 +66,7 @@ export default function Footer() {
                 const Icon = social.icon;
                 return (
                   <a
-                    className="rounded-xl bg-white/10 p-2.5 text-white/70 transition-all hover:bg-brand-gold hover:text-brand-navy-950"
+                    className="rounded-xl bg-white/10 p-2.5 text-white/80 transition-all hover:bg-brand-gold hover:text-brand-navy-950"
                     href={social.url}
                     key={social.platform}
                     rel="noopener noreferrer"
@@ -96,7 +96,7 @@ export default function Footer() {
               {categories.map((cat) => (
                 <li key={cat.label}>
                   <a
-                    className="text-white/50 transition-colors hover:text-brand-gold"
+                    className="text-white/70 transition-colors hover:text-brand-gold"
                     href={cat.url}
                   >
                     {cat.label}
@@ -125,7 +125,7 @@ export default function Footer() {
             <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
               Contact Details
             </h4>
-            <ul className="space-y-3 text-sm leading-relaxed text-white/50">
+            <ul className="space-y-3 text-sm leading-relaxed text-white/70">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 size-4 flex-shrink-0 text-brand-gold" />
                 <span>
@@ -152,7 +152,7 @@ export default function Footer() {
             <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
               Newsletter
             </h4>
-            <p className="mb-4 text-sm leading-relaxed text-white/50">
+            <p className="mb-4 text-sm leading-relaxed text-white/70">
               Subscribe for sales growth tips and updates.
             </p>
             <form className="space-y-2.5" onSubmit={handleNewsletterSubmit}>
@@ -176,7 +176,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 md:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/60 md:flex-row">
           <p>Copyright 2026 Strategic Concepts (India) Pvt. Ltd. All Rights Reserved.</p>
         </div>
       </div>

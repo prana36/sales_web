@@ -64,16 +64,16 @@ export default function Contact() {
         <div className="grid lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
 
           {/* Contact Details (Left Column) */}
-          <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-brand-navy-950 p-6 text-white shadow-2xl sm:p-8 md:p-10 lg:col-span-5">
+          <div className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-brand-navy p-6 text-white shadow-2xl sm:p-8 md:p-10 lg:col-span-5">
             {/* Background Accent */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-navy/20 rounded-full blur-2xl"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
 
             <div className="space-y-8 relative z-10">
               <div>
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-widest block mb-2">Our Office</span>
                 <h3 className="text-2xl font-bold mb-4">Strategic Concepts (India) Pvt. Ltd.</h3>
 
-                <div className="flex gap-4 items-start text-white/70">
+                <div className="flex gap-4 items-start text-white/85">
                   <MapPin className="size-6 text-brand-gold flex-shrink-0 mt-0.5" />
                   <p className="text-sm leading-relaxed">
                     1st Floor, Gokul Building, W.H.C. Road, Dharampeth, Nagpur - 440010
@@ -82,14 +82,14 @@ export default function Contact() {
               </div>
 
               <div className="space-y-4 pt-4 border-t border-white/10">
-                <div className="flex gap-4 items-center text-white/70">
+                <div className="flex gap-4 items-center text-white/85">
                   <Phone className="size-5 text-brand-gold flex-shrink-0" />
                   <a href="tel:+919970506000" className="text-sm hover:text-white transition-colors">
                     +91-9970506000
                   </a>
                 </div>
 
-                <div className="flex gap-4 items-center text-white/70">
+                <div className="flex gap-4 items-center text-white/85">
                   <Mail className="size-5 text-brand-gold flex-shrink-0" />
                   <a href="mailto:sanjay@consult4sales.com" className="text-sm hover:text-white transition-colors">
                     sanjay@consult4sales.com
