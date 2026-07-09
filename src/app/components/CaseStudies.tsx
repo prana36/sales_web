@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Reveal from "./shared/Reveal";
 import SectionKicker from "./shared/SectionKicker";
 
@@ -15,12 +15,11 @@ export interface CaseStudy {
   case_id: string;
   client: string;
   industry: string;
-  tasks: { label: string; text: string }[];
-  action: { label: string; text: string };
-  result: { label: string; text: string[] };
+  challenge: string;
+  outcome: string;
+  metricValue: string;
+  metricLabel: string;
   thumbnail: string;
-  captionLine1: string;
-  captionLine2: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -29,79 +28,46 @@ export const caseStudies: CaseStudy[] = [
     case_id: "Case 01",
     client: "ICICI Bank Limited, SME CEO Circle",
     industry: "Emerging Markets, BFSI Industry Vertical",
-    tasks: [
-      { label: "Task:", text: "New Customer Acquisition by Liability Section in Emerging Markets of India" },
-    ],
-    action: {
-      label: "Action:",
-      text: "The pain point of SME and MSME in Emerging markets was identified as Succession Planning in Family Managed Businesses. Management Theater titled \u201CKissa Kursi Ka\u201D was enacted in the Nukkad Natak format. The topic delved with live challenges of Succession planning in Family Managed businesses",
-    },
-    result: {
-      label: "Result",
-      text: [
-        "Thunderous response in 38 cities (emerging markets identified by ICICI Bank) leading to new business acquisitions",
-        "New footprint of customers acquired in Varanasi, Goa, Indore, Kashipur, Nagpur, Pune, Noida, Guwahati, Raipur, Hyderabad, Faridabad, Jalandhar, Udaipur, Dehradun, Kanpur, Vadodara, Chandigarh, Sonipat, Jodhpur, Ludhiana, Kolhapur, Jaipur, Bengaluru, Mumbai, Ahmedabad",
-      ],
-    },
+    challenge:
+      "Acquire new liability customers across India's emerging markets, while easing succession-planning anxieties inside family-run SMEs.",
+    outcome:
+      "The 'Kissa Kursi Ka' business-theatre roadshow toured emerging markets nationwide, opening fresh customer footprints for ICICI Bank in every city.",
+    metricValue: "38",
+    metricLabel: "Emerging-market cities activated",
     thumbnail: iciciImg,
-    captionLine1: "ICICI Bank Limited, SME CEO Circle",
-    captionLine2: "Emerging Markets, BFSI Industry Vertical",
   },
   {
     slug: "lg-electronics-india",
     case_id: "Case 02",
     client: "LG Electronics, India",
     industry: "Retail Trade",
-    tasks: [
-      { label: "Task 1:", text: "To train DSO, Area Managers and Branch Managers on Retail Sales Management" },
-      { label: "Task 2:", text: "To kindle the spirit of sales in the service team" },
-      { label: "Task 3:", text: "To coach the Modern Retail Trade Team on Key Account Management" },
-      { label: "Task 4:", text: "To train the large format retail store management team on Sell-Out Management." },
-      { label: "Task 5:", text: "To coach the water purifier service team on AMC closures." },
-    ],
-    action: {
-      label: "Action:",
-      text: "Co-create and Curate effective training programs for the Retail Sales, Large Format Retail Sales, KAM Sales, Customer Service, Modern Retail Trade and Water Purifier divisions.",
-    },
-    result: {
-      label: "Result",
-      text: [
-        "All training programs rolled out across India in LG branches and regional offices with measurable results in terms of incremental sales.",
-        "Cities covered in roll out plan : Chennai, Pune, Bhubaneshwar, Chandigarh, Greater Noida, Indore, Kolkata, Lucknow, Ludhiana, Pune, Hyderabad, Mumbai, Bhopal, Delhi, Jaipur, Ahmedabad and Ghaziabad",
-      ],
-    },
+    challenge:
+      "Lift frontline performance across five sales functions at once — General & Modern Trade, Key Accounts, Large Format Retail and Water Purifier Service.",
+    outcome:
+      "Co-curated training rolled out branch by branch nationwide, with Modern Trade and Sell-Out teams posting measurable incremental sales.",
+    metricValue: "17+",
+    metricLabel: "Cities covered in the rollout",
     thumbnail: lgImg,
-    captionLine1: "LG Electronics , India",
-    captionLine2: "Retail Trade",
   },
   {
     slug: "amway-mlm-distributors",
     case_id: "Case 03",
     client: "Amway (www.amway.in)",
     industry: "Multi Level Marketing",
-    tasks: [
-      { label: "Task:", text: "To empower the Diamond Distributors on MLM Best Practices" },
-    ],
-    action: {
-      label: "Action:",
-      text: "A MDP program was curated and delivered at Indian Institute of Management, Kolkata for Top 25 Distributors in India; a follow-up series was undertaken in Gurgaon HO.",
-    },
-    result: {
-      label: "Result",
-      text: [
-        "Distributors started appreciating that MLM is not only about adding to the chain but also selling goods and services which are promised to the chain.",
-      ],
-    },
+    challenge:
+      "Diamond Distributors needed a sharper grip on ethical, sustainable MLM practice — beyond simply growing the downline.",
+    outcome:
+      "An MDP at IIM Kolkata, followed by a Gurgaon HO series, shifted distributor mindset toward genuine product and service selling.",
+    metricValue: "Top 25",
+    metricLabel: "Diamond Distributors coached",
     thumbnail: amwayImg,
-    captionLine1: "www.amway.in",
-    captionLine2: "Multi Level Marketing",
   },
 ];
 
 export default function CaseStudies() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
-    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -118,6 +84,9 @@ export default function CaseStudies() {
     return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi, onSelect]);
 
+  const pauseAutoplay = () => emblaApi?.plugins()?.autoplay?.stop();
+  const resumeAutoplay = () => emblaApi?.plugins()?.autoplay?.play();
+
   return (
     <section id="case_studies" className="bg-gray-50 px-4 py-14 sm:px-6 md:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
@@ -132,88 +101,121 @@ export default function CaseStudies() {
           </p>
         </Reveal>
 
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {caseStudies.map((item, index) => (
-              <div key={index} className="relative min-w-0 flex-[0_0_100%]">
-                <div className="grid min-h-[520px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:min-h-[480px] md:grid-cols-2">
-                  <div className="flex flex-col">
-                    <div className="flex-1 overflow-hidden">
+        <div
+          className="relative"
+          onMouseEnter={pauseAutoplay}
+          onMouseLeave={resumeAutoplay}
+        >
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {caseStudies.map((item) => (
+                <div key={item.slug} className="min-w-0 flex-[0_0_100%]">
+                  <div className="grid overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:h-[500px] md:grid-cols-2">
+                    <div className="relative h-64 md:h-full">
                       <img
                         src={item.thumbnail}
                         alt={item.client}
                         loading="lazy"
                         className="h-full w-full object-cover"
                       />
-                    </div>
-                    <p className="py-3 text-center text-sm font-semibold text-gray-700">
-                      {item.captionLine1}<br />
-                      {item.captionLine2}
-                    </p>
-                  </div>
-                  <div className="overflow-y-auto p-6 sm:p-8">
-                    <h4 className="relative mb-7 inline-block pr-16 text-lg font-semibold text-gray-800 after:absolute after:right-0 after:top-2.5 after:h-0.5 after:w-10 after:bg-brand-navy">
-                      {item.case_id}
-                    </h4>
-
-                    {item.tasks.map((t, i) => (
-                      <div key={i} className="group mb-5">
-                        <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
-                          {t.label}
+                      <div className="absolute inset-x-0 top-0 flex justify-between p-5">
+                        <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold tracking-wide text-brand-navy shadow-sm backdrop-blur-sm">
+                          {item.case_id}
                         </span>
-                        <p className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
-                          {t.text}
-                        </p>
                       </div>
-                    ))}
-
-                    <div className="group mb-5">
-                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
-                        {item.action.label}
-                      </span>
-                      <div className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
-                        {item.action.text}
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 pt-14">
+                        <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white ring-1 ring-white/30 backdrop-blur-sm">
+                          {item.industry}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="group mb-5">
-                      <span className="relative z-10 float-left w-[90px] bg-transparent px-1 py-0.5 text-sm font-bold text-gray-700 transition-all duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-brand-navy before:transition-all before:duration-300 group-hover:text-white group-hover:before:w-full">
-                        {item.result.label}
-                      </span>
-                      <div className="overflow-hidden pl-2 text-sm leading-relaxed text-gray-600">
-                        {item.result.text.map((line, j) => (
-                          <p key={j}>{line}</p>
-                        ))}
-                      </div>
-                    </div>
+                    <div className="flex flex-col p-6 sm:p-8">
+                      <h3 className="text-xl font-bold leading-snug text-brand-navy md:text-2xl">
+                        {item.client}
+                      </h3>
 
-                    <div className="mt-6 border-t border-gray-100 pt-4">
-                      <Link
-                        to={`/case-studies/${item.slug}`}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy transition-colors hover:text-brand-navy-light"
-                      >
-                        <span>Read Full Case Study</span>
-                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      <div className="mt-5 flex items-center gap-4 rounded-xl border border-brand-navy/10 bg-brand-navy/[0.04] px-4 py-3">
+                        <span className="text-2xl font-extrabold leading-none text-brand-navy">
+                          {item.metricValue}
+                        </span>
+                        <span className="text-xs leading-snug text-gray-500">
+                          {item.metricLabel}
+                        </span>
+                      </div>
+
+                      <div className="mt-5 space-y-4">
+                        <div>
+                          <p className="text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                            The Challenge
+                          </p>
+                          <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-gray-600">
+                            {item.challenge}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold uppercase tracking-wider text-brand-gold">
+                            The Outcome
+                          </p>
+                          <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-gray-600">
+                            {item.outcome}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-auto pt-6">
+                        <Link
+                          to={`/case-studies/${item.slug}`}
+                          className="group inline-flex items-center gap-2 rounded-full border border-brand-navy px-5 py-2.5 text-sm font-semibold text-brand-navy transition-colors hover:bg-brand-navy hover:text-white"
+                        >
+                          Read Full Case Study
+                          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
+          <button
+            type="button"
+            onClick={() => emblaApi?.scrollPrev()}
+            aria-label="Previous case study"
+            className="absolute left-2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden size-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-md transition-colors hover:border-brand-navy hover:text-brand-navy md:flex"
+          >
+            <ArrowLeft className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => emblaApi?.scrollNext()}
+            aria-label="Next case study"
+            className="absolute right-2 top-1/2 translate-x-1/2 -translate-y-1/2 hidden size-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-md transition-colors hover:border-brand-navy hover:text-brand-navy md:flex"
+          >
+            <ArrowRight className="size-4" />
+          </button>
         </div>
 
-        <div className="mt-6 flex justify-center gap-2">
-          {caseStudies.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => emblaApi?.scrollTo(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === selectedIndex ? "w-6 bg-brand-navy" : "w-2 bg-gray-300"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <span className="text-sm font-semibold text-gray-400">
+            {String(selectedIndex + 1).padStart(2, "0")}
+          </span>
+          <div className="flex gap-2">
+            {caseStudies.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => emblaApi?.scrollTo(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === selectedIndex ? "w-8 bg-brand-navy" : "w-4 bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+          <span className="text-sm font-semibold text-gray-400">
+            {String(caseStudies.length).padStart(2, "0")}
+          </span>
         </div>
       </div>
     </section>

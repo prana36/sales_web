@@ -29,18 +29,18 @@ export default function ExpertiseMarquee() {
           animation-play-state: paused;
         }
       `}</style>
-      <div className="flex items-center gap-6 ml-6 md:ml-12">
-        <span className="shrink-0 text-sm font-bold text-brand-navy uppercase tracking-wider whitespace-nowrap">
+      <div className="flex flex-col gap-2 pl-4 pr-4 sm:pl-6 sm:pr-6 md:flex-row md:items-center md:gap-6 md:pl-12 md:pr-0">
+        <span className="shrink-0 text-xs font-bold text-brand-navy uppercase tracking-wider whitespace-nowrap sm:text-sm">
           Areas of Core Expertise
         </span>
-        <div className="overflow-hidden flex-1">
+        <div className="overflow-hidden md:flex-1">
           <div className="expertise-track">
             {[...expertise, ...expertise].map((item, i) => (
               <div
                 key={i}
                 className="flex shrink-0 items-center gap-2 whitespace-nowrap"
               >
-                <CheckCircle2 className="size-4 text-brand-gold" />
+                <CheckCircle2 className="size-4 shrink-0 text-brand-gold" />
                 <span className="font-medium text-gray-800 text-sm">
                   {item}
                 </span>
