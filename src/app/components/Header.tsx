@@ -31,7 +31,7 @@ export default function Header() {
 
         { label: "Sales Training", url: "/#welcome_temple_of_sales" },
         { label: "Growth Consulting", url: "/#growth_consulting_agency" },
-        { label: "Sales Mitra Helpline", url: "/#sales_mitra_helpline" },
+        { label: "Sales Mitra Helpline", url: "/sales-mitra-helpline" },
         { label: "Sales Audit", url: "/#sales_audit" },
       ],
     },

@@ -32,7 +32,7 @@ export default function Footer() {
   const categories = [
     { label: "Services", url: "/#solutions_services" },
     { label: "Case Studies", url: "/#case_studies" },
-    { label: "Online Support", url: "/#sales_mitra_helpline" },
+    { label: "Online Support", url: "/sales-mitra-helpline" },
     { label: "Sales Audit", url: "/#sales_audit" },
     { label: "About Our Company", url: "/top-sales-trainer" },
   ];

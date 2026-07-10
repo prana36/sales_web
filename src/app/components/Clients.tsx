@@ -68,11 +68,11 @@ export default function Clients() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-14 sm:py-20 lg:py-24 bg-white border-b border-gray-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <Reveal className="text-center mb-12">
+    <section className="bg-white px-4 py-14 sm:px-6 md:py-20 lg:py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <Reveal className="text-center mb-16">
           <SectionKicker className="mb-3">Our Clients</SectionKicker>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             World-class capability building
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">

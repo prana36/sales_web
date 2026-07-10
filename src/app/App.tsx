@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { Toaster } from "sonner";
-import Capabilities from "./components/Capabilities";
 import CaseStudies from "./components/CaseStudies";
 import Clients from "./components/Clients";
 import CompanyStats from "./components/CompanyStats";
@@ -12,7 +11,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ExpertiseMarquee from "./components/ExpertiseMarquee";
 import HowWeWork from "./components/HowWeWork";
-import SalesHelpline from "./components/SalesHelpline";
+import SalesMitraHelplinePage from "./pages/SalesMitraHelplinePage";
 import Solutions from "./components/Solutions";
 import Testimonials from "./components/Testimonials";
 import WhatWeDo from "./components/WhatWeDo";
@@ -41,15 +40,13 @@ function HomePage() {
       <Hero />
       <ExpertiseMarquee />
       <WhatWeDo />
-      <Clients />
       <CompanyStats />
       <Solutions />
       <HowWeWork />
+      <Clients />
       <CaseStudies />
-      <Capabilities />
       <Testimonials />
       {/* <DynamicResources /> */}
-      <SalesHelpline />
       <Contact />
     </>
   );
@@ -88,6 +85,7 @@ function SiteRoutes() {
         <Route element={<TopSalesTrainerPage />} path="/top-sales-trainer" />
         <Route element={<CoreTeamPage />} path="/core-team" />
         <Route element={<CareerPage />} path="/career" />
+        <Route element={<SalesMitraHelplinePage />} path="/sales-mitra-helpline" />
         <Route element={<PricingPage />} path="/pricing" />
         <Route element={<GapAnalysisPage />} path="/gap-analysis" />
         <Route element={<LearningOutcomePage />} path="/learning-outcome" />
