@@ -1,24 +1,24 @@
 /// <reference types="vite/client" />
-import { AlertTriangle, ClipboardCheck, Map, Zap } from "lucide-react";
+import { AlertTriangle, ClipboardCheck, FileSignature, Zap } from "lucide-react";
 import Reveal from "./shared/Reveal";
 import SectionKicker from "./shared/SectionKicker";
 
 export default function HowWeWork() {
   const steps = [
     {
-      title: "Sales Audit",
-      icon: ClipboardCheck,
-      text: "Regression, business intelligence, and competition analysis to read the sales function.",
-    },
-    {
       title: "Gap Analysis",
       icon: AlertTriangle,
-      text: "A first-hand report on the What, When, Where, Who, Why, and How behind the gaps.",
+      text: "A first-hand report on the What, When, Where, Who, Why, and How behind the gaps in your sales function.",
     },
     {
-      title: "Go-To-Market Plan",
-      icon: Map,
-      text: "Quarter-wise actions, budgets, and owners documented for the year ahead.",
+      title: "Blueprint for Success",
+      icon: ClipboardCheck,
+      text: "A tailored strategy and process redesign built around the gaps uncovered, with clear milestones and owners.",
+    },
+    {
+      title: "Annual Retainership Contract",
+      icon: FileSignature,
+      text: "A co-created MOU that puts the blueprint into a committed, mutually agreed engagement for the year.",
     },
     {
       title: "Implementation",

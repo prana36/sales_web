@@ -5,6 +5,8 @@ export const emptyDynamicContent: DynamicContent = {
   courses: [],
   blogs: [],
   downloads: [],
+  caseStudies: [],
+  services: [],
 };
 
 export type DynamicContentStatus = "loading" | "ready" | "empty";
@@ -26,7 +28,11 @@ export function useDynamicContent() {
 
         setContent(data);
         setStatus(
-          data.courses.length || data.blogs.length || data.downloads.length
+          data.courses.length ||
+            data.blogs.length ||
+            data.downloads.length ||
+            data.caseStudies.length ||
+            data.services.length
             ? "ready"
             : "empty",
         );

@@ -25,7 +25,9 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
-              href="#sales_audit"
+              href="/pdf/sales-checklist/Sales_Management_Audit_-_Direct_Selling_Model.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-6 py-3.5 text-sm font-semibold text-brand-navy transition-all hover:-translate-y-0.5 hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/30"
             >
               Check your sales function
@@ -106,7 +108,7 @@ export default function Hero() {
               Sales growth
             </p>
             <p className="mt-1 text-2xl font-semibold text-brand-gold sm:text-3xl">
-              +20%
+              Min +20%
             </p>
             <div className="mt-2 flex items-end gap-1 sm:mt-3">
               {[40, 55, 45, 65, 58, 78, 90].map((h, i) => (

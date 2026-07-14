@@ -7,7 +7,9 @@ import {
   ExternalLink,
   FileText,
   GraduationCap,
+  Linkedin,
   Loader2,
+  Quote,
 } from "lucide-react";
 import type React from "react";
 import { Link, useParams, useSearchParams } from "react-router";
@@ -486,20 +488,30 @@ export function DownloadsPage() {
       ) : null}
 
       {status === "ready" && activeCategory === "Brochure" ? (
-        <div className="text-center">
+        <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">Downloads for</p>
-          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Strategic Concepts Brochure</h2>
-          <div className="mx-auto max-w-md rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
-            <Download className="mx-auto mb-4 size-12 text-brand-navy" />
-            <p className="mb-6 text-gray-600">Download the complete Strategic Concepts Brochure 2019</p>
-            <a
-              href={filtered.length > 0 ? (publicAssetUrl(filtered[0].file_path) ?? "#") : "#"}
-              download
-              className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-navy-dark"
-            >
-              <Download className="size-4" />
-              Download Brochure
-            </a>
+          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Our Brochures</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((item) => (
+              <div
+                key={item.id}
+                className="group flex flex-col rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-navy/25 hover:shadow-lg"
+              >
+                <span className="mb-4 flex size-11 items-center justify-center rounded-2xl bg-brand-navy/[0.06] text-brand-navy">
+                  <FileText className="size-5" />
+                </span>
+                <h3 className="mb-2 font-bold text-gray-900">{item.title}</h3>
+                <p className="mb-6 flex-1 text-sm text-gray-500">{item.description}</p>
+                <a
+                  href={publicAssetUrl(item.file_path) ?? "#"}
+                  download
+                  className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-brand-navy px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-navy-dark"
+                >
+                  <Download className="size-4" />
+                  Download
+                </a>
+              </div>
+            ))}
           </div>
           <div className="mt-6">
             <button
@@ -514,10 +526,24 @@ export function DownloadsPage() {
 
       {status === "ready" && activeCategory === "Recommendations" ? (
         <div>
-          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">Recommendations</h2>
+          <div className="mb-8">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-brand-gold">From Our Network</p>
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">Recommendations</h2>
+          </div>
           <div className="grid gap-6 md:grid-cols-2">
             {filtered.map((item) => (
-              <div key={item.id} className="flex flex-col rounded-3xl border border-gray-200 bg-gray-50 p-6">
+              <div
+                key={item.id}
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="flex size-10 items-center justify-center rounded-full bg-brand-navy/[0.06] text-brand-navy">
+                    <Quote className="size-4" />
+                  </span>
+                  <span className="flex size-8 items-center justify-center rounded-full bg-[#0A66C2]/10 text-[#0A66C2]">
+                    <Linkedin className="size-4" />
+                  </span>
+                </div>
                 <div className="flex-1">
                   <p className="mb-4 text-sm leading-relaxed text-gray-700">
                     &ldquo;{item.description.replace(/^.{120}.*?(\s|$)/, "$&").slice(0, 200)}&rdquo;

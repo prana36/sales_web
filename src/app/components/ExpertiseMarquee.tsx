@@ -2,13 +2,16 @@ import { CheckCircle2 } from "lucide-react";
 
 const expertise = [
   "Direct Sales",
+  "Industrial Sales",
+  "Institutional",
+  "Exports",
+  "Franchisee",
   "Channel of Distribution",
-  "Retail Trade",
   "Modern Retail Trade",
   "Key Account Management",
-  "Industrial Selling",
-  "Exports",
-  "E-Commerce",
+  "E Commerce",
+  "Govt Tenders",
+  "Multi Level Marketing",
 ];
 
 export default function ExpertiseMarquee() {

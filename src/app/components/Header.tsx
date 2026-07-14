@@ -28,11 +28,16 @@ export default function Header() {
       label: "Services",
       url: "/#solutions_services",
       children: [
-
         { label: "Sales Training", url: "/#welcome_temple_of_sales" },
         { label: "Growth Consulting", url: "/#growth_consulting_agency" },
         // { label: "Sales Mitra Helpline", url: "/sales-mitra-helpline" },
         { label: "Sales Audit", url: "/#sales_audit" },
+        { label: "Sales Ki Jaat", url: "/services/sales-ki-jaat" },
+        { label: "Sales Ki Vidhi", url: "/services/sales-ki-vidhi" },
+        { label: "Sales Ki Niti", url: "/services/sales-ki-niti" },
+        { label: "Sales Mein Molbhav", url: "/services/sales-mein-molbhav" },
+        { label: "Sales Katha", url: "/services/sales-katha" },
+        { label: "Sales Ke Rishte", url: "/services/sales-ke-rishte" },
       ],
     },
     { label: "Case Studies", url: "/#case_studies", children: [] },

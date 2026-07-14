@@ -16,12 +16,17 @@ export default function Contact() {
   });
 
   const formOfSellingOptions = [
+    "Direct Sales",
+    "Industrial Sales",
+    "Institutional",
+    "Exports",
+    "Franchisee",
     "Channel of Distribution",
     "Modern Retail Trade",
-    "Direct Selling",
     "Key Account Management",
-    "Exports",
-    "E-commerce"
+    "E Commerce",
+    "Govt Tenders",
+    "Multi Level Marketing",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {

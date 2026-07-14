@@ -15,7 +15,7 @@ export default function TopSalesTrainerPage() {
       icon: Sparkles,
     },
     {
-      text: "Trusted by major corporate brands including LG Electronics, Godrej & Boyce, ICICI Bank, SBM Bank, Airtel, Tata Teleservices, and Nestle.",
+      text: "Trusted by major corporate brands including LG Electronics, Godrej & Boyce, ICICI Bank, Airtel, Tata Teleservices, Nestle, Ultratech, HUL, Kohler, Lemken and many more.",
       icon: Users,
     },
     {

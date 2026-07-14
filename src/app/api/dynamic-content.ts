@@ -47,10 +47,55 @@ export type Setting = {
   value: string;
 };
 
+export type CaseStudy = {
+  id: string;
+  slug: string;
+  case_id: string;
+  client: string;
+  industry: string;
+  challenge: string;
+  outcome: string;
+  metric_value: string;
+  metric_label: string;
+  thumbnail_path: string | null;
+  banner_image_paths: string[];
+  description: string;
+  client_name: string | null;
+  location: string | null;
+  duration: string | null;
+  csi: string | null;
+  category: string | null;
+  detailed_content: string[];
+};
+
+export type ServiceFaqItem = {
+  question: string;
+  answer: string;
+};
+
+export type ServiceFaqGroup = {
+  group: string;
+  items: ServiceFaqItem[];
+};
+
+export type Service = {
+  id: string;
+  slug: string;
+  name: string;
+  hindi_title: string | null;
+  summary: string;
+  description_paragraphs: string[];
+  image_path: string | null;
+  faqs: ServiceFaqGroup[];
+  related_case_study_slugs: string[];
+};
+
 export type DynamicContent = {
   courses: Course[];
   blogs: Blog[];
   downloads: Download[];
+  caseStudies: CaseStudy[];
+  services: Service[];
 };
 
 import { hasSupabasePublicConfig, supabaseConfig } from "./supabase-config";
@@ -101,15 +146,17 @@ export function publicAssetUrl(path: string | null | undefined) {
 }
 
 export async function getDynamicContent(): Promise<DynamicContent> {
-  const [courses, blogs, downloads] = await Promise.all([
+  const [courses, blogs, downloads, caseStudies, services] = await Promise.all([
     fetchTable<Course>("courses"),
     fetchTable<Blog>("blogs"),
     fetchTable<Download>("downloads"),
+    fetchTable<CaseStudy>("case_studies"),
+    fetchTable<Service>("services"),
   ]);
 
-  console.log("Fetched dynamic content:", { courses, blogs, downloads });
+  console.log("Fetched dynamic content:", { courses, blogs, downloads, caseStudies, services });
 
-  return { courses, blogs, downloads };
+  return { courses, blogs, downloads, caseStudies, services };
 }
 
 export async function getSetting(key: string): Promise<string | null> {

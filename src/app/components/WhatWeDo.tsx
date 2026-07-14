@@ -140,9 +140,9 @@ export default function WhatWeDo() {
                 Develop the team.
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/60">
-                One connected engagement for SME & MSME businesses — we find
-                where sales is leaking, rebuild the strategy and process around
-                it, and train the team that has to run it every day.
+                Root Cause Analysis - We plug leakages in Sales Funnel,
+                rebuild strategy and process around it and train the team
+                that has to run it everyday.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a

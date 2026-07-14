@@ -20,6 +20,7 @@ import CareerPage from "./pages/CareerPage";
 import CoreTeamPage from "./pages/CoreTeamPage";
 import TopSalesTrainerPage from "./pages/TopSalesTrainerPage";
 import CaseStudyDetailPage from "./pages/CaseStudyDetailPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
 import GapAnalysisPage from "./pages/gap-analysis";
 import LearningOutcomePage from "./pages/learning-outcome";
 import OutcomeTrackingPage from "./pages/outcome-tracking";
@@ -91,6 +92,7 @@ function SiteRoutes() {
         <Route element={<LearningOutcomePage />} path="/learning-outcome" />
         <Route element={<OutcomeTrackingPage />} path="/outcome-tracking" />
         <Route element={<CaseStudyDetailPage />} path="/case-studies/:slug" />
+        <Route element={<ServiceDetailPage />} path="/services/:slug" />
         <Route element={<CoursesPage />} path="/courses" />
         <Route element={<CourseDetailPage />} path="/courses/:slug" />
         <Route element={<BlogsPage />} path="/blogs" />

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
@@ -15,42 +16,42 @@ import molbhavImg from "../assets/images/services/sales-mein-molbhav.png";
 const programs = [
   {
     name: "Sales Mein Molbhav",
-    url: "#contact",
+    slug: "sales-mein-molbhav",
     summary:
       "Focuses on sales negotiation process, sales negotiation skills, tactics, selling and bargaining skills, forming part of the 'Sales Me Molbhav' framework.",
     image: molbhavImg,
   },
   {
     name: "Sales Katha",
-    url: "#contact",
+    slug: "sales-katha",
     summary:
       "Storytelling-based approach to explain sales to customers; emphasizes communicating via stories in addition to FAB and FAQ.",
     image: kathaImg,
   },
   {
     name: "Sales Ke Rishte",
-    url: "#contact",
+    slug: "sales-ke-rishte",
     summary:
       "Proprietary customer relationship management system focusing on tools and features to leverage Customer LifeTime Value (CLTV).",
     image: rishteImg,
   },
   {
     name: "Sales Ki Jaat",
-    url: "#contact",
+    slug: "sales-ki-jaat",
     summary:
       "Focuses on the DNA of Sales in salesperson's skills, enriching salesmanship with consultant skills to build a repository of sales expertise.",
     image: jaatImg,
   },
   {
     name: "Sales Ki Vidhi",
-    url: "#contact",
+    slug: "sales-ki-vidhi",
     summary:
       "Answers 'how to sell?' by focusing on sales life cycle, methods, techniques and processes of effective selling.",
     image: vidhiImg,
   },
   {
     name: "Sales Ki Niti",
-    url: "#contact",
+    slug: "sales-ki-niti",
     summary:
       "Sales strategy program focusing on sales planning, techniques and strategic selling to improve sales.",
     image: nitiImg,
@@ -91,11 +92,11 @@ export default function Solutions() {
           </p>
         </Reveal>
 
-        <div className="mb-24">
+        <div>
           <div className="overflow-hidden py-4" ref={emblaRef}>
-            <div className="flex">
+            <div className="-ml-4 flex sm:-ml-6">
               {programs.map((program, index) => (
-                <div key={index} className="relative min-w-0 flex-[0_0_85%] pl-4 sm:flex-[0_0_45%] lg:flex-[0_0_30%]">
+                <div key={index} className="relative min-w-0 flex-[0_0_88%] pl-4 sm:flex-[0_0_50%] sm:pl-6 lg:flex-[0_0_33.3333%]">
                   <div className="group flex h-full cursor-pointer flex-col justify-between rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-navy/25 hover:shadow-xl sm:p-8">
                     <div>
                       <div className="w-full">
@@ -112,13 +113,13 @@ export default function Solutions() {
                         {program.summary}
                       </p>
                     </div>
-                    <a
-                      href={program.url}
+                    <Link
+                      to={`/services/${program.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-navy-light transition-all mt-auto group/link"
                     >
                       <span>Learn More</span>
                       <ArrowRight className="size-4 group-hover/link:translate-x-1 transition-transform" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}
