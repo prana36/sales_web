@@ -5,6 +5,9 @@ import sanjayImg from "../assets/images/team/Sanjay-Singh.png";
 import sanskritaImg from "../assets/images/team/Sanskrita-Singh.png";
 import lajooImg from "../assets/images/team/Lajoo-Charles.png";
 import milliImg from "../assets/images/team/Milli-Juneja.png";
+import dhananjayImg from "../assets/images/team/Dhananjay-Singh.png";
+import nripendraImg from "../assets/images/team/Nripendra-Singh.png";
+import faizaanImg from "../assets/images/team/Faizaan-Sayeed.png";
 
 export default function Team() {
   const capabilities = [
@@ -39,6 +42,13 @@ export default function Team() {
       image: sanjayImg
     },
     {
+      name: "Dhananjay Singh",
+      role: "Consultant",
+      url: "https://www.linkedin.com/in/dhananjay-singh-sales/",
+      isLinkedin: true,
+      image: dhananjayImg
+    },
+    {
       name: "Sanskrita Singh",
       role: "Co-Founder / Consultant",
       url: "",
@@ -58,6 +68,20 @@ export default function Team() {
       url: "https://www.linkedin.com/in/milijuneja/",
       isLinkedin: true,
       image: milliImg
+    },
+    {
+      name: "Nripendra Singh",
+      role: "Senior Consultant",
+      url: "https://www.linkedin.com/in/nripendra-singh-sales/",
+      isLinkedin: true,
+      image: nripendraImg
+    },
+    {
+      name: "Faizaan Sayeed",
+      role: "Sales Associate",
+      url: "https://www.linkedin.com/in/faizaan-sayeed/",
+      isLinkedin: true,
+      image: faizaanImg
     }
   ];
 

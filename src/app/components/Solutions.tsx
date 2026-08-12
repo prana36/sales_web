@@ -56,6 +56,55 @@ const programs = [
       "Sales strategy program focusing on sales planning, techniques and strategic selling to improve sales.",
     image: nitiImg,
   },
+  {
+    name: "Sales Advisory",
+    slug: "sales-advisory",
+    summary:
+      "Why to do what by whom to get where by when in Sales with clarity on How.",
+    image: salesAdvisoryImg,
+  },
+  {
+    name: "Fractional Sales Management",
+    slug: "fractional-sales-management",
+    summary:
+      "Outsource your Sales Management to us.",
+    image: fractionalImg,
+  },
+  {
+    name: "Learning and Development Partner",
+    slug: "learning-and-development",
+    summary:
+      "Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.",
+    image: learningImg,
+  },
+  {
+    name: "Sales Automation",
+    slug: "sales-automation",
+    summary:
+      "Why do anything which machines can do? CRM, SEO, AEO.",
+    image: automationImg,
+  },
+  {
+    name: "Talent Search",
+    slug: "talent-search",
+    summary:
+      "Recruitment, Retention and Results in Sales.",
+    image: talentImg,
+  },
+  {
+    name: "Sales Audit",
+    slug: "sales-audit",
+    summary:
+      "Let's find out gaps in our sales process and systems to become unstoppable.",
+    image: auditImg,
+  },
+  {
+    name: "Marketing Communications",
+    slug: "marketing-communications",
+    summary:
+      "Get your lead magnets and value bombs designed by us besides other marcom elements.",
+    image: marketingImg,
+  },
 ];
 
 export default function Solutions() {
@@ -126,7 +175,7 @@ export default function Solutions() {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-center gap-2">
+<div className="mt-6 flex justify-center gap-2">
             {programs.map((_, i) => (
               <button
                 key={i}
@@ -137,6 +186,40 @@ export default function Solutions() {
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
+          </div>
+
+        </div>
+
+        <div className="mt-8 border-t border-gray-200 pt-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Audit</span>
+              <p className="text-sm text-gray-600 text-center">Let's find out gaps in our sales process and systems to become unstoppable.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Advisory</span>
+              <p className="text-sm text-gray-600 text-center">Why to do what by whom to get where by when in Sales with clarity on How.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Fractional Sales Management</span>
+              <p className="text-sm text-gray-600 text-center">Outsource your Sales Management to us.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Automation</span>
+              <p className="text-sm text-gray-600 text-center">Why do anything which machines can do? CRM, SEO, AEO.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Learning & Development</span>
+              <p className="text-sm text-gray-600 text-center">Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Talent Search</span>
+              <p className="text-sm text-gray-600 text-center">Recruitment, Retention and Results in Sales.</p>
+            </div>
+            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
+              <span className="text-2xl font-bold text-brand-navy mb-2">Marketing Communications</span>
+              <p className="text-sm text-gray-600 text-center">Get your lead magnets and value bombs designed by us besides other marcom elements.</p>
+            </div>
           </div>
         </div>
 

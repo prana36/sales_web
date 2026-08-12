@@ -35,7 +35,7 @@ const plans = [
   {
     name: "Annual Retainership",
     label: "Annual Retainership Contract",
-    price_inr: "INR 50,00,000/-",
+    price_inr: "INR 30,00,000/-",
     features: [
       "1 year Retainership",
       "Sales Ecosystem Construction",

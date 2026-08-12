@@ -52,7 +52,7 @@ function StepCard({ step, index }: { step: JourneyStep; index: number }) {
           const Icon = point.icon;
           const content = (
             <>
-              <Icon className="size-4 flex-shrink-0 text-brand-gold" />
+              <Icon className="size-4 flex-shrink-0 text-brand-gold text-xs font-bold text-brand-navy" />
               <span className="text-sm font-medium text-white/80">
                 {point.label}
               </span>
@@ -87,9 +87,9 @@ function StepCard({ step, index }: { step: JourneyStep; index: number }) {
 export default function WhatWeDo() {
   const journeySteps: JourneyStep[] = [
     {
-      tag: "Diagnose",
+      tag: "Gap Analysis",
       title: "Sales Audit",
-      text: "We study data, competition, and team capability to find exactly where sales is leaking.",
+      text: "We study data, competition, and team capability to find exactly where sales is leaking. Regression & Skill-Will Analysis, Competition & Market Study, Blueprint for Execution, 5-year Regression Analysis, Projected growth in next 5 years.",
       cta: { label: "Request Sales Audit", href: "#contact" },
       points: [
         { icon: BarChart3, label: "Regression & Skill-Will Analysis" },
@@ -98,9 +98,9 @@ export default function WhatWeDo() {
       ],
     },
     {
-      tag: "Redesign",
+      tag: "Process",
       title: "SME & MSME Advisory",
-      text: "We rebuild the sales engine — strategy, process, and technology — so growth becomes repeatable.",
+      text: "We rebuild the sales engine — strategy, process, and technology — so growth becomes repeatable. Blueprint for Success Based on Gap Analysis, we propose changes in process, programs, procedures and people. Change Management Program, Go to Market Plan, Strategic direction, Caveats.",
       cta: { label: "Contact Us", href: "#contact" },
       points: [
         { icon: LineChart, label: "Sales Strategy & Process Design" },
@@ -109,18 +109,25 @@ export default function WhatWeDo() {
       ],
     },
     {
-      tag: "Develop",
+      tag: "Program",
       title: "Sales Training",
-      text: "Our trainers build practical selling capability with measurable, on-ground outcomes.",
+      text: "Our trainers build practical selling capability with measurable, on-ground outcomes. Annual Retainership Contract An annual contract to implement the Blueprint for Success with guarantee by empowerment, enablement and execution. Daily monitoring, Weekly Review, Monthly MIS, Learning and Development, On the Job Coaching.",
       cta: { label: "Schedule Gap Analysis", href: "#contact" },
       points: [
         { icon: BarChart2, label: "Gap Analysis", url: "/gap-analysis" },
         { icon: Award, label: "Learning Outcomes", url: "/learning-outcome" },
-        {
-          icon: RefreshCw,
-          label: "Outcome Tracking",
-          url: "/outcome-tracking",
-        },
+        { icon: RefreshCw, label: "Outcome Tracking", url: "/outcome-tracking" },
+      ],
+    },
+    {
+      tag: "Procedures",
+      title: "Standard Operating Procedures",
+      text: "Standard Operating Procedures followed by all and sundry makes winning sales teams. Annual Retainership Contract Implement Blueprint for Success with Guarantee Investment INR 30,00,000/- Onwards on case to case basis.",
+      cta: { label: "Contact Us", href: "#contact" },
+      points: [
+        { icon: BarChart2, label: "SOP Documentation" },
+        { icon: Award, label: "Compliance Monitoring" },
+        { icon: ClipboardCheck, label: "Process Audit" },
       ],
     },
   ];

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { Toaster } from "sonner";
+import AboutPage from "./pages/AboutPage";
 import CaseStudies from "./components/CaseStudies";
 import Clients from "./components/Clients";
 import CompanyStats from "./components/CompanyStats";
@@ -71,7 +72,6 @@ function ScrollToLocation() {
 
   return null;
 }
-
 function SiteRoutes() {
   return (
     <>
@@ -79,11 +79,14 @@ function SiteRoutes() {
       <Header />
       <Routes>
         <Route element={<HomePage />} path="/" />
+        <Route element={<AboutPage />} path="/about" />
         <Route
           element={<SalesConsultantPage />}
           path="/sales-consultant-india"
         />
-        <Route element={<TopSalesTrainerPage />} path="/top-sales-trainer" />
+        <Route
+          element={<TopSalesTrainerPage />}
+          path="/top-sales-trainer" />
         <Route element={<CoreTeamPage />} path="/core-team" />
         <Route element={<CareerPage />} path="/career" />
         <Route element={<SalesMitraHelplinePage />} path="/sales-mitra-helpline" />
@@ -107,7 +110,6 @@ function SiteRoutes() {
     </>
   );
 }
-
 export default function App() {
   return (
     <div className="size-full bg-white text-gray-900 selection:bg-yellow-500/30 selection:text-blue-900">
