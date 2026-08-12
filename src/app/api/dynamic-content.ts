@@ -95,7 +95,6 @@ export type DynamicContent = {
   blogs: Blog[];
   downloads: Download[];
   caseStudies: CaseStudy[];
-  services: Service[];
 };
 
 import { hasSupabasePublicConfig, supabaseConfig } from "./supabase-config";
@@ -146,17 +145,16 @@ export function publicAssetUrl(path: string | null | undefined) {
 }
 
 export async function getDynamicContent(): Promise<DynamicContent> {
-  const [courses, blogs, downloads, caseStudies, services] = await Promise.all([
+  const [courses, blogs, downloads, caseStudies] = await Promise.all([
     fetchTable<Course>("courses"),
     fetchTable<Blog>("blogs"),
     fetchTable<Download>("downloads"),
     fetchTable<CaseStudy>("case_studies"),
-    fetchTable<Service>("services"),
   ]);
 
-  console.log("Fetched dynamic content:", { courses, blogs, downloads, caseStudies, services });
+  console.log("Fetched dynamic content:", { courses, blogs, downloads, caseStudies });
 
-  return { courses, blogs, downloads, caseStudies, services };
+  return { courses, blogs, downloads, caseStudies };
 }
 
 export async function getSetting(key: string): Promise<string | null> {

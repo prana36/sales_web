@@ -7,56 +7,14 @@ import Reveal from "./shared/Reveal";
 import SectionKicker from "./shared/SectionKicker";
 
 import kathaImg from "../assets/images/services/sales-katha.png";
+import courseImg from "../assets/images/services/course.png";
 import rishteImg from "../assets/images/services/sales-ke-rishte.png";
 import jaatImg from "../assets/images/services/sales-ki-jaat.png";
 import nitiImg from "../assets/images/services/sales-ki-niti.png";
 import vidhiImg from "../assets/images/services/sales-ki-vidhi.png";
 import molbhavImg from "../assets/images/services/sales-mein-molbhav.png";
-import courseImg from "../assets/images/services/course.png";
 
 const programs = [
-  {
-    name: "Sales Mein Molbhav",
-    slug: "sales-mein-molbhav",
-    summary:
-      "Focuses on sales negotiation process, sales negotiation skills, tactics, selling and bargaining skills, forming part of the 'Sales Me Molbhav' framework.",
-    image: molbhavImg,
-  },
-  {
-    name: "Sales Katha",
-    slug: "sales-katha",
-    summary:
-      "Storytelling-based approach to explain sales to customers; emphasizes communicating via stories in addition to FAB and FAQ.",
-    image: kathaImg,
-  },
-  {
-    name: "Sales Ke Rishte",
-    slug: "sales-ke-rishte",
-    summary:
-      "Proprietary customer relationship management system focusing on tools and features to leverage Customer LifeTime Value (CLTV).",
-    image: rishteImg,
-  },
-  {
-    name: "Sales Ki Jaat",
-    slug: "sales-ki-jaat",
-    summary:
-      "Focuses on the DNA of Sales in salesperson's skills, enriching salesmanship with consultant skills to build a repository of sales expertise.",
-    image: jaatImg,
-  },
-  {
-    name: "Sales Ki Vidhi",
-    slug: "sales-ki-vidhi",
-    summary:
-      "Answers 'how to sell?' by focusing on sales life cycle, methods, techniques and processes of effective selling.",
-    image: vidhiImg,
-  },
-  {
-    name: "Sales Ki Niti",
-    slug: "sales-ki-niti",
-    summary:
-      "Sales strategy program focusing on sales planning, techniques and strategic selling to improve sales.",
-    image: nitiImg,
-  },
   {
     name: "Sales Advisory",
     slug: "sales-advisory",
@@ -72,18 +30,18 @@ const programs = [
     image: molbhavImg,
   },
   {
-    name: "Learning and Development Partner",
-    slug: "learning-and-development",
-    summary:
-      "Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.",
-    image: courseImg,
-  },
-  {
     name: "Sales Automation",
     slug: "sales-automation",
     summary:
       "Why do anything which machines can do? CRM, SEO, AEO.",
-    image: kathaImg,
+    image: vidhiImg,
+  },
+  {
+    name: "Learning & Development",
+    slug: "learning-and-development",
+    summary:
+      "Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.",
+    image: courseImg,
   },
   {
     name: "Talent Search",
@@ -104,7 +62,7 @@ const programs = [
     slug: "marketing-communications",
     summary:
       "Get your lead magnets and value bombs designed by us besides other marcom elements.",
-    image: kathaImg,
+    image: jaatImg,
   },
 ];
 
@@ -189,39 +147,6 @@ export default function Solutions() {
             ))}
           </div>
 
-        </div>
-
-        <div className="mt-8 border-t border-gray-200 pt-8">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Audit</span>
-              <p className="text-sm text-gray-600 text-center">Let's find out gaps in our sales process and systems to become unstoppable.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Advisory</span>
-              <p className="text-sm text-gray-600 text-center">Why to do what by whom to get where by when in Sales with clarity on How.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Fractional Sales Management</span>
-              <p className="text-sm text-gray-600 text-center">Outsource your Sales Management to us.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Sales Automation</span>
-              <p className="text-sm text-gray-600 text-center">Why do anything which machines can do? CRM, SEO, AEO.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Learning & Development</span>
-              <p className="text-sm text-gray-600 text-center">Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Talent Search</span>
-              <p className="text-sm text-gray-600 text-center">Recruitment, Retention and Results in Sales.</p>
-            </div>
-            <div className="group flex flex-col items-center rounded-xl border border-gray-200 bg-white p-4 hover:border-brand-navy/25 hover:shadow-lg transition-all duration-300">
-              <span className="text-2xl font-bold text-brand-navy mb-2">Marketing Communications</span>
-              <p className="text-sm text-gray-600 text-center">Get your lead magnets and value bombs designed by us besides other marcom elements.</p>
-            </div>
-          </div>
         </div>
 
       </div>

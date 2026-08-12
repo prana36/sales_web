@@ -174,7 +174,7 @@ export default function WhatWeDo() {
               </div>
             </div>
 
-            <div className="mt-6 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+            <div className="mt-6 grid gap-6 lg:grid-cols-4 lg:items-stretch">
               {journeySteps.map((step, index) => (
                 <StepCard index={index} key={step.tag} step={step} />
               ))}

@@ -24,22 +24,27 @@ export default function Header() {
         { label: "Clients Appreciate Us", url: "/#testimonials" },
       ],
     },
-    {
-      label: "Services",
-      url: "/#solutions_services",
-      children: [
-        { label: "Sales Training", url: "/#welcome_temple_of_sales" },
-        { label: "Growth Consulting", url: "/#growth_consulting_agency" },
-        // { label: "Sales Mitra Helpline", url: "/sales-mitra-helpline" },
-        { label: "Sales Audit", url: "/#sales_audit" },
-        { label: "Sales Ki Jaat", url: "/services/sales-ki-jaat" },
-        { label: "Sales Ki Vidhi", url: "/services/sales-ki-vidhi" },
-        { label: "Sales Ki Niti", url: "/services/sales-ki-niti" },
-        { label: "Sales Mein Molbhav", url: "/services/sales-mein-molbhav" },
-        { label: "Sales Katha", url: "/services/sales-katha" },
-        { label: "Sales Ke Rishte", url: "/services/sales-ke-rishte" },
-      ],
-    },
+{
+       label: "Services",
+       url: "/#solutions_services",
+       children: [
+         { label: "Sales Training", url: "/services/sales-training" },
+         { label: "Growth Consulting", url: "/#growth_consulting_agency" },
+         // { label: "Sales Mitra Helpline", url: "/sales-mitra-helpline" },
+         { label: "Sales Audit", url: "/services/sales-audit" },
+         { label: "Sales Advisory", url: "/services/sales-advisory" },
+         { label: "Fractional Sales Management", url: "/services/fractional-sales-management" },
+         { label: "Sales Automation", url: "/services/sales-automation" },
+         { label: "Learning & Development", url: "/services/learning-and-development" },
+         { label: "Talent Search", url: "/services/talent-search" },
+         { label: "Sales Ki Jaat", url: "/services/sales-ki-jaat" },
+         { label: "Sales Ki Vidhi", url: "/services/sales-ki-vidhi" },
+         { label: "Sales Ki Niti", url: "/services/sales-ki-niti" },
+         { label: "Sales Mein Molbhav", url: "/services/sales-mein-molbhav" },
+         { label: "Sales Katha", url: "/services/sales-katha" },
+         { label: "Sales Ke Rishte", url: "/services/sales-ke-rishte" },
+       ],
+     },
     { label: "Case Studies", url: "/#case_studies", children: [] },
     // { label: "How We Work", url: "/#how_we_work", children: [] },
     { label: "Courses", url: "/courses", children: [] },
@@ -130,14 +135,30 @@ export default function Header() {
         <nav className="mx-auto mt-2 max-h-[calc(100vh-6rem)] max-w-7xl overflow-y-auto rounded-3xl border border-brand-navy/10 bg-white/95 px-4 py-4 shadow-xl shadow-brand-navy/10 backdrop-blur-xl sm:px-6 lg:hidden">
           <div className="space-y-1">
             {navItems.map((item) => (
-              <a
-                className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-navy/80 hover:bg-brand-gold/10 hover:text-brand-navy"
-                href={item.url}
-                key={item.label}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
+              <div key={item.label} className="rounded-2xl border border-brand-navy/10 bg-brand-navy/[0.02] p-1">
+                <a
+                  className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-navy/80 hover:bg-brand-gold/10 hover:text-brand-navy"
+                  href={item.url}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+
+                {item.children.length > 0 ? (
+                  <div className="mt-1 space-y-1 border-t border-brand-navy/10 px-1 pb-1 pt-2">
+                    {item.children.map((child) => (
+                      <a
+                        key={child.label}
+                        className="block rounded-lg px-3 py-2 text-sm text-brand-navy/70 hover:bg-brand-gold/10 hover:text-brand-navy"
+                        href={child.url}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             ))}
             <a
               className="mt-3 block rounded-full bg-brand-navy px-3 py-2.5 text-center text-sm font-semibold text-white"
