@@ -12,6 +12,7 @@ import jaatImg from "../assets/images/services/sales-ki-jaat.png";
 import nitiImg from "../assets/images/services/sales-ki-niti.png";
 import vidhiImg from "../assets/images/services/sales-ki-vidhi.png";
 import molbhavImg from "../assets/images/services/sales-mein-molbhav.png";
+import courseImg from "../assets/images/services/course.png";
 
 const programs = [
   {
@@ -61,49 +62,49 @@ const programs = [
     slug: "sales-advisory",
     summary:
       "Why to do what by whom to get where by when in Sales with clarity on How.",
-    image: salesAdvisoryImg,
+    image: kathaImg,
   },
   {
     name: "Fractional Sales Management",
     slug: "fractional-sales-management",
     summary:
       "Outsource your Sales Management to us.",
-    image: fractionalImg,
+    image: molbhavImg,
   },
   {
     name: "Learning and Development Partner",
     slug: "learning-and-development",
     summary:
       "Curate and facilitate L&D Calendar after conducting Training and Need Analysis of Sales Team.",
-    image: learningImg,
+    image: courseImg,
   },
   {
     name: "Sales Automation",
     slug: "sales-automation",
     summary:
       "Why do anything which machines can do? CRM, SEO, AEO.",
-    image: automationImg,
+    image: kathaImg,
   },
   {
     name: "Talent Search",
     slug: "talent-search",
     summary:
       "Recruitment, Retention and Results in Sales.",
-    image: talentImg,
+    image: rishteImg,
   },
   {
     name: "Sales Audit",
     slug: "sales-audit",
     summary:
       "Let's find out gaps in our sales process and systems to become unstoppable.",
-    image: auditImg,
+    image: nitiImg,
   },
   {
     name: "Marketing Communications",
     slug: "marketing-communications",
     summary:
       "Get your lead magnets and value bombs designed by us besides other marcom elements.",
-    image: marketingImg,
+    image: kathaImg,
   },
 ];
 
