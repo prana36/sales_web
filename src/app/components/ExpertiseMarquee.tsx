@@ -51,8 +51,9 @@ export default function ExpertiseMarquee() {
       const halfWidth = track.scrollWidth / 2;
       if (!duration || !halfWidth) return;
 
+      const start = drag.time % duration;
       const dx = e.clientX - drag.x;
-      const newTime = drag.time - (dx / halfWidth) * duration;
+      const newTime = start - (dx / halfWidth) * duration;
       anim.currentTime = Math.max(0, Math.min(duration, newTime));
     },
     [getAnimation],
