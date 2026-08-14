@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { Building2, Quote, Star, Store } from "lucide-react";
-import type { CSSProperties } from "react";
+import { useCallback, useRef, useState, type CSSProperties } from "react";
 import Reveal from "./shared/Reveal";
 import SectionKicker from "./shared/SectionKicker";
 
@@ -138,7 +138,57 @@ function TestimonialWall({
   scrollDuration: string;
   accent: Accent;
 }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{ x: number; time: number } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
   const trackStyle = { "--scroll-duration": scrollDuration } as CSSProperties;
+
+  const getAnimation = useCallback(
+    () => trackRef.current?.getAnimations()[0] ?? null,
+    [],
+  );
+
+  const handlePointerDown = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const anim = getAnimation();
+      if (!anim) return;
+      anim.pause();
+      dragRef.current = {
+        x: e.clientX,
+        time: typeof anim.currentTime === "number" ? anim.currentTime : 0,
+      };
+      setIsDragging(true);
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    },
+    [getAnimation],
+  );
+
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const drag = dragRef.current;
+      const track = trackRef.current;
+      const anim = getAnimation();
+      if (!drag || !track || !anim) return;
+
+      const duration = anim.effect?.getComputedTiming().duration ?? 0;
+      const halfWidth = track.scrollWidth / 2;
+      if (!duration || !halfWidth) return;
+
+      const dx = e.clientX - drag.x;
+      const newTime = drag.time - (dx / halfWidth) * duration;
+      anim.currentTime = Math.max(0, Math.min(duration, newTime));
+    },
+    [getAnimation],
+  );
+
+  const endDrag = useCallback(() => {
+    if (!dragRef.current) return;
+    dragRef.current = null;
+    setIsDragging(false);
+    const anim = getAnimation();
+    if (anim && anim.playState === "paused") anim.play();
+  }, [getAnimation]);
 
   return (
     <div className={`rounded-3xl p-6 sm:p-8 ${accent.wallBg}`}>
@@ -151,7 +201,16 @@ function TestimonialWall({
       </Reveal>
 
       <div className="overflow-hidden">
-        <div className="testimonials-track" style={trackStyle}>
+        <div
+          ref={trackRef}
+          className={`testimonials-track ${isDragging ? "testimonials-dragging" : ""}`}
+          style={trackStyle}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onPointerLeave={endDrag}
+        >
           {[...items, ...items].map((item, index) => (
             <TestimonialCard key={index} item={item} accent={accent} />
           ))}
@@ -174,9 +233,19 @@ export default function Testimonials() {
           gap: 2rem;
           width: fit-content;
           animation: testimonials-scroll var(--scroll-duration, 60s) linear infinite;
+          cursor: grab;
+          touch-action: pan-y;
+          user-select: none;
+          -webkit-user-select: none;
+          -webkit-tap-highlight-color: transparent;
         }
-        .testimonials-track:hover {
-          animation-play-state: paused;
+        .testimonials-track.testimonials-dragging {
+          cursor: grabbing;
+        }
+        @media (hover: hover) {
+          .testimonials-track:hover {
+            animation-play-state: paused;
+          }
         }
       `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
