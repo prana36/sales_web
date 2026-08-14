@@ -6,22 +6,11 @@ import {
   Mail,
   MapPin,
   Phone,
-  Send,
   Youtube,
 } from "lucide-react";
-import { type FormEvent, useState } from "react";
-import { toast } from "sonner";
 import logoImg from "../assets/images/logo.png";
 
 export default function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-
-  const handleNewsletterSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    toast.success("Thanks for subscribing! We'll keep you posted.");
-    setNewsletterEmail("");
-  };
-
   const socialLinks = [
     { platform: "Facebook", url: "https://www.facebook.com/Sanjay4sales/", icon: Facebook },
     { platform: "Instagram", url: "https://www.instagram.com/sanjay4sales/", icon: Instagram },
@@ -41,11 +30,19 @@ export default function Footer() {
 
   const exploreLinks = [
     { label: "Case Studies", url: "/#case_studies" },
-    { label: "Courses", url: "/courses" },
     { label: "Blogs", url: "/blogs" },
     { label: "Sales Audit", url: "/#sales_audit" },
     { label: "About Our Company", url: "/about" },
     { label: "Online Support", url: "/sales-mitra-helpline" },
+  ];
+
+  const courseLinks = [
+    { label: "Sales Baptism", url: "/courses" },
+    { label: "Sales Marathon", url: "/courses" },
+    { label: "Sales ManEdge", url: "/courses" },
+    { label: "Sell Well", url: "/courses" },
+    { label: "RealPreneur", url: "/courses" },
+    { label: "SALEbrity", url: "/courses" },
   ];
 
   const downloadLinks = [
@@ -60,7 +57,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-brand-navy px-4 py-16 text-white/80 sm:px-6 lg:py-20">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-          <div className="space-y-4 md:col-span-3">
+          <div className="space-y-4 md:col-span-2">
             <div className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 w-fit">
               <img
                 alt="Strategic Concepts Logo"
@@ -98,32 +95,32 @@ export default function Footer() {
             >
               The School Of Sales
             </a>
-            <form className="space-y-2.5 pt-2" onSubmit={handleNewsletterSubmit}>
-              <input
-                aria-label="Email address"
-                className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-brand-gold focus:ring-1 focus:ring-brand-gold"
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Subscribe for sales tips"
-                required
-                type="email"
-                value={newsletterEmail}
-              />
-              <button
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gold px-4 py-2.5 text-sm font-bold text-brand-navy-950 transition-all hover:bg-brand-gold-light"
-                type="submit"
-              >
-                <span>Subscribe</span>
-                <Send className="size-3.5" />
-              </button>
-            </form>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
               Services
             </h4>
             <ul className="space-y-3 text-sm">
               {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    className="text-white/70 transition-colors hover:text-brand-gold"
+                    href={link.url}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
+              Courses
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {courseLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     className="text-white/70 transition-colors hover:text-brand-gold"
@@ -177,8 +174,8 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 size-4 flex-shrink-0 text-brand-gold" />
                 <span>
-                  Nagpur Office: 1st Floor, Gokul Building, W.H.C. Road,
-                  Dharampeth, Nagpur - 440010
+                  1st Floor, Gokul Building, W.H.C. Road, Dharampeth,
+                  Nagpur - 440010
                 </span>
               </li>
               <li className="flex items-center gap-2">
