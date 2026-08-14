@@ -1,29 +1,29 @@
 /// <reference types="vite/client" />
-import { AlertTriangle, ClipboardCheck, FileSignature, Zap } from "lucide-react";
+import { CalendarCheck, ClipboardCheck, Users, Workflow } from "lucide-react";
 import Reveal from "./shared/Reveal";
 import SectionKicker from "./shared/SectionKicker";
 
 export default function HowWeWork() {
   const steps = [
     {
-      title: "Gap Analysis",
-      icon: AlertTriangle,
-      text: "A first-hand report on the What, When, Where, Who, Why, and How behind the gaps in your sales function.",
+      title: "People",
+      icon: Users,
+      text: "Right people for the Right job at the Right time and Place.",
     },
     {
-      title: "Blueprint for Success",
+      title: "Process",
+      icon: Workflow,
+      text: "Smart Process should run brave People to become unstoppable in business.",
+    },
+    {
+      title: "Program",
+      icon: CalendarCheck,
+      text: "Initiatives run consistently when stitched together in a program.",
+    },
+    {
+      title: "Procedures",
       icon: ClipboardCheck,
-      text: "A tailored strategy and process redesign built around the gaps uncovered, with clear milestones and owners.",
-    },
-    {
-      title: "Annual Retainership Contract",
-      icon: FileSignature,
-      text: "A co-created MOU that puts the blueprint into a committed, mutually agreed engagement for the year.",
-    },
-    {
-      title: "Implementation",
-      icon: Zap,
-      text: "Strict adherence to the plan, driven by monthly review meetings.",
+      text: "Standard Operating Procedures followed by all and sundry makes winning sales teams.",
     },
   ];
 
@@ -36,7 +36,7 @@ export default function HowWeWork() {
         <Reveal className="text-center mb-12">
           <SectionKicker className="mb-3">How Do We Work?</SectionKicker>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            4 Steps to Leverage Your Sales Function
+            4 P's to Leverage Your Sales Function
           </h2>
         </Reveal>
 

@@ -1,13 +1,6 @@
 /// <reference types="vite/client" />
 import { Linkedin } from "lucide-react";
-
-import sanjayImg from "../assets/images/team/Sanjay-Singh.png";
-import sanskritaImg from "../assets/images/team/Sanskrita-Singh.png";
-import lajooImg from "../assets/images/team/Lajoo-Charles.png";
-import milliImg from "../assets/images/team/Milli-Juneja.png";
-import dhananjayImg from "../assets/images/team/Dhananjay-Singh.png";
-import nripendraImg from "../assets/images/team/Nripendra-Singh.png";
-import faizaanImg from "../assets/images/team/Faizaan-Sayeed.png";
+import { teamInitials, teamMembers } from "../data/teamMembers";
 
 export default function Team() {
   const capabilities = [
@@ -33,57 +26,7 @@ export default function Team() {
     }
   ];
 
-  const members = [
-    {
-      name: "Sanjay Singh",
-      role: "Sales Coach",
-      url: "https://www.linkedin.com/in/sanjay4sales/",
-      isLinkedin: true,
-      image: sanjayImg
-    },
-    {
-      name: "Dhananjay Singh",
-      role: "Consultant",
-      url: "https://www.linkedin.com/in/dhananjay-singh-sales/",
-      isLinkedin: true,
-      image: dhananjayImg
-    },
-    {
-      name: "Sanskrita Singh",
-      role: "Co-Founder / Consultant",
-      url: "",
-      isLinkedin: false,
-      image: sanskritaImg
-    },
-    {
-      name: "Lajoo Charles",
-      role: "Senior Consultant",
-      url: "https://www.linkedin.com/in/lajoo-charles/",
-      isLinkedin: true,
-      image: lajooImg
-    },
-    {
-      name: "Milli Juneja",
-      role: "Consultant / Lead",
-      url: "https://www.linkedin.com/in/milijuneja/",
-      isLinkedin: true,
-      image: milliImg
-    },
-    {
-      name: "Nripendra Singh",
-      role: "Senior Consultant",
-      url: "https://www.linkedin.com/in/nripendra-singh-sales/",
-      isLinkedin: true,
-      image: nripendraImg
-    },
-    {
-      name: "Faizaan Sayeed",
-      role: "Sales Associate",
-      url: "https://www.linkedin.com/in/faizaan-sayeed/",
-      isLinkedin: true,
-      image: faizaanImg
-    }
-  ];
+  const members = teamMembers;
 
   return (
     <section id="team" className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 md:py-24">
@@ -114,11 +57,17 @@ export default function Team() {
             >
               {/* Profile Image container */}
               <div className="relative aspect-[4/5] rounded-[10px] overflow-hidden bg-gray-50 mb-5">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" 
-                />
+                {member.image ? (
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" 
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-blue-50 text-4xl font-bold text-blue-900/40">
+                    {teamInitials(member.name)}
+                  </div>
+                )}
                 
                 {/* LinkedIn Overlay Link */}
                 {member.url && (
@@ -139,6 +88,9 @@ export default function Team() {
                 <h4 className="font-bold text-xl text-gray-900 group-hover:text-blue-900 transition-colors">
                   {member.name}
                 </h4>
+                <p className="mt-1 text-sm font-medium text-gray-500">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}

@@ -29,26 +29,38 @@ export default function Footer() {
     { platform: "LinkedIn", url: "https://www.linkedin.com/in/sanjay4sales/", icon: Linkedin },
   ];
 
-  const categories = [
-    { label: "Services", url: "/#solutions_services" },
+  const serviceLinks = [
+    { label: "Sales Audit", url: "/services/sales-audit" },
+    { label: "Sales Advisory", url: "/services/sales-advisory" },
+    { label: "Fractional Sales Management", url: "/services/fractional-sales-management" },
+    { label: "Sales Automation", url: "/services/sales-automation" },
+    { label: "Learning & Development in Sales", url: "/services/learning-and-development" },
+    { label: "Talent Search", url: "/services/talent-search" },
+    { label: "Marketing Communications", url: "/services/marketing-communications" },
+  ];
+
+  const exploreLinks = [
     { label: "Case Studies", url: "/#case_studies" },
-    { label: "Online Support", url: "/sales-mitra-helpline" },
+    { label: "Courses", url: "/courses" },
+    { label: "Blogs", url: "/blogs" },
     { label: "Sales Audit", url: "/#sales_audit" },
-    { label: "About Our Company", url: "/top-sales-trainer" },
+    { label: "About Our Company", url: "/about" },
+    { label: "Online Support", url: "/sales-mitra-helpline" },
   ];
 
   const downloadLinks = [
-    { label: "Sales Audit Downloads", url: "/downloads" },
-    { label: "Courses", url: "/courses" },
-    { label: "Blogs", url: "/blogs" },
-    { label: "Packages", url: "/#pricing" },
+    { label: "E-Books", url: "/downloads" },
+    { label: "Checklists", url: "/downloads" },
+    { label: "Brochures", url: "/downloads" },
+    { label: "FAQ", url: "/downloads" },
+    { label: "Publications", url: "/downloads" },
   ];
 
   return (
     <footer className="relative overflow-hidden bg-brand-navy px-4 py-16 text-white/80 sm:px-6 lg:py-20">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-          <div className="space-y-4 md:col-span-4">
+          <div className="space-y-4 md:col-span-3">
             <div className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 w-fit">
               <img
                 alt="Strategic Concepts Logo"
@@ -86,20 +98,38 @@ export default function Footer() {
             >
               The School Of Sales
             </a>
+            <form className="space-y-2.5 pt-2" onSubmit={handleNewsletterSubmit}>
+              <input
+                aria-label="Email address"
+                className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-brand-gold focus:ring-1 focus:ring-brand-gold"
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="Subscribe for sales tips"
+                required
+                type="email"
+                value={newsletterEmail}
+              />
+              <button
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gold px-4 py-2.5 text-sm font-bold text-brand-navy-950 transition-all hover:bg-brand-gold-light"
+                type="submit"
+              >
+                <span>Subscribe</span>
+                <Send className="size-3.5" />
+              </button>
+            </form>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
-              Quick Links
+              Services
             </h4>
             <ul className="space-y-3 text-sm">
-              {categories.map((cat) => (
-                <li key={cat.label}>
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
                   <a
                     className="text-white/70 transition-colors hover:text-brand-gold"
-                    href={cat.url}
+                    href={link.url}
                   >
-                    {cat.label}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -108,12 +138,30 @@ export default function Footer() {
 
           <div className="md:col-span-2">
             <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
-              Downloads & Info
+              Explore
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {exploreLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    className="text-white/70 transition-colors hover:text-brand-gold"
+                    href={link.url}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
+              Downloads
             </h4>
             <ul className="space-y-3 text-sm">
               {downloadLinks.map((link) => (
                 <li key={link.label}>
-                  <a className="text-white/50 transition-colors hover:text-brand-gold" href={link.url}>
+                  <a className="text-white/70 transition-colors hover:text-brand-gold" href={link.url}>
                     {link.label}
                   </a>
                 </li>
@@ -146,33 +194,6 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-white">
-              Newsletter
-            </h4>
-            <p className="mb-4 text-sm leading-relaxed text-white/70">
-              Subscribe for sales growth tips and updates.
-            </p>
-            <form className="space-y-2.5" onSubmit={handleNewsletterSubmit}>
-              <input
-                aria-label="Email address"
-                className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition-all focus:border-brand-gold focus:ring-1 focus:ring-brand-gold"
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                type="email"
-                value={newsletterEmail}
-              />
-              <button
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gold px-4 py-2.5 text-sm font-bold text-brand-navy-950 transition-all hover:bg-brand-gold-light"
-                type="submit"
-              >
-                <span>Subscribe</span>
-                <Send className="size-3.5" />
-              </button>
-            </form>
           </div>
         </div>
 

@@ -1,49 +1,8 @@
 /// <reference types="vite/client" />
 import { Linkedin } from "lucide-react";
-
-import sanjayImg from "../assets/images/team/Sanjay-Singh.png";
-import milliImg from "../assets/images/team/Milli-Juneja.png";
 import Reveal from "../components/shared/Reveal";
 import SectionKicker from "../components/shared/SectionKicker";
-
-const members = [
-  {
-    name: "Sanjay Singh",
-    role: "Sales Coach",
-    url: "https://www.linkedin.com/in/sanjay4sales/",
-    isLinkedin: true,
-    image: sanjayImg,
-  },
-  {
-    name: "Dhananjay Singh",
-    role: "Consultant",
-    url: "",
-    isLinkedin: false,
-    image: null,
-  },
-  {
-    name: "Mili Juneja",
-    role: "Consultant / Lead",
-    url: "https://www.linkedin.com/in/milijuneja/",
-    isLinkedin: true,
-    image: milliImg,
-  },
-  {
-    name: "Alok Dubey",
-    role: "Consultant",
-    url: "",
-    isLinkedin: false,
-    image: null,
-  },
-];
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
+import { teamInitials, teamMembers } from "../data/teamMembers";
 
 export default function CoreTeamPage() {
   return (
@@ -63,7 +22,7 @@ export default function CoreTeamPage() {
         </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-          {members.map((member, index) => (
+          {teamMembers.map((member, index) => (
             <Reveal delay={index * 0.08} key={member.name}>
               <div className="group relative bg-white border border-gray-150 p-4 rounded-3xl hover:shadow-[0_20px_50px_rgba(27,97,156,0.1)] hover:border-brand-navy/15 transition-all duration-300 flex flex-col">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-50 mb-5">
@@ -75,7 +34,7 @@ export default function CoreTeamPage() {
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-brand-navy/[0.06] text-4xl font-bold text-brand-navy/40">
-                      {initials(member.name)}
+                      {teamInitials(member.name)}
                     </div>
                   )}
                   {member.url && (
@@ -95,12 +54,14 @@ export default function CoreTeamPage() {
                   <h4 className="font-bold text-xl text-gray-900 group-hover:text-brand-navy transition-colors">
                     {member.name}
                   </h4>
+                  <p className="mt-1 text-sm font-medium text-gray-500">
+                    {member.role}
+                  </p>
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );

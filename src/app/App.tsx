@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ExpertiseMarquee from "./components/ExpertiseMarquee";
 import HowWeWork from "./components/HowWeWork";
+import IPR from "./components/IPR";
 import SalesMitraHelplinePage from "./pages/SalesMitraHelplinePage";
 import Solutions from "./components/Solutions";
 import Testimonials from "./components/Testimonials";
@@ -47,6 +48,7 @@ function HomePage() {
       <HowWeWork />
       <Clients />
       <CaseStudies />
+      <IPR />
       <Testimonials />
       {/* <DynamicResources /> */}
       <Contact />
