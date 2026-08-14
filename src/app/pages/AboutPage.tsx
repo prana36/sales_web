@@ -1,8 +1,6 @@
 /// <reference types="vite/client" />
-import { Linkedin } from "lucide-react";
 import Reveal from "../components/shared/Reveal";
 import SectionKicker from "../components/shared/SectionKicker";
-import { teamInitials, teamMembers } from "../data/teamMembers";
 
 const principalConsultant = {
   name: "Sanjay Singh",
@@ -187,46 +185,21 @@ export default function AboutPage() {
       <div className="mt-24 border-t border-gray-200 pt-20">
         <div className="max-w-7xl mx-auto">
           <Reveal>
-            <div className="text-center mb-12">
-              <SectionKicker className="mb-3">Our Core Team</SectionKicker>
-              <h3 className="text-2xl font-bold text-gray-900 tracking-tight">
-                The people behind the promise
-              </h3>
-            </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {teamMembers.map((member) => (
-                <div
-                  key={member.name}
-                  className="group flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center transition-all duration-300 hover:border-brand-navy/25 hover:shadow-lg"
-                >
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="size-20 rounded-full object-cover bg-gray-50 mb-4"
-                    />
-                  ) : (
-                    <div className="flex size-20 items-center justify-center rounded-full bg-brand-navy/[0.06] text-2xl font-bold text-brand-navy/40 mb-4">
-                      {teamInitials(member.name)}
-                    </div>
-                  )}
-                  <h4 className="font-bold text-gray-900">{member.name}</h4>
-                  <p className="mt-0.5 text-sm font-medium text-gray-500">
-                    {member.role}
-                  </p>
-                  {member.url && (
-                    <a
-                      href={member.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-navy/20 px-4 py-1.5 text-xs font-semibold text-brand-navy transition-all hover:bg-brand-navy hover:text-white"
-                    >
-                      <Linkedin className="size-3.5" />
-                      LinkedIn
-                    </a>
-                  )}
-                </div>
-              ))}
+            <div className="flex flex-col items-center justify-between gap-6 rounded-[2rem] bg-brand-navy p-8 text-center sm:flex-row sm:text-left">
+              <div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">
+                  Our Core Team
+                </h3>
+                <p className="mt-2 text-white/70">
+                  Meet the specialists who deliver our sales expertise.
+                </p>
+              </div>
+              <a
+                href="/core-team"
+                className="inline-block rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy transition-all hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20"
+              >
+                Meet the Core Team
+              </a>
             </div>
           </Reveal>
         </div>

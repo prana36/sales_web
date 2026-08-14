@@ -17,7 +17,7 @@ export default function Header() {
     { label: "Home", url: "/", children: [] },
     {
       label: "About Us",
-      url: "/top-sales-trainer",
+      url: "/about",
       children: [
         { label: "Training Program Designer", url: "/top-sales-trainer" },
         { label: "Core Team", url: "/core-team" },
