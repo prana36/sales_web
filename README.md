@@ -7,7 +7,7 @@ A React and Vite website for Consult4Sales, a sales consulting and training bran
 - React 18
 - Vite 6
 - TypeScript
-- Tailwind CSS 4
+- Tailwind CSS 4.
 - React Router
 - Motion / Framer Motion
 - Radix UI, MUI, Lucide icons, Sonner, Recharts
